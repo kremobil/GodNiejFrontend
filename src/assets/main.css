@@ -1,0 +1,25 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+:root {
+    --blue: #1F2759;
+    --magenta: #EA3E93;
+    --yellow: #EFBE1D;
+    --font_xxl: clamp(32px, 1rem + 3.5vw, 96px);
+    --font_xl: clamp(28px, 1rem + 3vw, 64px);
+    --font_l: clamp(18px, 8px + 1vw, 32px);
+    --font_m: clamp(16px, 6px + 1vw, 24px);
+    --font_s: clamp(14px, 6px + 0.75vw, 18px);
+}
+
+@media (-webkit-device-pixel-ratio: 1.5) {
+    :root {
+        --font_xxl: clamp(24px, 1rem + 2.5vw, 64px);
+        --font_l: clamp(16px, 6px + 0.8vw, 32px);
+        --font_m: clamp(14px, 6px + 0.8vw, 24px);
+    }
+}
