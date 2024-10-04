@@ -126,7 +126,7 @@ export default {
     </section>
 </template>
 
-<style>
+<style scoped>
 .hero_wrapper{
   display: flex;
   min-height: 100vh;
