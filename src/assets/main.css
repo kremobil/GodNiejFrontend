@@ -14,6 +14,10 @@
     --font_l: clamp(18px, 8px + 1vw, 32px);
     --font_m: clamp(16px, 6px + 1vw, 24px);
     --font_s: clamp(14px, 6px + 0.75vw, 18px);
+    --swiper-pagination-bullet-inactive-color: var(--magenta);
+    --swiper-pagination-bullet-inactive-opacity: 0.5;
+    --swiper-pagination-color: var(--magenta);
+    --swiper-pagination-bullet-size: 24px;
 }
 
 @media (-webkit-device-pixel-ratio: 1.5) {

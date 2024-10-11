@@ -5,43 +5,48 @@ import MainLink from "@/components/MainLink.vue";
 export default {
   name: "InitativesSection",
   components: {MainLink, MainButton},
+  props: {
+    otherPosts: {
+      type: Array,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    button: {
+      type: String,
+      required: true,
+    },
+    highlightedPost: {
+      type: Object,
+      required: true,
+    }
+  }
 }
 </script>
 
 <template>
 <section id="initiatives-wrapper">
-  <h2>Nasze inicjatywy</h2>
+  <h2>{{ title }}</h2>
   <div class="cards_wrapper">
     <div class="promoted_card card">
       <div class="card_hover"></div>
-      <div class="card_content">
-        <h4 class="card_header">Centrum godnych narodzin</h4>
-      </div></div>
-    <div class="card" id="card1">
-      <div class="card_hover"></div>
-      <div class="card_content">
-        <h4 class="card_header">Piknik Rodzinny</h4>
+      <div class="card_content" :style="{
+        background: `url('http://localhost:1337${highlightedPost.Zdjecie.url}') center/cover`,
+      }">
+        <h4 class="card_header">{{ highlightedPost.Tytul }}</h4>
       </div>
     </div>
-    <div class="card" id="card2">
+    <div class="card" :id="`card${index+1}`" v-for="(post, index) in otherPosts" :key="post.id">
       <div class="card_hover"></div>
-      <div class="card_content">
-        <h4 class="card_header">Jak przygotować się do ciąży</h4>
+      <div class="card_content" :style="{
+        background: `url('http://localhost:1337${post.Zdjecie.url}') center/cover`,
+      }">
+        <h4 class="card_header">{{ post.Tytul }}</h4>
       </div>
     </div>
-    <div class="card" id="card3">
-      <div class="card_hover"></div>
-      <div class="card_content">
-        <h4 class="card_header">Telefon Wsparcia</h4>
-      </div>
-    </div>
-    <div class="card" id="card4">
-      <div class="card_hover"></div>
-      <div class="card_content">
-        <h4 class="card_header">Warsztaty dla mam</h4>
-      </div>
-    </div>
-    <MainLink to="/initiatives">Czytaj więcej</MainLink>
+    <MainLink to="/inicjatywy">{{ button }}</MainLink>
   </div>
 </section>
 </template>

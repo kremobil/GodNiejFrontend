@@ -30,6 +30,28 @@ export default {
     }, {
       backgroundColor: "rgba(255, 255, 255, 0.5)"
     })
+  },
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
+    button: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    reviewsHeader: {
+      type: String,
+      required: true,
+    },
+    reviews: {
+      type: Array,
+      required: true,
+    }
   }
 }
 </script>
@@ -37,12 +59,12 @@ export default {
 <template>
 <section class="about-us-section-wrapper">
   <div class="basic_info">
-    <h2>Poznaj GodNiej</h2>
-    <p>Fundacja GodNiej jest owocem spotkania trzech różnych dróg życiowych, trzech różnych pokoleń, trzech ścieżek zawodowych, ale tej samej wrażliwości, żeby to, co piękne i trudne w kobiecości zauważyć, dowartościować i wspólnie przeżyć. Skupiamy się na działaniach, które nadają sens każdemu  doświadczeniu kobiety, na każdym etapie jej życia: od pierwszych kroków dziewczynki ku kobiecości, przez macierzyństwo, aż po dojrzałą kobiecość. Wspieramy też osoby, które jej w tej drodze towarzyszą.</p>
-    <MainLink to="/o-nas">Dowiedz się więcej</MainLink>
+    <h2>{{ title }}</h2>
+    <p>{{ description }}</p>
+    <MainLink to="/o-nas">{{ button }}</MainLink>
   </div>
   <div class="comments">
-    <h3>Opinie naszych klientów</h3>
+    <h3>{{ reviewsHeader }}</h3>
     <swiper
         :modules="modules"
         :slides-per-view="1"
@@ -68,44 +90,14 @@ export default {
         @swiper="onSwiper"
         @slideChange="onSlideChange"
     >
-      <swiper-slide>
+      <swiper-slide v-for="review in reviews" :key="review.id">
         <div class="card">
           <div class="person_info">
-            <img src="@/assets/smiling-portrait-beautiful-young-woman-looking-camera.jpg" alt="zdjęcie profliowe" class="profile_pic">
+            <img :src="`http://localhost:1337${review.Zdjecie.url}`" alt="zdjęcie profliowe" class="profile_pic">
             <!--Źródło freepik.com-->
-            <h4 class="name">Bożena</h4>
+            <h4 class="name">{{ review.Imie }}</h4>
           </div>
-          <p class="content">“Lorem ipsum dolor sit amet consectetur. Consequat tempor volutpat sed dictum integer risus. Eget aenean diam cras dui elementum facilisis condimentum justo nec. Lorem purus urna mattis auctor mi eu eu risus. Imperdiet tincidunt viverra libero neque parturient.”</p>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <div class="card">
-          <div class="person_info">
-            <img src="@/assets/profile_pic_2.png" alt="zdjęcie profliowe" class="profile_pic">
-            <!--Źródło freepik.com-->
-            <h4 class="name">Basia</h4>
-          </div>
-          <p class="content">“Lorem ipsum dolor sit amet consectetur. Consequat tempor volutpat sed dictum integer risus. Eget aenean diam cras dui elementum facilisis condimentum justo nec. Lorem purus urna mattis auctor mi eu eu risus. Imperdiet tincidunt viverra libero neque parturient.”</p>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <div class="card">
-          <div class="person_info">
-            <img src="@/assets/profile_pic_1.jpg" alt="zdjęcie profliowe" class="profile_pic">
-            <!--Źródło freepik.com-->
-            <h4 class="name">Magda</h4>
-          </div>
-          <p class="content">“Lorem ipsum dolor sit amet consectetur. Consequat tempor volutpat sed dictum integer risus. Eget aenean diam cras dui elementum facilisis condimentum justo nec. Lorem purus urna mattis auctor mi eu eu risus. Imperdiet tincidunt viverra libero neque parturient.”</p>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <div class="card">
-          <div class="person_info">
-            <img src="@/assets/profile_pic_3.png" alt="zdjęcie profliowe" class="profile_pic">
-            <!--Źródło freepik.com-->
-            <h4 class="name">Anna</h4>
-          </div>
-          <p class="content">“Lorem ipsum dolor sit amet consectetur. Consequat tempor volutpat sed dictum integer risus. Eget aenean diam cras dui elementum facilisis condimentum justo nec. Lorem purus urna mattis auctor mi eu eu risus. Imperdiet tincidunt viverra libero neque parturient.”</p>
+          <p class="content">“{{ review.Tresc }}”</p>
         </div>
       </swiper-slide>
     </swiper>

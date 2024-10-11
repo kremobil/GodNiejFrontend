@@ -28,6 +28,7 @@ export default {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     padding: 1rem 2rem;
+    cursor: pointer;
   }
   .primary {
     background-color: var(--blue);

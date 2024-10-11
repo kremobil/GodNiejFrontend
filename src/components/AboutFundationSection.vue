@@ -1,29 +1,41 @@
 <script>
+import MainButton from "@/components/MainButton.vue";
+import { StrapiBlocks } from 'vue-strapi-blocks-renderer';
+
 export default {
   name: "AboutFundationSection",
+  components: {MainButton, StrapiBlocks},
+  props: {
+    title1: {type: String, required: true},
+    content1: {type: String, required: true},
+    image1: {type: Object, required: true},
+    buttonText: {type: String, required: true},
+    title2: {type: String, required: true},
+    content2: {type: String, required: true},
+    image2: {type: Object, required: true},
+  }
 }
 </script>
 
 <template>
   <section class="about-foundation-wrapper">
     <div class="half image-half">
-      <img src="@/assets/OurTeamResized.png" alt="Nasz zespół">
+      <img :src="`http://localhost:1337${image1.url}`" :alt="image1.alternativeText">
       <div class="gradient"></div>
     </div>
     <div class="half content-half">
-      <h2>Poznaj naszą fundację</h2>
-      <p>Fundacja GodNiej jest owocem spotkania trzech różnych dróg życiowych, trzech różnych pokoleń, trzech ścieżek zawodowych, ale tej samej wrażliwości, żeby to, co piękne i trudne w kobiecości zauważyć, dowartościować i wspólnie przeżyć. Skupiamy się na działaniach, które nadają sens każdemu  doświadczeniu kobiety, na każdym etapie jej życia: od pierwszych kroków dziewczynki ku kobiecości, przez macierzyństwo, aż po dojrzałą kobiecość. Wspieramy też osoby, które jej w tej drodze towarzyszą.</p>
-      <p>Istotnym celem aktywności naszej Fundacji jest prowadzenie wszelkich działań w przestrzeni okołoporodowej, które będą czyniły ją coraz bardziej bezpieczną, czułą i troskliwą. Aktywność ta promuje podnoszenie kompetencji w zakresie istoty godnego rodzenia i komunikacji w zespole interdyscyplinarnym osób profesjonalnie zajmujących się  kobietą w okresie dojrzewania, ciąży, porodu, połogu, okresie okołomenopauzalnym. </p>
+      <h2>{{ title1 }}</h2>
+      <StrapiBlocks :content="content1" />
+      <main-button>{{ buttonText }}</main-button>
     </div>
   </section>
   <section class="our-mission-wrapper">
     <div class="half content-half">
-      <h2>Nasza misja</h2>
-      <p>Cele naszej fundacji chcemy realizować poprzez prowadzenie warsztatów i  grup wsparcia dla kobiet i profesjonalistów, grup terapeutycznych, kręgów kobiecych, indywidualnej szkoły rodzenia, spotkań dla rodziców, ceremonii otulania, na organizowaniu konferencji, sympozjów, szkoleń, wystaw itp. </p>
-      <p><strong>Największym naszym marzeniem i podstawowym celem Fundacji jest stworzenie Centrum Godnych Narodzin </strong>, - miejsca, w którym otoczymy opieką, troską i uważnością kobietę-matkę, mężczyznę-ojca i ich dziecko. To także miejsce, w którym będziecie mogli spotkać się z sobą, z innymi, z nami oraz z profesjonalistami, których uwagi będziecie potrzebować. Dołożymy wszelkich starań byście poczuli się GodNiej, jak w Domu.</p>
+      <h2>{{ title2 }}</h2>
+      <StrapiBlocks :content="content2" />
     </div>
     <div class="half image-half">
-      <img src="@/assets/OurTeamBackResized.png" alt="Nasz zespół">
+      <img :src="`http://localhost:1337${image2.url}`" :alt="image2.alternativeText">
       <div class="gradient"></div>
     </div>
   </section>
@@ -39,6 +51,7 @@ export default {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  color: var(--blue);
 }
 .half {
   display: flex;
@@ -46,12 +59,7 @@ export default {
   height: 100%;
   position: relative;
   flex-direction: column;
-}
-
-@media screen and (max-width: 1024px) {
-  .about-foundation-wrapper {
-    padding: 2rem;
-  }
+  align-items: center;
 }
 
 img {
@@ -76,10 +84,13 @@ img {
   color: var(--blue);
   text-align: center;
 }
-.content-half p {
+.content-half:deep(p) {
   font-size: var(--font_m);
   margin-top: 1rem;
   text-align: justify;
+}
+.content-half button {
+  margin-top: 2rem;
 }
 .our-mission-wrapper {
   width: 100%;
@@ -89,5 +100,13 @@ img {
   flex-wrap: wrap-reverse;
   align-items: center;
   justify-content: center;
+  color: var(--blue);
 }
+
+@media screen and (max-width: 1024px) {
+  .about-foundation-wrapper, .our-mission-wrapper {
+    padding: 2rem;
+  }
+}
+
 </style>

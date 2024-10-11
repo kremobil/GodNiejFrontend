@@ -5,10 +5,12 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay } from "swiper/modules";
 import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
+import godniejBackend from "@/axios/GodniejBackend.js";
+import MainLink from "@/components/MainLink.vue";
 
 export default {
   name: "HeroSection",
-  components: {MainButton,Swiper,SwiperSlide},
+  components: {MainLink, MainButton,Swiper,SwiperSlide},
   methods: {
     onSwiper(swiper) {
       console.log(swiper);
@@ -17,6 +19,32 @@ export default {
   data() {
     return {
       modules: [Autoplay],
+    }
+  },
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    mainButton: {
+      type: String,
+      required: true,
+    },
+    secoundaryButton: {
+      type: String,
+      required: true,
+    },
+    sponsorsTitle: {
+      type: String,
+      required: true,
+    },
+    sponsors: {
+      type: Array,
+      required: true,
     }
   },
   mounted() {
@@ -37,17 +65,19 @@ export default {
     })
     window.addEventListener("resize", () => {
       const image = document.querySelector("#hero_image");
-      if (window.innerWidth > 1264) {
-        const sectionHeight = document.querySelector(".hero_wrapper").getBoundingClientRect().height
-        const windowHeight = window.innerHeight
-        if (sectionHeight > windowHeight) {
-          image.style.height = "100%";
+      if (image) {
+        if (window.innerWidth > 1264) {
+          const sectionHeight = document.querySelector(".hero_wrapper").getBoundingClientRect().height
+          const windowHeight = window.innerHeight
+          if (sectionHeight > windowHeight) {
+            image.style.height = "100%";
+          } else {
+            image.style.height = "100vh";
+          }
+          image.style.maxHeight = document.querySelector(".content.half").getBoundingClientRect().height + "px";
         } else {
-          image.style.height = "100vh";
+          image.style.maxHeight = "50vh";
         }
-        image.style.maxHeight = document.querySelector(".content.half").getBoundingClientRect().height + "px";
-      } else {
-        image.style.maxHeight = "50vh";
       }
     })
   }
@@ -58,15 +88,15 @@ export default {
     <section class="hero_wrapper">
       <div class="half content">
         <section class="main-information">
-          <h1>A dla ciebie? Co<br>znaczy godniej?</h1>
-          <p>Fundacja GodNiej jest owocem spotkania trzech różnych dróg życiowych, trzech różnych pokoleń, trzech ścieżek zawodowych, ale tej samej wrażliwości, żeby to, co piękne i trudne w kobiecości zauważyć, dowartościować i wspólnie przeżyć. Skupiamy się na działaniach, które nadają sens każdemu  doświadczeniu kobiety, na każdym etapie jej życia.</p>
+          <h1>{{ title }}</h1>
+          <p>{{ description }}</p>
           <div class="buttons-container">
-            <MainButton>Wesprzyj fundację</MainButton>
-            <MainButton :secondary="true">Zobacz inicjatywy</MainButton>
+            <MainLink>{{ mainButton }}</MainLink>
+            <MainLink :secondary="true" to="/inicjatywy">{{ secoundaryButton }}</MainLink>
           </div>
         </section>
         <section class="our_supporters">
-          <h3>Nasze działania wsparli</h3>
+          <h3>{{ sponsorsTitle }}</h3>
           <swiper
               :modules="modules"
               :slides-per-view="2"
@@ -98,17 +128,8 @@ export default {
               @swiper="onSwiper"
               @slideChange="onSlideChange"
           >
-            <swiper-slide>
-              <img src="@/assets/supporter_1.png" alt="Znany lekarz">
-            </swiper-slide>
-            <swiper-slide>
-              <img src="@/assets/supporter_2.png" alt="Samsung">
-            </swiper-slide>
-            <swiper-slide>
-              <img src="@/assets/supporter_3.png" alt="Programozaur">
-            </swiper-slide>
-            <swiper-slide>
-              <img src="@/assets/supporter_4.svg" alt="DOZ" height="48">
+            <swiper-slide v-for="sponsor in sponsors" :key="sponsor.id">
+              <img :src="'http://localhost:1337/' + sponsor.url" :alt="sponsor.alternativeText">
             </swiper-slide>
           </swiper>
         </section>

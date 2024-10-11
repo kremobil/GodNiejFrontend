@@ -4,24 +4,70 @@ import FormGroup from "@/components/FormGroup.vue";
 
 export default {
   name: "ContactUsSection",
-  components: {FormGroup, MainButton}
+  components: {FormGroup, MainButton},
+  props: {
+    title: {
+      type: String,
+      required: true
+    },
+    subtitle: {
+      type: String,
+      required: true
+    },
+    emailLabel: {
+      type: String,
+      required: true
+    },
+    emailPlaceholder: {
+      type: String,
+      required: true
+    },
+    nameLabel: {
+      type: String,
+      required: true
+    },
+    namePlaceholder: {
+      type: String,
+      required: true
+    },
+    surnameLabel: {
+      type: String,
+      required: true
+    },
+    surnamePlaceholder: {
+      type: String,
+      required: true
+    },
+    messageLabel: {
+      type: String,
+      required: true
+    },
+    messagePlaceholder: {
+      type: String,
+      required: true
+    },
+    button: {
+      type: String,
+      required: true
+    }
+  }
 }
 </script>
 
 <template>
 <div id="contact_us_wrapper">
  <header>
-   <h2>Masz pytanie?</h2>
-   <h4>Napisz do nas, chętnie odpowiemy!</h4>
+   <h2>{{ title }}</h2>
+   <h4>{{ subtitle }}</h4>
  </header>
   <form action="">
-    <FormGroup name="email" label="Adres e-mail"></FormGroup>
+    <FormGroup name="email" :label="emailLabel" :placeholder="emailPlaceholder"></FormGroup>
     <div class="row">
-      <FormGroup name="name" label="Imię" width="100%"></FormGroup>
-      <FormGroup name="surname" label="Nazwisko" width="100%"></FormGroup>
+      <FormGroup name="name" label="Imię" width="100%" :label="nameLabel" :placeholder="namePlaceholder"></FormGroup>
+      <FormGroup name="surname" label="Nazwisko" width="100%" :label="surnameLabel" :placeholder="surnamePlaceholder"></FormGroup>
     </div>
-    <FormGroup name="message" label="Wiadomość" width="100%" text-area></FormGroup>
-    <MainButton type="submit">Wyślij</MainButton>
+    <FormGroup name="message" label="Wiadomość" width="100%" text-area :label="messageLabel" :placeholder="messagePlaceholder"></FormGroup>
+    <MainButton type="submit">{{ button }}</MainButton>
   </form>
   <div id="bg_bubbles">
     <div class="orange_bubble_left"></div>
