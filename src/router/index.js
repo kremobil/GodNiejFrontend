@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import AboutUsView from "@/views/AboutUsView.vue";
 import InitiativesView from "@/views/InitiativesView.vue";
 import InitiativeView from "@/views/InitiativeView.vue";
+import WorkshopsRegisterView from "@/views/WorkshopsRegisterView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +51,11 @@ const router = createRouter({
       path: '/inicjatywy/:slug',
       name: 'initiative',
       component: InitiativeView
+    },
+    {
+      path: '/inicjatywy/zapisy/:id',
+      name: 'registers',
+      component: WorkshopsRegisterView
     }
   ]
 })

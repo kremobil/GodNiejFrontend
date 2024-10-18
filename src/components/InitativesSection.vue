@@ -30,22 +30,22 @@ export default {
 <section id="initiatives-wrapper">
   <h2>{{ title }}</h2>
   <div class="cards_wrapper">
-    <div class="promoted_card card">
+    <router-link :to="`/inicjatywy/${highlightedPost.slug}`" class="promoted_card card">
       <div class="card_hover"></div>
       <div class="card_content" :style="{
         background: `url('http://localhost:1337${highlightedPost.Zdjecie.url}') center/cover`,
       }">
         <h4 class="card_header">{{ highlightedPost.Tytul }}</h4>
       </div>
-    </div>
-    <div class="card" :id="`card${index+1}`" v-for="(post, index) in otherPosts" :key="post.id">
+    </router-link>
+    <router-link :to="`/inicjatywy/${post.slug}`" class="card" :id="`card${index+1}`" v-for="(post, index) in otherPosts" :key="post.id">
       <div class="card_hover"></div>
       <div class="card_content" :style="{
         background: `url('http://localhost:1337${post.Zdjecie.url}') center/cover`,
       }">
         <h4 class="card_header">{{ post.Tytul }}</h4>
       </div>
-    </div>
+    </router-link>
     <MainLink to="/inicjatywy">{{ button }}</MainLink>
   </div>
 </section>

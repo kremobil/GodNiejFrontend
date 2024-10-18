@@ -2,16 +2,19 @@
 import NavigationHeader from "@/components/NavigationHeader.vue";
 import FooterSection from "@/components/FooterSection.vue";
 import godniejBackend from "@/axios/GodniejBackend.js";
+import SupportPopup from "./components/SupportPopup.vue";
 
 export default {
   components: {
     NavigationHeader,
     FooterSection,
+    SupportPopup
   },
   data() {
     return {
       headerData: null,
       footerData: null,
+      popupActive: false
     }
   },
   mounted() {
@@ -52,9 +55,11 @@ export default {
     :facebook-link="headerData.LinkFacebook"
     :instagram-link="headerData.LinkInstagram"
     v-if="headerData"
+    @open-popup="popupActive = true"
   ></NavigationHeader>
-
-  <RouterView />
+  
+  <RouterView @open-popup="popupActive = true"/>
+  
 
   <FooterSection
     :logo="footerData.Logo"
@@ -72,7 +77,12 @@ export default {
     :bank-number="footerData.NumerKonta"
     :support-button="footerData.PrzyciskWesprzyj"
     v-if="footerData"
+    @open-popup="popupActive = true"
   ></FooterSection>
+
+  <teleport to='body'>
+    <SupportPopup :active="popupActive" @close-popup="popupActive = false"/>
+  </teleport>
 </template>
 
 <style scoped>

@@ -67,6 +67,9 @@ export default {
     }">
       <ul>
         <li>
+          <router-link to="/">Strona główna</router-link>
+        </li>
+        <li>
           <router-link to="/inicjatywy">Nasze Inicjatywy</router-link>
         </li>
         <li>
@@ -82,7 +85,7 @@ export default {
           <router-link to="/kontakt">Kontakt</router-link>
         </li>
       </ul>
-      <button id="mobile_support_us_button">
+      <button id="mobile_support_us_button" @click="$emit('openPopup')">
         <p>{{ supportButton }}</p>
         <img src="@/assets/support_us.gif" alt="" width="48" height="48" />
       </button>
@@ -116,7 +119,7 @@ export default {
           </svg>
         </a>
       </div>
-      <button id="support_us_button">
+      <button id="support_us_button" @click="$emit('openPopup')">
         <p id="button_label">{{ supportButton }}</p>
         <img src="@/assets/support_us.gif" alt="" width="48" height="48" />
       </button>
@@ -150,6 +153,7 @@ export default {
    border: none;
    background: linear-gradient(90deg, var(--yellow), var(--magenta), var(--blue));
    height: 80px;
+   cursor: pointer;
  }
  #support_us_button p {
    font-size: var(--font_l);
@@ -260,6 +264,7 @@ export default {
 }
  #mobile_support_us_button {
    display: none;
+   cursor: pointer;
  }
 @media screen and (max-width: 1264px) {
   #support_us_button {

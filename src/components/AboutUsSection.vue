@@ -61,7 +61,7 @@ export default {
   <div class="basic_info">
     <h2>{{ title }}</h2>
     <p>{{ description }}</p>
-    <MainLink to="/o-nas">{{ button }}</MainLink>
+    <MainLink to="/onas">{{ button }}</MainLink>
   </div>
   <div class="comments">
     <h3>{{ reviewsHeader }}</h3>

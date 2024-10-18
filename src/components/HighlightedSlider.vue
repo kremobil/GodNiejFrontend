@@ -9,12 +9,18 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
+import godniejBackend from '@/axios/GodniejBackend';
 
 export default {
   name: "HighlightedSlider",
   components: {
     Swiper,
     SwiperSlide,
+  },
+  data() {
+    return {
+      slides: null,
+    }
   },
   setup() {
     const onSwiper = (swiper) => {
@@ -29,11 +35,21 @@ export default {
       modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay],
     };
   },
+  mounted() {
+    godniejBackend.get('/all-initiative', { 
+      params: {
+        "populate[0]": "WyroznionePosty",
+        "populate[1]": "WyroznionePosty.Zdjecie"
+      }
+    }).then((response) => response.data.data).then((initiatives) => {
+      this.slides = initiatives.WyroznionePosty;
+    });
+  },
 };
 </script>
 
 <template>
-  <div class="slider-wrapper">
+  <div class="slider-wrapper" v-if="slides">
     <swiper
         :modules="modules"
         :slides-per-view="1"
@@ -51,29 +67,15 @@ export default {
         delay: 5000,
         }"
     >
-      <swiper-slide>
-        <div class="card promoted_card">
+      <swiper-slide v-for="slide in slides" :key="slide.id">
+        <router-link :to="`/inicjatywy/${slide.slug}`" class="card promoted_card">
           <div class="card_hover"></div>
-          <div class="card_content">
-            <h4 class="card_header">Jak przygotować się do ciąży</h4>
+          <div class="card_content" :style="{
+            backgroundImage: `url('http://localhost:1337${slide.Zdjecie.url}')`
+          }">
+            <h4 class="card_header">{{slide.Tytul}}</h4>
           </div>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <div class="card promoted_card">
-          <div class="card_hover"></div>
-          <div class="card_content">
-            <h4 class="card_header">Jak przygotować się do ciąży</h4>
-          </div>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <div class="card promoted_card">
-          <div class="card_hover"></div>
-          <div class="card_content">
-            <h4 class="card_header">Jak przygotować się do ciąży</h4>
-          </div>
-        </div>
+        </router-link>
       </swiper-slide>
     </swiper>
     <div class="bottom-bar">
@@ -120,7 +122,6 @@ export default {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  background-image: url("@/assets/card_placeholder.jpg");
   background-size: cover;
   border-radius: 1rem 1rem 2rem 2rem;
 }

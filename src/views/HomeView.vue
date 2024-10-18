@@ -106,6 +106,7 @@ export default {
         :secoundary-button="heroData.secoundaryButton"
         :sponsors="heroData.sponsors"
         :sponsors-title="heroData.sponsorsTitle"
+         @open-popup="$emit('openPopup')"
     ></hero-section>
     <initatives-section
         :button="initiativesData.button"

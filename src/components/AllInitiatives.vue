@@ -1,6 +1,22 @@
 <script>
+import godniejBackend from '@/axios/GodniejBackend';
+
 export default {
-  name: "AllInitiatives"
+  name: "AllInitiatives",
+  data() {
+    return {
+      initiatives: null
+    }
+  },
+  mounted() {
+    godniejBackend.get('/posts', {
+      params: {
+        "pagination[page]":1,
+        "pagination[pageSize]":20,
+        "populate[0]": "Zdjecie"
+      }
+    }).then( response => response.data.data ).then( data => this.initiatives = data );
+  }
 }
 </script>
 
@@ -8,22 +24,12 @@ export default {
 <div class="all-initiatives-wrapper">
   <h2>Wszystkie Posty</h2>
   <div class="initiatives-grid">
-    <router-link to="/inicjatywy/" class="card">
+    <router-link :to="`/inicjatywy/${initiative.slug}`" class="card" v-for="initiative in initiatives" :key="initiative.id">
       <div class="card_hover"></div>
-      <div class="card_content">
-        <h4 class="card_header">Jak przygotować się do ciąży</h4>
-      </div>
-    </router-link>
-    <router-link to="/inicjatywy/jak-przygotowac-sie-do-ciazy" class="card">
-      <div class="card_hover"></div>
-      <div class="card_content">
-        <h4 class="card_header">Jak przygotować się do ciąży</h4>
-      </div>
-    </router-link>
-    <router-link to="/inicjatywy/jak" class="card">
-      <div class="card_hover"></div>
-      <div class="card_content">
-        <h4 class="card_header">Jak przygotować się do ciąży</h4>
+      <div class="card_content" :style="{
+        backgroundImage: `url('http://localhost:1337${initiative.Zdjecie.url}')`,
+      }">
+        <h4 class="card_header">{{ initiative.Tytul }}</h4>
       </div>
     </router-link>
   </div>

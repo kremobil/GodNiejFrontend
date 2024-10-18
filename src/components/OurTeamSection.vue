@@ -53,6 +53,21 @@ export default {
       type: Object,
       required: true
     }
+  },
+  data() {
+    return {
+      detailedView: null
+    }
+  },
+  methods: {
+    showDetails(name, text, url, alt) {
+      this.detailedView = {
+        name,
+        text,
+        url,
+        alt
+      }
+    }
   }
 }
 </script>
@@ -67,14 +82,14 @@ export default {
       <div class="content">
         <h3>{{ card1Title }}</h3>
         <p>{{ card1Text }}</p>
-        <button @click="active = true">Czytaj więcej</button>
+        <button @click="showDetails(card1Title, card1Text, `http://localhost:1337${card1Image.url}`, card1Image.alternativeText)">Czytaj więcej</button>
       </div>
     </div>
     <div class="personal-card flipped_card">
       <div class="content">
         <h3>{{ card2Title }}</h3>
         <p>{{ card2Text }}</p>
-        <button @click="active = true">Czytaj więcej</button>
+        <button @click="showDetails(card2Title, card2Text, `http://localhost:1337${card2Image.url}`, card2Image.alternativeText)">Czytaj więcej</button>
 
       </div>
       <div class="img_container">
@@ -89,27 +104,27 @@ export default {
       <div class="content">
         <h3>{{ card3Title }}</h3>
         <p>{{ card3Text }}</p>
-        <button @click="active = true">Czytaj więcej</button>
+        <button @click="showDetails(card3Title, card3Text, `http://localhost:1337${card3Image.url}`, card3Image.alternativeText)">Czytaj więcej</button>
       </div>
     </div>
   </section>
   <teleport to="body">
-    <div class="details_shadow" v-if="active">
+    <div class="details_shadow" v-if="detailedView">
       <div class="details_card">
         <div class="left-side">
           <div class="portrait_wrapper">
-            <img src="@/assets/Daria_Gralik_Resized.png" alt="Daria Gralik">
+            <img :src="detailedView.url" :alt="detailedView.alt">
             <div class="gradient"></div>
           </div>
-          <h3>Daria Gralik</h3>
+          <h3>{{ detailedView.name }}</h3>
 
         </div>
         <div class="vertical-line"></div>
         <div class="right-side">
-          <p>Większość moich dziecięcych zabaw związana była ze szpitalem i czułą opieką nad moimi lalkowymi pacjentami. Jeszcze w toku studiów  odbyłam praktykę w szpitalu dziecięcym. Później pochłonęła mnie praca nad badaniem satysfakcji pacjentów z usług medycznych, praca nad jakością opieki medycznej w szpitalu.  Udzielałam konsultacji laktacyjnych na oddziale położniczym. Prowadziłam zajęcia dla pielęgniarek i położnych w ramach kształcenia podyplomowego. Jestem socjologiem medycyny i nauczycielem akademickim. Od ponad 25 lat pracuję na Collegium Medicum UMK, między innymi ucząc socjologii medycyny, etyki lekarskiej  oraz komunikacji medycznej przyszłych lekarzy, prowadząc wykłady i ćwiczenia związane z kobiecością, narodzinami i opieką położniczą na różnych kierunkach studiów. Pracę doktorską poświęciłam porodowi w domu i w szpitalu, wysłuchując wielu niezwykłych opowieści o kobiecej sile, pięknie i trudach narodzin.
-            Prywatnie jestem żoną i mamą trójki dorosłych Dzieci. Prawdziwie odpoczywam, podziwiając piękno natury. Kocham książki, spacery i jazdę na rowerze, rysunek i tworzenie ikon, grę na gitarze i śpiew. A co najbardziej lubię? Najbardziej-  rozmawiać  z ludźmi,  mieć umysł pełen pomysłów i ręce pełne pracy:)
+          <p>
+            {{ detailedView.text }}
           </p>
-          <main-button @click="active = false">Powrót</main-button>
+          <main-button @click="detailedView = null">Powrót</main-button>
         </div>
       </div>
     </div>
@@ -261,12 +276,12 @@ img.flip {
 }
 .left-side img {
   width: 100%;
-  max-width: 550px;
+  max-width: 400px;
   object-fit: contain;
   object-position: bottom;
 }
 .left-side h3 {
-  font-size: var(--font_xl);
+  font-size: calc(var(--font_l) * 1.5);
   color: var(--blue);
 }
 .right-side {
@@ -293,7 +308,7 @@ img.flip {
   bottom: 0;
   left: 0;
   height: 20%;
-  background: linear-gradient(to top, white, transparent);
+  background: linear-gradient(to top, white 40%, transparent);
   width: 100%;
 }
 

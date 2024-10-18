@@ -1,5 +1,5 @@
 <script>
-import MainButton from "@/components/MainButton.vue";
+
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay } from "swiper/modules";
@@ -7,6 +7,7 @@ import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import godniejBackend from "@/axios/GodniejBackend.js";
 import MainLink from "@/components/MainLink.vue";
+import MainButton from "@/components/MainButton.vue";
 
 export default {
   name: "HeroSection",
@@ -91,7 +92,7 @@ export default {
           <h1>{{ title }}</h1>
           <p>{{ description }}</p>
           <div class="buttons-container">
-            <MainLink>{{ mainButton }}</MainLink>
+            <MainButton  @click="$emit('openPopup')">{{ mainButton }}</MainButton>
             <MainLink :secondary="true" to="/inicjatywy">{{ secoundaryButton }}</MainLink>
           </div>
         </section>

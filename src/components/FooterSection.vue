@@ -111,7 +111,7 @@ export default {
       <h2>{{ supportHeader }} <img src="@/assets/support_us.gif" alt="<3" /></h2>
       <p>{{ thankYouMessage }}</p>
       <p><b>Numer konta</b><br/>{{ bankNumber }}</p>
-      <main-button>{{ supportButton }}</main-button>
+      <main-button @click="$emit('openPopup')">{{ supportButton }}</main-button>
     </div>
   </section>
   <section class="credits">
