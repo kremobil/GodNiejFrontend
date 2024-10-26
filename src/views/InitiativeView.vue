@@ -34,7 +34,7 @@ export default {
       <h2>{{ initiative.Tytul }}</h2>
       <h4>28.10.2024 | 50zł</h4>
     </div>
-    <main-link :to="`/inicjatywy/zapisy/${initiative.id}`" v-if="registerForWorkshop">Zapisz się na zajęcia</main-link>
+    <main-link :to="`/inicjatywy/zapisy/${initiative.slug}`" v-if="registerForWorkshop">Zapisz się na zajęcia</main-link>
     <main-button  @click="$emit('openPopup')" v-else>Wesprzyj fundację</main-button>
   </header>
   <article v-html="initiative.Tresc">

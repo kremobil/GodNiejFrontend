@@ -1,21 +1,36 @@
 <script>
 import FormGroup from "@/components/FormGroup.vue";
+import MainButton from "@/components/MainButton.vue";
 
 export default {
   name: "RegisterForm",
-  components: {FormGroup}
+  components: {MainButton, FormGroup},
+  data() {
+    return {
+      formData: {
+        name: null,
+        surname: null,
+        email: null,
+        phone: null,
+        additionalMessage: null
+      }
+    }
+  }
 }
 </script>
 
 <template>
 
-  <form action="">
+  <form @submit.prevent="$emit('formSubmitted', formData)">
     <h2>Zapisz się na zajęcia</h2>
     <div class="form-row">
-      <form-group name="Imię" placeholder="Podaj imie" width="50%"/>
-      <form-group name="Nazwisko" placeholder="Podaj imie" width="50%"/>
+      <form-group name="Imię" placeholder="Podaj imie" width="50%" v-model="formData.name" required/>
+      <form-group name="Nazwisko" placeholder="Podaj nazwisko" width="50%" v-model="formData.surname" required/>
     </div>
-    <form-group name="Adres e-mail" placeholder="Adres e-mail" width="100%"/>
+    <form-group name="Adres e-mail" placeholder="podaj swój mail" width="100%" v-model="formData.email" required/>
+    <form-group name="Numer Telefonu" type="tel" placeholder="Podaj swój numer telefonu" width="100%" v-model="formData.phone" required />
+    <form-group name="Dodatkowa wiadomość" placeholder="Masz dodatkowe uwagi które chcesz nam przekazać? Śmiało!" text-area width="100%" v-model="formData.additionalMessage"/>
+    <main-button type="submit">Przejdź dalej</main-button>
   </form>
 </template>
 

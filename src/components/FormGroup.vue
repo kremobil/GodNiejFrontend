@@ -25,8 +25,44 @@ export default {
     textArea: {
       type: Boolean,
       default: false
+    },
+    modelValue: {
+      type: [String, Number, Boolean],
+      default: null
+    },
+    required: {
+      type: Boolean,
+      default: false,
     }
   },
+  data() {
+    return {
+      phoneValue: ['_', '_', '_', '_', '_', '_', '_', '_', '_']
+    }
+  },
+  emits: ['update:modelValue'],
+  methods: {
+    handlePhoneInput(e) {
+
+      console.log(e.key)
+      if (e.key !== 'Enter' && e.key !== 'Tab') {
+        e.preventDefault();
+      }
+      if (e.key in ['0','1','2','3','4','5','6','7','8','9']) {
+        this.phoneValue[this.phoneValue.indexOf('_')] = e.key;
+      } else if (e.key === 'Backspace' && (this.phoneValue.indexOf('_') > 0 || this.phoneValue.indexOf('_') === -1)) {
+        if (this.phoneValue.indexOf('_') !== -1) {
+          this.phoneValue[this.phoneValue.indexOf('_') - 1] = '_';
+        } else {
+          this.phoneValue[this.phoneValue.length - 1] = '_';
+        }
+      }
+      this.setCursorPosition(e);
+    },
+    setCursorPosition(e) {
+      e.target.setSelectionRange(e.target.value.indexOf('_'), e.target.value.indexOf('_'))
+    }
+  }
 }
 </script>
 
@@ -35,8 +71,9 @@ export default {
     width: width,
   }">
     <label :for="name">{{ label ? label : name }}</label>
-    <textarea :id="name" :name="name" :placeholder="placeholder ? placeholder : `podaj ${label}`" v-if="textArea" rows="5"></textarea>
-    <input :type="type" :id="name" :name="name" :placeholder="placeholder ? placeholder : `podaj ${label}`" v-else>
+    <textarea :id="name" :name="name" :placeholder="placeholder ? placeholder : `podaj ${label}`" v-if="textArea" rows="5" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" :required="required" ></textarea>
+    <input type="tel" @input="setCursorPosition" @keyup="setCursorPosition" @select.prevent="setCursorPosition" @click.prevent="setCursorPosition" :id="name" :name="name" pattern="\d\d\d-\d\d\d-\d\d\d" :placeholder="placeholder ? placeholder : `podaj ${label}`" @keydown="handlePhoneInput" :required="required" v-else-if="type==='tel'" :value="`${phoneValue.slice(0,3).join('')}-${phoneValue.slice(3,6).join('')}-${phoneValue.slice(6,9).join('')}`">
+    <input :type="type" :id="name" :name="name" :placeholder="placeholder ? placeholder : `podaj ${label}`" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" :required="required" v-else>
   </div>
 </template>
 

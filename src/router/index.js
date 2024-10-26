@@ -53,7 +53,7 @@ const router = createRouter({
       component: InitiativeView
     },
     {
-      path: '/inicjatywy/zapisy/:id',
+      path: '/inicjatywy/zapisy/:slug',
       name: 'registers',
       component: WorkshopsRegisterView
     }
