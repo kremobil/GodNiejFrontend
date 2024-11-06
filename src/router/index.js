@@ -4,6 +4,8 @@ import AboutUsView from "@/views/AboutUsView.vue";
 import InitiativesView from "@/views/InitiativesView.vue";
 import InitiativeView from "@/views/InitiativeView.vue";
 import WorkshopsRegisterView from "@/views/WorkshopsRegisterView.vue";
+import ReadRecommendationsView from "@/views/ReadRecommendationsView.vue";
+import OurPatronessView from "@/views/OurPatronessView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -56,6 +58,16 @@ const router = createRouter({
       path: '/inicjatywy/zapisy/:slug',
       name: 'registers',
       component: WorkshopsRegisterView
+    },
+    {
+      path: '/warte_przeczytania',
+      name: 'read recommendations',
+      component: ReadRecommendationsView
+    },
+    {
+      path: '/patronka',
+      name: 'our patroness',
+      component: OurPatronessView
     }
   ]
 })

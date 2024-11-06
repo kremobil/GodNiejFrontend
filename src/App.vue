@@ -18,6 +18,7 @@ export default {
     }
   },
   mounted() {
+
     godniejBackend.get('/footer', {
       params: {
         "populate": "Logo"

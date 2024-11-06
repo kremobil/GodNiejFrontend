@@ -28,9 +28,9 @@ export default {
 
 <template>
 <section id="initiatives-wrapper">
-  <h2>{{ title }}</h2>
+  <h2 data-aos="fade-right">{{ title }}</h2>
   <div class="cards_wrapper">
-    <router-link :to="`/inicjatywy/${highlightedPost.slug}`" class="promoted_card card">
+    <router-link :to="`/inicjatywy/${highlightedPost.slug}`" class="promoted_card card" data-aos="zoom-in-right">
       <div class="card_hover"></div>
       <div class="card_content" :style="{
         background: `url('https://backend.godniej.org${highlightedPost.Zdjecie.url}') center/cover`,
@@ -38,7 +38,7 @@ export default {
         <h4 class="card_header">{{ highlightedPost.Tytul }}</h4>
       </div>
     </router-link>
-    <router-link :to="`/inicjatywy/${post.slug}`" class="card" :id="`card${index+1}`" v-for="(post, index) in otherPosts" :key="post.id">
+    <router-link :to="`/inicjatywy/${post.slug}`" class="card" :id="`card${index+1}`" v-for="(post, index) in otherPosts" :key="post.id" data-aos="zoom-in-up">
       <div class="card_hover"></div>
       <div class="card_content" :style="{
         background: `url('https://backend.godniej.org${post.Zdjecie.url}') center/cover`,
@@ -46,7 +46,7 @@ export default {
         <h4 class="card_header">{{ post.Tytul }}</h4>
       </div>
     </router-link>
-    <MainLink to="/inicjatywy">{{ button }}</MainLink>
+    <MainLink to="/inicjatywy" data-aos="zoom-in-up">{{ button }}</MainLink>
   </div>
 </section>
 </template>

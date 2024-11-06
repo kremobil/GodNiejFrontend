@@ -33,6 +33,11 @@ export default {
       required: true,
     }
   },
+  methods: {
+    toggleMenu() {
+      this.active =!this.active;
+    },
+  },
   mounted() {
     const nav_timeline = gsap.timeline({
       scrollTrigger: {
@@ -67,22 +72,22 @@ export default {
     }">
       <ul>
         <li>
-          <router-link to="/">Strona główna</router-link>
+          <router-link to="/" @click="toggleMenu">Strona główna</router-link>
         </li>
         <li>
-          <router-link to="/inicjatywy">Nasze Inicjatywy</router-link>
+          <router-link to="/inicjatywy" @click="toggleMenu">Nasze Inicjatywy</router-link>
         </li>
         <li>
-          <router-link to="/">Nasza Patronka</router-link>
+          <router-link to="/patronka" @click="toggleMenu">Nasza Patronka</router-link>
         </li>
         <li>
-          <router-link to="/onas">Poznaj fundacje</router-link>
+          <router-link to="/onas" @click="toggleMenu">Poznaj fundacje</router-link>
         </li>
         <li>
-          <router-link to="/">Warte przeczytania</router-link>
+          <router-link to="/warte_przeczytania" @click="toggleMenu">Warte przeczytania</router-link>
         </li>
         <li>
-          <router-link to="/kontakt">Kontakt</router-link>
+          <router-link to="/kontakt" @click="toggleMenu">Kontakt</router-link>
         </li>
       </ul>
       <button id="mobile_support_us_button" @click="$emit('openPopup')">
@@ -96,7 +101,7 @@ export default {
       </router-link>
       <div class="nav-burger-menu" :class="{
         active
-      }" @click="active = !active">
+      }" @click="toggleMenu">
         <div class="line top"></div>
         <div class="line mid"></div>
         <div class="line bot"></div>
