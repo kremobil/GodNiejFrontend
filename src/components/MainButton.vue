@@ -29,6 +29,7 @@ export default {
     font-weight: 700;
     padding: 1rem 2rem;
     cursor: pointer;
+    text-align: center;
   }
   .primary {
     background-color: var(--blue);

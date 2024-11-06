@@ -27,7 +27,7 @@ export default {
     <router-link :to="`/inicjatywy/${initiative.slug}`" class="card" v-for="initiative in initiatives" :key="initiative.id">
       <div class="card_hover"></div>
       <div class="card_content" :style="{
-        backgroundImage: `url('http://localhost:1337${initiative.Zdjecie.url}')`,
+        backgroundImage: `url('https://backend.godniej.org${initiative.Zdjecie.url}')`,
       }">
         <h4 class="card_header">{{ initiative.Tytul }}</h4>
       </div>

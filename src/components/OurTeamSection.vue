@@ -77,34 +77,34 @@ export default {
     <h2>{{ title }}</h2>
     <div class="personal-card">
       <div class="img_container">
-        <img class="flip" :src="`http://localhost:1337${card1Image.url}`" :alt="card1Image.alternativeText">
+        <img class="flip" :src="`https://backend.godniej.org${card1Image.url}`" :alt="card1Image.alternativeText">
       </div>
       <div class="content">
         <h3>{{ card1Title }}</h3>
         <p>{{ card1Text }}</p>
-        <button @click="showDetails(card1Title, card1Text, `http://localhost:1337${card1Image.url}`, card1Image.alternativeText)">Czytaj więcej</button>
+        <button @click="showDetails(card1Title, card1Text, `https://backend.godniej.org${card1Image.url}`, card1Image.alternativeText)">Czytaj więcej</button>
       </div>
     </div>
     <div class="personal-card flipped_card">
       <div class="content">
         <h3>{{ card2Title }}</h3>
         <p>{{ card2Text }}</p>
-        <button @click="showDetails(card2Title, card2Text, `http://localhost:1337${card2Image.url}`, card2Image.alternativeText)">Czytaj więcej</button>
+        <button @click="showDetails(card2Title, card2Text, `https://backend.godniej.org${card2Image.url}`, card2Image.alternativeText)">Czytaj więcej</button>
 
       </div>
       <div class="img_container">
-        <img :src="`http://localhost:1337${card2Image.url}`" :alt="card2Image.alternativeText">
+        <img :src="`https://backend.godniej.org${card2Image.url}`" :alt="card2Image.alternativeText">
       </div>
 
     </div>
     <div class="personal-card">
       <div class="img_container">
-        <img class="flip" :src="`http://localhost:1337${card3Image.url}`" :alt="card3Image.alternativeText">
+        <img class="flip" :src="`https://backend.godniej.org${card3Image.url}`" :alt="card3Image.alternativeText">
       </div>
       <div class="content">
         <h3>{{ card3Title }}</h3>
         <p>{{ card3Text }}</p>
-        <button @click="showDetails(card3Title, card3Text, `http://localhost:1337${card3Image.url}`, card3Image.alternativeText)">Czytaj więcej</button>
+        <button @click="showDetails(card3Title, card3Text, `https://backend.godniej.org${card3Image.url}`, card3Image.alternativeText)">Czytaj więcej</button>
       </div>
     </div>
   </section>
@@ -290,9 +290,12 @@ img.flip {
   flex-direction: column;
   justify-content: space-around;
   color: var(--blue);
+  gap: 2rem;
 }
 .right-side p {
   font-size: var(--font_m);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .vertical-line {

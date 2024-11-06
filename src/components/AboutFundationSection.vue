@@ -20,7 +20,7 @@ export default {
 <template>
   <section class="about-foundation-wrapper">
     <div class="half image-half">
-      <img :src="`http://localhost:1337${image1.url}`" :alt="image1.alternativeText">
+      <img :src="`https://backend.godniej.org${image1.url}`" :alt="image1.alternativeText">
       <div class="gradient"></div>
     </div>
     <div class="half content-half">
@@ -35,7 +35,7 @@ export default {
       <StrapiBlocks :content="content2" />
     </div>
     <div class="half image-half">
-      <img :src="`http://localhost:1337${image2.url}`" :alt="image2.alternativeText">
+      <img :src="`https://backend.godniej.org${image2.url}`" :alt="image2.alternativeText">
       <div class="gradient"></div>
     </div>
   </section>

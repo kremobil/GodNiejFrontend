@@ -32,6 +32,7 @@ a {
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  text-align: center;
 }
 .primary {
   background-color: var(--blue);

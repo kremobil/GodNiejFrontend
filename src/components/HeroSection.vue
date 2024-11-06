@@ -96,7 +96,7 @@ export default {
             <MainLink :secondary="true" to="/inicjatywy">{{ secoundaryButton }}</MainLink>
           </div>
         </section>
-        <section class="our_supporters">
+        <section class="our_supporters" v-if="sponsors">
           <h3>{{ sponsorsTitle }}</h3>
           <swiper
               :modules="modules"
@@ -130,7 +130,7 @@ export default {
               @slideChange="onSlideChange"
           >
             <swiper-slide v-for="sponsor in sponsors" :key="sponsor.id">
-              <img :src="'http://localhost:1337/' + sponsor.url" :alt="sponsor.alternativeText">
+              <img :src="'https://backend.godniej.org' + sponsor.url" :alt="sponsor.alternativeText">
             </swiper-slide>
           </swiper>
         </section>
@@ -280,6 +280,9 @@ export default {
   }
   .content p {
     max-width: 50rem;
+  }
+  .content {
+    margin-bottom: 4rem;
   }
   #wave, #fade {
     display: none;

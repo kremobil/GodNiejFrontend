@@ -92,7 +92,7 @@ export default {
     </div>
     <div class="left">
       <router-link to="/">
-        <img :src="`http://localhost:1337${logo.url}`" :alt="logo.alternativeText" id="logo">
+        <img :src="`https://backend.godniej.org${logo.url}`" :alt="logo.alternativeText" id="logo">
       </router-link>
       <div class="nav-burger-menu" :class="{
         active

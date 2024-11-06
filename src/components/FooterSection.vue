@@ -69,7 +69,7 @@ export default {
 <footer>
   <section class="top">
     <div class="col left">
-      <img :src="`http://localhost:1337${logo.url}`" :alt="logo.alternativeText" class="logo">
+      <img :src="`https://backend.godniej.org${logo.url}`" :alt="logo.alternativeText" class="logo">
       <p class="info">
         <b>{{ foundationName }}</b><br>
         <a :href="`mailto:${email}`">{{ email }}</a><br>

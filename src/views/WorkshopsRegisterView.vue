@@ -28,7 +28,7 @@
             <component :is="currentComponent" @form-submitted="handleFormSubmit"></component>
           </keep-alive>
           <div class="order-details" v-if="initiative">
-            <img :src="`http://localhost:1337${initiative.Zdjecie.url}`" :alt="initiative.Zdjecie.alternativeText">
+            <img :src="`https://backend.godniej.org${initiative.Zdjecie.url}`" :alt="initiative.Zdjecie.alternativeText">
             <div class="informations">
               <h2>{{ initiative.Tytul }}</h2>
               <h3>Cena: 60zł</h3>

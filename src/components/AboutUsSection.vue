@@ -63,7 +63,7 @@ export default {
     <p>{{ description }}</p>
     <MainLink to="/onas">{{ button }}</MainLink>
   </div>
-  <div class="comments">
+  <div class="comments" v-if="reviews.length > 0">
     <h3>{{ reviewsHeader }}</h3>
     <swiper
         :modules="modules"
@@ -93,7 +93,7 @@ export default {
       <swiper-slide v-for="review in reviews" :key="review.id">
         <div class="card">
           <div class="person_info">
-            <img :src="`http://localhost:1337${review.Zdjecie.url}`" alt="zdjęcie profliowe" class="profile_pic">
+            <img :src="`https://backend.godniej.org${review.Zdjecie.url}`" alt="zdjęcie profliowe" class="profile_pic">
             <!--Źródło freepik.com-->
             <h4 class="name">{{ review.Imie }}</h4>
           </div>

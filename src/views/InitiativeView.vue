@@ -28,7 +28,7 @@ export default {
 <template>
 <div class="initiative-wrapper" v-if="initiative">
   <header :style="{
-    background: `linear-gradient(to bottom, white 5%, transparent 30%), radial-gradient(ellipse at center, rgba(0,0,0,0.50), transparent), url('http://localhost:1337${initiative.Zdjecie.url}') center/cover no-repeat`
+    background: `linear-gradient(to bottom, white 5%, transparent 30%), radial-gradient(ellipse at center, rgba(0,0,0,0.50), transparent), url('https://backend.godniej.org${initiative.Zdjecie.url}') center/cover no-repeat`
   }">
     <div class="header-group">
       <h2>{{ initiative.Tytul }}</h2>
