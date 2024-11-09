@@ -57,8 +57,8 @@ export default {
 <template>
 <div id="contact_us_wrapper">
  <header>
-   <h2>{{ title }}</h2>
-   <h4>{{ subtitle }}</h4>
+   <h2 data-aos="fade-left">{{ title }}</h2>
+   <h4 data-aos="fade-right">{{ subtitle }}</h4>
  </header>
   <form action="">
     <FormGroup name="email" :label="emailLabel" :placeholder="emailPlaceholder"></FormGroup>
@@ -67,7 +67,7 @@ export default {
       <FormGroup name="surname" label="Nazwisko" width="100%" :label="surnameLabel" :placeholder="surnamePlaceholder"></FormGroup>
     </div>
     <FormGroup name="message" label="Wiadomość" width="100%" text-area :label="messageLabel" :placeholder="messagePlaceholder"></FormGroup>
-    <MainButton type="submit">{{ button }}</MainButton>
+    <MainButton type="submit" data-aos="zoom-in-up">{{ button }}</MainButton>
   </form>
   <div id="bg_bubbles">
     <div class="orange_bubble_left"></div>

@@ -2,6 +2,7 @@
 import godniejBackend from "@/axios/GodniejBackend";
 import MainButton from "@/components/MainButton.vue";
 import MainLink from "@/components/MainLink.vue";
+import router from "@/router/index.js";
 
 export default {
   name: "InitiativeView",
@@ -9,7 +10,6 @@ export default {
   data() {
     return {
       initiative: null,
-      registerForWorkshop: true,
     };
   },
   mounted() {
@@ -19,7 +19,12 @@ export default {
         "populate": "*"
       }
     }).then(response => response.data.data).then(data => {
-      this.initiative = data[0];
+
+      this.initiative = {
+        ...data[0],
+        KoniecZapisow: new Date(data[0].KoniecZapisow),
+        TerminZajec: new Date(data[0].TerminZajec)
+      };
     })
   }
 }
@@ -32,9 +37,14 @@ export default {
   }">
     <div class="header-group">
       <h2>{{ initiative.Tytul }}</h2>
-      <h4>28.10.2024 | 50zł</h4>
+      <h4 v-if="initiative.WlaczZapisy">
+        {{ initiative.TerminZajec.getDay() }}
+        {{ ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"][initiative.TerminZajec.getMonth()-1]}}
+        {{ initiative.TerminZajec.getFullYear()}},
+        {{ String(initiative.TerminZajec.getHours()).padStart(2, '0') }}:{{ String(initiative.TerminZajec.getMinutes()).padStart(2, '0') }} | {{initiative.Cena.toFixed(2)}}zł
+      </h4>
     </div>
-    <main-link :to="`/inicjatywy/zapisy/${initiative.slug}`" v-if="registerForWorkshop">Zapisz się na zajęcia</main-link>
+    <main-link :to="`/inicjatywy/zapisy/${initiative.slug}`" v-if="initiative.WlaczZapisy">Zapisz się na zajęcia</main-link>
     <main-button  @click="$emit('openPopup')" v-else>Wesprzyj fundację</main-button>
   </header>
   <article v-html="initiative.Tresc">

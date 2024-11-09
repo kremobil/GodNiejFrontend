@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-<button :type="type" @click="$emit('click')" :class="secondary ? 'secondary' : 'primary'">
+<button :type="type" :class="secondary ? 'secondary' : 'primary'">
   <slot></slot>
 </button>
 </template>

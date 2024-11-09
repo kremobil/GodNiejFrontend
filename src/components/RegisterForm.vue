@@ -24,12 +24,12 @@ export default {
   <form @submit.prevent="$emit('formSubmitted', formData)">
     <h2>Zapisz się na zajęcia</h2>
     <div class="form-row">
-      <form-group name="Imię" placeholder="Podaj imie" width="50%" v-model="formData.name" required/>
-      <form-group name="Nazwisko" placeholder="Podaj nazwisko" width="50%" v-model="formData.surname" required/>
+      <form-group name="Imię" placeholder="Podaj imie" width="100%" v-model="formData.name" required aos-once/>
+      <form-group name="Nazwisko" placeholder="Podaj nazwisko" width="100%" v-model="formData.surname" required aos-once/>
     </div>
-    <form-group name="Adres e-mail" placeholder="podaj swój mail" width="100%" v-model="formData.email" required/>
-    <form-group name="Numer Telefonu" type="tel" placeholder="Podaj swój numer telefonu" width="100%" v-model="formData.phone" required />
-    <form-group name="Dodatkowa wiadomość" placeholder="Masz dodatkowe uwagi które chcesz nam przekazać? Śmiało!" text-area width="100%" v-model="formData.additionalMessage"/>
+    <form-group name="Adres e-mail" placeholder="podaj swój mail" width="100%" v-model="formData.email" required aos-once/>
+    <form-group name="Numer Telefonu" type="tel" placeholder="Podaj swój numer telefonu" width="100%" v-model="formData.phone" required aos-once/>
+    <form-group name="Dodatkowa wiadomość" placeholder="Masz dodatkowe uwagi które chcesz nam przekazać? Śmiało!" text-area width="100%" v-model="formData.additionalMessage" aos-once/>
     <main-button type="submit">Przejdź dalej</main-button>
   </form>
 </template>
@@ -50,5 +50,16 @@ export default {
   .form-row {
     display: flex;
     gap: 1rem;
+  }
+  @media screen and (max-width: 1024px) {
+    form {
+      width: 100%;
+    }
+
+  }
+  @media screen and (max-width: 764px) {
+    .form-row {
+      flex-direction: column;
+    }
   }
 </style>

@@ -42,7 +42,6 @@ export default {
     const nav_timeline = gsap.timeline({
       scrollTrigger: {
         trigger: '#navbar',
-        // markers: true,
         start: "top top",
         end: "64 top",
         scrub: 1,
@@ -52,14 +51,12 @@ export default {
     nav_timeline.to("#navbar", {
       paddingTop: "1rem",
       paddingBottom: "1rem",
-      // duration: 500,
     })
     nav_timeline.fromTo("#navbar", {
       backgroundColor: "transparent",
     }, {
       backgroundColor: "#fff",
       boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.4)",
-      // duration: 500,
     })
   }
 }

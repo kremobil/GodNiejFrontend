@@ -13,28 +13,42 @@ export default {
     title2: {type: String, required: true},
     content2: {type: String, required: true},
     image2: {type: Object, required: true},
+  },
+  mounted() {
+    let element = this.$refs.content1.nextSibling
+
+    while (element.nextSibling.tagName !== "BUTTON") {
+      element.setAttribute("data-aos", "fade-up-left");
+      element = element.nextSibling;
+    }
+
+    element = this.$refs.content2
+    while (element.nextSibling.nodeName !== "#text") {
+      element = element.nextSibling;
+      element.setAttribute("data-aos", "fade-up-right");
+    }
   }
 }
 </script>
 
 <template>
   <section class="about-foundation-wrapper">
-    <div class="half image-half">
+    <div class="half image-half" data-aos="zoom-out-up">
       <img :src="`https://backend.godniej.org${image1.url}`" :alt="image1.alternativeText">
       <div class="gradient"></div>
     </div>
     <div class="half content-half">
-      <h2>{{ title1 }}</h2>
-      <StrapiBlocks :content="content1" />
-      <main-button>{{ buttonText }}</main-button>
+      <h2 data-aos="fade-up-left">{{ title1 }}</h2>
+      <StrapiBlocks :content="content1" ref="content1"/>
+      <main-button data-aos="fade-up-left">{{ buttonText }}</main-button>
     </div>
   </section>
   <section class="our-mission-wrapper">
     <div class="half content-half">
-      <h2>{{ title2 }}</h2>
-      <StrapiBlocks :content="content2" />
+      <h2 data-aos="fade-up-right">{{ title2 }}</h2>
+      <StrapiBlocks :content="content2" ref="content2"/>
     </div>
-    <div class="half image-half">
+    <div class="half image-half" data-aos="zoom-out-up">
       <img :src="`https://backend.godniej.org${image2.url}`" :alt="image2.alternativeText">
       <div class="gradient"></div>
     </div>

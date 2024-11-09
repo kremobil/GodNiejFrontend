@@ -10,6 +10,7 @@ export default {
   data() {
     return {
       active: false,
+      detailedView: null
     }
   },
   props: {
@@ -54,11 +55,6 @@ export default {
       required: true
     }
   },
-  data() {
-    return {
-      detailedView: null
-    }
-  },
   methods: {
     showDetails(name, text, url, alt) {
       this.detailedView = {
@@ -75,36 +71,36 @@ export default {
 <template>
   <section id="our-team-wrapper">
     <h2>{{ title }}</h2>
-    <div class="personal-card">
-      <div class="img_container">
+    <div class="personal-card" data-aos="zoom-out" data-aos-duration="250">
+      <div class="img_container" data-aos="fade-up-right" data-aos-delay="250">
         <img class="flip" :src="`https://backend.godniej.org${card1Image.url}`" :alt="card1Image.alternativeText">
       </div>
       <div class="content">
-        <h3>{{ card1Title }}</h3>
-        <p>{{ card1Text }}</p>
-        <button @click="showDetails(card1Title, card1Text, `https://backend.godniej.org${card1Image.url}`, card1Image.alternativeText)">Czytaj więcej</button>
+        <h3 data-aos="fade-up-left" data-aos-delay="250">{{ card1Title }}</h3>
+        <p data-aos="fade-up-left" data-aos-delay="250">{{ card1Text }}</p>
+        <button @click="showDetails(card1Title, card1Text, `https://backend.godniej.org${card1Image.url}`, card1Image.alternativeText)" data-aos="fade-up-left" data-aos-delay="250">Czytaj więcej</button>
       </div>
     </div>
-    <div class="personal-card flipped_card">
+    <div class="personal-card flipped_card" data-aos="zoom-out" data-aos-duration="250">
       <div class="content">
-        <h3>{{ card2Title }}</h3>
-        <p>{{ card2Text }}</p>
-        <button @click="showDetails(card2Title, card2Text, `https://backend.godniej.org${card2Image.url}`, card2Image.alternativeText)">Czytaj więcej</button>
+        <h3 data-aos="fade-up-right" data-aos-delay="250">{{ card2Title }}</h3>
+        <p data-aos="fade-up-right" data-aos-delay="250">{{ card2Text }}</p>
+        <button @click="showDetails(card2Title, card2Text, `https://backend.godniej.org${card2Image.url}`, card2Image.alternativeText)" data-aos="fade-up-right" data-aos-delay="250">Czytaj więcej</button>
 
       </div>
-      <div class="img_container">
-        <img :src="`https://backend.godniej.org${card2Image.url}`" :alt="card2Image.alternativeText">
+      <div class="img_container" data-aos="fade-up-left" data-aos-delay="250">
+        <img :src="`https://backend.godniej.org${card2Image.url}`" :alt="card2Image.alternativeText"/>
       </div>
 
     </div>
-    <div class="personal-card">
-      <div class="img_container">
+    <div class="personal-card" data-aos="zoom-out" data-aos-duration="250">
+      <div class="img_container" data-aos="fade-up-right" data-aos-delay="250">
         <img class="flip" :src="`https://backend.godniej.org${card3Image.url}`" :alt="card3Image.alternativeText">
       </div>
       <div class="content">
-        <h3>{{ card3Title }}</h3>
-        <p>{{ card3Text }}</p>
-        <button @click="showDetails(card3Title, card3Text, `https://backend.godniej.org${card3Image.url}`, card3Image.alternativeText)">Czytaj więcej</button>
+        <h3 data-aos="fade-up-left" data-aos-delay="250">{{ card3Title }}</h3>
+        <p data-aos="fade-up-left" data-aos-delay="250">{{ card3Text }}</p>
+        <button @click="showDetails(card3Title, card3Text, `https://backend.godniej.org${card3Image.url}`, card3Image.alternativeText)" data-aos="fade-up-left" data-aos-delay="250">Czytaj więcej</button>
       </div>
     </div>
   </section>
@@ -279,6 +275,7 @@ img.flip {
   max-width: 400px;
   object-fit: contain;
   object-position: bottom;
+  max-height: 100%;
 }
 .left-side h3 {
   font-size: calc(var(--font_l) * 1.5);
@@ -305,6 +302,7 @@ img.flip {
 }
 .portrait_wrapper {
   position: relative;
+  max-height: 80%;
 }
 .portrait_wrapper .gradient {
   position: absolute;

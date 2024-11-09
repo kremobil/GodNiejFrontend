@@ -59,12 +59,12 @@ export default {
 <template>
 <section class="about-us-section-wrapper">
   <div class="basic_info">
-    <h2>{{ title }}</h2>
-    <p>{{ description }}</p>
-    <MainLink to="/onas">{{ button }}</MainLink>
+    <h2 data-aos="fade-up">{{ title }}</h2>
+    <p data-aos="fade-up">{{ description }}</p>
+    <MainLink to="/onas" data-aos="fade-up">{{ button }}</MainLink>
   </div>
   <div class="comments" v-if="reviews.length > 0">
-    <h3>{{ reviewsHeader }}</h3>
+    <h3 data-aos="fade-up">{{ reviewsHeader }}</h3>
     <swiper
         :modules="modules"
         :slides-per-view="1"
@@ -91,7 +91,7 @@ export default {
         @slideChange="onSlideChange"
     >
       <swiper-slide v-for="review in reviews" :key="review.id">
-        <div class="card">
+        <div class="card" data-aos="zoom-in-up">
           <div class="person_info">
             <img :src="`https://backend.godniej.org${review.Zdjecie.url}`" alt="zdjęcie profliowe" class="profile_pic">
             <!--Źródło freepik.com-->

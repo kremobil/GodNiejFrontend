@@ -22,9 +22,9 @@ export default {
 
 <template>
 <div class="all-initiatives-wrapper">
-  <h2>Wszystkie Posty</h2>
+  <h2 data-aos="fade-right">Wszystkie Posty</h2>
   <div class="initiatives-grid">
-    <router-link :to="`/inicjatywy/${initiative.slug}`" class="card" v-for="initiative in initiatives" :key="initiative.id">
+    <router-link :to="`/inicjatywy/${initiative.slug}`" class="card" v-for="initiative in initiatives" :key="initiative.id" data-aos="zoom-in">
       <div class="card_hover"></div>
       <div class="card_content" :style="{
         backgroundImage: `url('https://backend.godniej.org${initiative.Zdjecie.url}')`,

@@ -54,7 +54,6 @@ export default {
       scrollTrigger: {
         trigger: ".image",
         scrub: 1,
-        markers: true,
         start: "top top",
         end: "50% top",
       }
@@ -89,11 +88,11 @@ export default {
     <section class="hero_wrapper">
       <div class="half content">
         <section class="main-information">
-          <h1>{{ title }}</h1>
-          <p>{{ description }}</p>
+          <h1 data-aos="fade-up">{{ title }}</h1>
+          <p data-aos="fade-up" data-aos-delay="500">{{ description }}</p>
           <div class="buttons-container">
-            <MainButton  @click="$emit('openPopup')">{{ mainButton }}</MainButton>
-            <MainLink :secondary="true" to="/inicjatywy">{{ secoundaryButton }}</MainLink>
+            <MainButton  @click="$emit('openPopup')" data-aos="zoom-in-up" data-aos-delay="1000">{{ mainButton }}</MainButton>
+            <MainLink :secondary="true" to="/inicjatywy" data-aos="zoom-in-up" data-aos-delay="1000">{{ secoundaryButton }}</MainLink>
           </div>
         </section>
         <section class="our_supporters" v-if="sponsors">

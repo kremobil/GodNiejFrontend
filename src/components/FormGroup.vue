@@ -33,6 +33,10 @@ export default {
     required: {
       type: Boolean,
       default: false,
+    },
+    aosOnce: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -57,6 +61,8 @@ export default {
           this.phoneValue[this.phoneValue.length - 1] = '_';
         }
       }
+
+      this.$emit('update:modelValue', this.phoneValue.filter(digit => digit !== '_').join(''));
       this.setCursorPosition(e);
     },
     setCursorPosition(e) {
@@ -70,10 +76,10 @@ export default {
   <div class="form_group" :style="{
     width: width,
   }">
-    <label :for="name">{{ label ? label : name }}</label>
-    <textarea :id="name" :name="name" :placeholder="placeholder ? placeholder : `podaj ${label}`" v-if="textArea" rows="5" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" :required="required" ></textarea>
-    <input type="tel" @input="setCursorPosition" @keyup="setCursorPosition" @select.prevent="setCursorPosition" @click.prevent="setCursorPosition" :id="name" :name="name" pattern="\d\d\d-\d\d\d-\d\d\d" :placeholder="placeholder ? placeholder : `podaj ${label}`" @keydown="handlePhoneInput" :required="required" v-else-if="type==='tel'" :value="`${phoneValue.slice(0,3).join('')}-${phoneValue.slice(3,6).join('')}-${phoneValue.slice(6,9).join('')}`">
-    <input :type="type" :id="name" :name="name" :placeholder="placeholder ? placeholder : `podaj ${label}`" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" :required="required" v-else>
+    <label :for="name" data-aos="fade-up" :data-aos-once="aosOnce">{{ label ? label : name }}</label>
+    <textarea :id="name" :name="name" :placeholder="placeholder ? placeholder : `podaj ${label}`" v-if="textArea" rows="5" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" :required="required" data-aos="zoom-in-up" :data-aos-once="aosOnce"></textarea>
+    <input type="tel" @input="setCursorPosition" @keyup="setCursorPosition" @select.prevent="setCursorPosition" @click.prevent="setCursorPosition" :id="name" :name="name" pattern="\d\d\d-\d\d\d-\d\d\d" :placeholder="placeholder ? placeholder : `podaj ${label}`" @keydown="handlePhoneInput" :required="required" v-else-if="type==='tel'" :value="`${phoneValue.slice(0,3).join('')}-${phoneValue.slice(3,6).join('')}-${phoneValue.slice(6,9).join('')}`" data-aos="zoom-in-up" :data-aos-once="aosOnce">
+    <input :type="type" :id="name" :name="name" :placeholder="placeholder ? placeholder : `podaj ${label}`" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" :required="required" data-aos="zoom-in-up" :data-aos-once="aosOnce" v-else>
   </div>
 </template>
 
