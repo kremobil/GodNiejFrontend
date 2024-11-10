@@ -353,8 +353,4 @@ export default {
      gap: 1rem;
    }
  }
-
- @media screen and (max-width: 512px) {
-
- }
 </style>
