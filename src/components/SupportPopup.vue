@@ -336,7 +336,8 @@ export default {
             width: 100%;
             height: 100vh;
             border-radius: 0;
-          max-height: 100vh;
+            max-height: 100vh;
+          padding: 2rem;
         }
         .filled_button {
             padding: 1rem;

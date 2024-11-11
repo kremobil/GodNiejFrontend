@@ -57,7 +57,7 @@ export default {
     }
 
   }
-  @media screen and (max-width: 764px) {
+  @media screen and (max-width: 768px) {
     .form-row {
       flex-direction: column;
     }

@@ -248,4 +248,9 @@ export default {
       flex-direction: column;
       justify-content: space-between;
     }
+    @media screen and (max-width: 512px) {
+      .order-details {
+        min-width: auto;
+      }
+    }
 </style>
