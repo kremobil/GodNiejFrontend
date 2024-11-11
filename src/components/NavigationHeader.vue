@@ -292,12 +292,11 @@ export default {
     width: 32px;
     height: 32px;
   }
-  .nav-burger-menu .line.top {
-    top: 0;
+  .nav-burger-menu .line {
+    width: 32px;
+    height: 4px;
   }
-  .nav-burger-menu .line.bot {
-    top: 100%;
-  }
+
   .nav-popup {
     width: 24rem;
   }

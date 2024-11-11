@@ -23,4 +23,9 @@ export default {
   min-height: calc(100vh - 80px - 2rem);
   margin-top: calc(80px + 2rem);
 }
+@media screen and (max-width: 512px) {
+  .initiatives-wrapper {
+    margin-top: 0;
+  }
+}
 </style>

@@ -13,6 +13,7 @@ export default {
     <h1>Zapraszamy niebawem 😊</h1>
     <h2>Wciąż pracujemy nad tą zakładką by dostarczyć ci jak najlepszej jakości treści.</h2>
     <MainLink to="/" secondary>Powrót na stronę główną</MainLink>
+    <!-- #TODO: Finish patroness page-->
   </div>
 </div>
 </template>

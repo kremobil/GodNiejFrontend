@@ -234,6 +234,10 @@ h2 {
   font-size: var(--font_m);
 }
 
+img {
+  max-width: 100%;
+}
+
 @media screen and (max-width: 1264px) {
   .credits {
     flex-direction: column;
@@ -257,9 +261,12 @@ h2 {
   .top {
     padding: 2rem;
   }
+  .credits {
+    padding: 1rem 2rem;
+  }
 }
 
-@media screen and (max-width: 764px) {
+@media screen and (max-width: 768px) {
   .top {
     grid-template-columns: 1fr;
   }

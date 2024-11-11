@@ -75,6 +75,7 @@ export default {
           }">
             <h4 class="card_header">{{slide.Tytul}}</h4>
           </div>
+          <div class="gradient"></div>
         </router-link>
       </swiper-slide>
     </swiper>
@@ -124,6 +125,7 @@ export default {
   align-items: center;
   background-size: cover;
   border-radius: 1rem 1rem 2rem 2rem;
+  background-position: center;
 }
 .card_content .card_header {
   padding: 1rem 2rem;
@@ -181,6 +183,27 @@ export default {
 @media screen and (max-width: 1024px) {
   .swiper-slide {
     padding: 2rem;
+  }
+}
+@media screen and (max-width: 512px) {
+  .swiper-slide {
+    padding: 0;
+    max-height: 80vh;
+  }
+  .card, .card_content, .card .gradient {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+  .bottom-bar {
+    margin-top: 2rem;
+  }
+  .card, .gradient {
+    position: absolute;
+    background: linear-gradient(to bottom, white 5%, transparent 30%);
   }
 }
 </style>

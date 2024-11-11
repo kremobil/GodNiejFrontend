@@ -48,7 +48,7 @@ h2 {
 }
 .initiatives-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
   gap: 1rem;
 }
 .card {
