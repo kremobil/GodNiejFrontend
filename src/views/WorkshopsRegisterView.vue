@@ -1,5 +1,5 @@
 <template lang="html">
-    <main id="workshops-registration-wrapper">
+    <main id="workshops-registration-wrapper" v-if="content">
         <div class="progress-bar">
           <div class="progress-line" :style="{
             width: `${this.progressbar}%`
@@ -8,24 +8,24 @@
             background: 'var(--magenta)',
             outline: 'var(--magenta) 6px solid'
           }">
-            <h3>Wybierz zajęcia</h3>
+            <h3>{{ content.TytulEtap1 }}</h3>
           </div>
           <div class="progress-dot" :style="{
             background: this.progressbar >= 50 ? 'var(--magenta)' : 'var(--blue)',
             outline: (this.progressbar >= 50 ? 'var(--magenta)' : 'var(--blue)') + ' 6px solid'
           }">
-            <h3>Wypełnij formularz</h3>
+            <h3>{{ content.TytulEtap2 }}</h3>
           </div>
           <div class="progress-dot" :style="{
             background: this.progressbar === 100 ? 'var(--magenta)' : 'var(--blue)',
             outline: (this.progressbar === 100 ? 'var(--magenta)' : 'var(--blue)') + ' 6px solid'
           }">
-            <h3>Opłać zajęcia</h3>
+            <h3>{{ content.TytulEtap3 }}</h3>
           </div>
         </div>
         <div class="content">
           <keep-alive>
-            <component :is="currentComponent" @form-submitted="handleFormSubmit" @payment-completed="handlePaymentCompleted"></component>
+            <component :is="currentComponent" @form-submitted="handleFormSubmit" @payment-completed="handlePaymentCompleted" ></component>
           </keep-alive>
           <div class="order-details" v-if="initiative">
             <img :src="`https://backend.godniej.org${initiative.Zdjecie.url}`" :alt="initiative.Zdjecie.alternativeText">
@@ -39,8 +39,8 @@
                 {{ String(initiative.TerminZajec.getHours()).padStart(2, '0') }}:{{ String(initiative.TerminZajec.getMinutes()).padStart(2, '0') }}
               </h3>
 
-              <main-link :to="`/inicjatywy/${this.$route.params.slug}`" style="background-color: var(--magenta);" v-if="currentComponent === 'register-form'">Powróć do posta</main-link>
-              <main-button style="background-color: var(--magenta);" @click="goBackToRegisterForm" v-else>Powróć do formularza</main-button>
+              <main-link :to="`/inicjatywy/${this.$route.params.slug}`" style="background-color: var(--magenta);" v-if="currentComponent === 'register-form'">{{ content.PrzyciskPowrotDoPosta }}</main-link>
+              <main-button style="background-color: var(--magenta);" @click="goBackToRegisterForm" v-else>{{ content.PrzyciskPowrotDoFormularza }}</main-button>
             </div>
           </div>
         </div>
@@ -61,7 +61,8 @@ export default {
       currentComponent: "register-form",
       initiative: null,
       progressbar: 50,
-      subbmitedForm: null
+      subbmitedForm: null,
+      content: null,
     }
   },
   mounted() {
@@ -82,9 +83,11 @@ export default {
       };
     })
 
+    console.log("test")
     godniejBackend.get('/initiative-sign-up').then(response => response.data.data).then(data => {
       console.log(data);
       // #TODO: get titles from api
+      this.content = data;
     })
   },
   methods: {
@@ -104,8 +107,6 @@ export default {
       this.currentComponent = "register-form";
     },
     handlePaymentCompleted() {
-      console.log(this.subbmitedForm, this.initiative);
-
       godniejBackend.post('/initiatives-sing-ups', {
         data: {
           Imie: this.subbmitedForm.name,
@@ -117,7 +118,14 @@ export default {
             connect: [this.initiative.documentId]
           }
         }
+      }).then(
+          (data) => {
+            router.push('/dziekujemy')
+          }
+      ).catch(error => {
+        alert(error.response.data.message)
       })
+      // #TODO: Show sucess message
     }
   }
 }
@@ -240,6 +248,10 @@ export default {
       .order-details .informations {
         height: 200px;
       }
+
+      .order-details .main_link {
+        padding: 1rem;
+      }
     }
     .informations {
       width: 100%;
@@ -251,6 +263,13 @@ export default {
     @media screen and (max-width: 512px) {
       .order-details {
         min-width: auto;
+        gap: 1rem ;
+      }
+      .order-details img {
+        width: 200px;
+      }
+      .order-details .main_link {
+        padding: 0.5rem 1rem;
       }
     }
 </style>

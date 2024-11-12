@@ -6,6 +6,7 @@ import InitiativeView from "@/views/InitiativeView.vue";
 import WorkshopsRegisterView from "@/views/WorkshopsRegisterView.vue";
 import ReadRecommendationsView from "@/views/ReadRecommendationsView.vue";
 import OurPatronessView from "@/views/OurPatronessView.vue";
+import ThanksForRegisterView from "@/views/ThanksForRegisterView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -68,6 +69,11 @@ const router = createRouter({
       path: '/patronka',
       name: 'our patroness',
       component: OurPatronessView
+    },
+    {
+      path: '/dziekujemy',
+      name: "thank you",
+      component: ThanksForRegisterView
     }
   ]
 })
