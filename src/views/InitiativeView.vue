@@ -10,6 +10,8 @@ export default {
   data() {
     return {
       initiative: null,
+      availableSpots: 0,
+      errorMessage: null
     };
   },
   mounted() {
@@ -25,6 +27,14 @@ export default {
         KoniecZapisow: new Date(data[0].KoniecZapisow),
         TerminZajec: new Date(data[0].TerminZajec)
       };
+
+      if (data[0].WlaczZapisy) {
+        godniejBackend.get(`/signups-status/${this.$route.params.slug}`).then(response => response.data).then(data => {
+          this.availableSpots = data.availableSpots;
+        }).catch(error => {
+          this.errorMessage = error.response.data.error.message;
+        })
+      }
     })
   }
 }
@@ -38,13 +48,18 @@ export default {
     <div class="header-group">
       <h2>{{ initiative.Tytul }}</h2>
       <h4 v-if="initiative.WlaczZapisy">
-        {{ initiative.TerminZajec.getDay() }}
-        {{ ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"][initiative.TerminZajec.getMonth()-1]}}
+        {{ initiative.TerminZajec.getDate() }}
+        {{ ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"][initiative.TerminZajec.getMonth()]}}
         {{ initiative.TerminZajec.getFullYear()}},
         {{ String(initiative.TerminZajec.getHours()).padStart(2, '0') }}:{{ String(initiative.TerminZajec.getMinutes()).padStart(2, '0') }} | {{initiative.Cena.toFixed(2)}}zł
       </h4>
     </div>
-    <main-link :to="`/inicjatywy/zapisy/${initiative.slug}`" v-if="initiative.WlaczZapisy">Zapisz się na zajęcia</main-link>
+    <div class="sign-up-actions"  v-if="initiative.WlaczZapisy">
+      <main-link :to="`/inicjatywy/zapisy/${initiative.slug}`" :class="{
+        disabled: availableSpots === 0,
+      }">Zapisz się na zajęcia</main-link>
+      <h5>{{ errorMessage ?? `Wolne miejsca: ${availableSpots}` }} </h5>
+    </div>
     <main-button  @click="$emit('openPopup')" v-else>Wesprzyj fundację</main-button>
   </header>
   <article v-html="initiative.Tresc">
@@ -118,5 +133,25 @@ article:deep(img) {
 h4 {
   color: var(--yellow);
   font-size: var(--font_l);
+  text-align: center;
+}
+
+h5 {
+  color: white;
+  font-size: var(--font_l);
+  text-align: center;
+}
+.sign-up-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+a.disabled {
+  user-select: none;
+  pointer-events: none;
+  opacity: 0.75;
 }
 </style>

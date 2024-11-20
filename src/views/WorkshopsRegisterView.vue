@@ -38,6 +38,7 @@
                 {{ initiative.TerminZajec.getFullYear()}},
                 {{ String(initiative.TerminZajec.getHours()).padStart(2, '0') }}:{{ String(initiative.TerminZajec.getMinutes()).padStart(2, '0') }}
               </h3>
+              <h3>Wolne miejsca: {{availableSpots}}</h3>
 
               <main-link :to="`/inicjatywy/${this.$route.params.slug}`" style="background-color: var(--magenta);" v-if="currentComponent === 'register-form'">{{ content.PrzyciskPowrotDoPosta }}</main-link>
               <main-button style="background-color: var(--magenta);" @click="goBackToRegisterForm" v-else>{{ content.PrzyciskPowrotDoFormularza }}</main-button>
@@ -63,6 +64,7 @@ export default {
       progressbar: 50,
       subbmitedForm: null,
       content: null,
+      availableSpots: 0,
     }
   },
   mounted() {
@@ -74,6 +76,12 @@ export default {
     }).then(response => response.data.data).then(data => {
       if (!data[0].WlaczZapisy) {
         router.push(`/inicjatywy/${data[0].slug}`)
+      } else {
+        godniejBackend.get(`/signups-status/${data[0].slug}`).then(response => response.data).then(data => {
+          this.availableSpots = data.availableSpots;
+        }).catch(error => {
+          router.push(`/inicjatywy/${data[0].slug}`)
+        })
       }
 
       this.initiative = {
@@ -83,7 +91,6 @@ export default {
       };
     })
 
-    console.log("test")
     godniejBackend.get('/initiative-sign-up').then(response => response.data.data).then(data => {
       console.log(data);
       // #TODO: get titles from api
@@ -266,7 +273,7 @@ export default {
         gap: 1rem ;
       }
       .order-details img {
-        width: 200px;
+        width: max(100%, 200px);
       }
       .order-details .main_link {
         padding: 0.5rem 1rem;
