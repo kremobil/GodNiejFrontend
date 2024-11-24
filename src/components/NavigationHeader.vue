@@ -87,6 +87,9 @@ export default {
           <router-link to="/kontakt" @click="toggleMenu">Kontakt</router-link>
         </li>
       </ul>
+<!--      <div class="switch-lang">-->
+
+<!--      </div>-->
       <button id="mobile_support_us_button" @click="$emit('openPopup')">
         <p>{{ supportButton }}</p>
         <img src="@/assets/support_us.gif" alt="" width="48" height="48" />
