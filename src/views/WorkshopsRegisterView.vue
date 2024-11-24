@@ -127,7 +127,7 @@ export default {
         }
       }).then(
           (data) => {
-            router.push('/dziekujemy')
+            router.push('/inicjatywy/zapisy/dziekujemy')
           }
       ).catch(error => {
         alert(error.response.data.message)
