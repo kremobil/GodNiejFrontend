@@ -71,7 +71,7 @@ const router = createRouter({
       component: OurPatronessView
     },
     {
-      path: '/dziekujemy',
+      path: '/inicjatywy/zapisy/dziekujemy',
       name: "thank you",
       component: ThanksForRegisterView
     }

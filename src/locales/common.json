@@ -1,0 +1,429 @@
+{
+  "en": {
+    "AboutFundation": {
+      "id": 5,
+      "documentId": "hiimujxasekweu6fg583r6vm",
+      "NaglowekPierwszy": "Get to Know Our Foundation",
+      "TekstPierwszy": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "The GodNiej Foundation is the fruit of three different life paths, three different generations, three professional journeys, but the same sensitivity to notice, value, and collectively experience both the beautiful and challenging aspects of womanhood. We focus on activities that give meaning to every woman's experience at each stage of her life: from a girl's first steps toward womanhood, through motherhood, to mature womanhood. We also support those who accompany her on this journey.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "A crucial aim of our Foundation's activity is to conduct all actions in the perinatal space that will make it increasingly safe, gentle, and caring. This activity promotes improving competencies regarding the essence of dignified childbirth and communication within the interdisciplinary team of professionals who care for women during adolescence, pregnancy, childbirth, postpartum, and the perimenopausal period.",
+              "type": "text"
+            }
+          ]
+        }
+      ],
+      "NaglowekDrugi": "Our Mission",
+      "TekstDrugi": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "We aim to achieve our foundation's goals through conducting workshops and support groups for women and professionals, therapeutic groups, women's circles, individual birthing classes, parent meetings, wrapping ceremonies, organizing conferences, symposiums, training sessions, exhibitions, etc.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Our biggest dream and the foundation's primary goal is to create a Center for Dignified Birth - a place where we will surround the woman-mother, man-father, and their child with care, concern, and mindfulness. It's also a place where you can meet with yourself, with others, with us, and with professionals whose attention you might need. We will make every effort for you to feel at home in GodNiej.",
+              "type": "text"
+            }
+          ]
+        }
+      ],
+      "PrzyciskWesprzyj": "Support Us",
+      "createdAt": "2024-11-24T12:49:06.541Z",
+      "updatedAt": "2024-11-24T12:49:06.541Z",
+      "publishedAt": "2024-11-24T12:49:06.566Z",
+      "locale": "en"
+    },
+    "AboutUsHomePage": {
+      "id": 6,
+      "documentId": "bzv4lhsxerg046m1q7ih6hjo",
+      "Naglowek": "Get to Know GodNiej",
+      "Opis": "The GodNiej Foundation is the fruit of three different life paths, three different generations, three professional journeys, but the same sensitivity to notice, value, and collectively experience both the beautiful and challenging aspects of womanhood. We focus on activities that give meaning to every woman's experience at each stage of her life: from a girl's first steps toward womanhood, through motherhood, to mature womanhood. We also support those who accompany her on this journey.",
+      "PrzyciskGlowny": "Learn More",
+      "NaglowekOpinie": "Client Testimonials",
+      "createdAt": "2024-11-24T12:50:52.083Z",
+      "updatedAt": "2024-11-24T12:50:52.083Z",
+      "publishedAt": "2024-11-24T12:50:52.099Z",
+      "locale": "en"
+    },
+    "AllInitiative": {
+      "id": 12,
+      "documentId": "yl7t254u8zrne5frhok41tvr",
+      "Naglowek": "All initatives",
+      "createdAt": "2024-11-24T12:58:01.179Z",
+      "updatedAt": "2024-11-24T12:58:13.901Z",
+      "publishedAt": "2024-11-24T12:58:13.911Z",
+      "locale": "en"
+    },
+    "ContactForm": {
+      "id": 4,
+      "documentId": "qat8io55zmehap7pn9sd49gk",
+      "Naglowek": "Have some question?",
+      "PodTytul": "Let us know. We would love to hear you!",
+      "EmailEtykieta": "Email",
+      "EmailPole": "Enter your email",
+      "ImieEtykieta": "Name",
+      "ImiePole": "Enter your name",
+      "NazwiskoEtykieta": "Surname",
+      "NazwiskoPole": "Enter your sourname",
+      "WiadomoscEtykieta": "Message",
+      "WiadomoscPole": "You can write here everything you want to tell us ;)",
+      "WyslijFormularz": "Send",
+      "createdAt": "2024-11-19T18:08:16.033Z",
+      "updatedAt": "2024-11-19T18:08:16.033Z",
+      "publishedAt": "2024-11-19T18:08:16.055Z",
+      "locale": "en"
+    },
+    "Footer": {
+      "id": 5,
+      "documentId": "hl3to7jiu6iebleo1ugcj64c",
+      "NazwaFundacji": "GodNiej Foundation",
+      "Email": "fundacja@godniej.org",
+      "Ulica": "ul. Alfreda Nobla 16",
+      "Miejscowosc": "86-032 Niemcz",
+      "NaglowekSocialMediow": "Follow Us",
+      "LinkInstagram": "https://www.instagram.com/fundacja_godniej/",
+      "LinkFacebook": "https://www.facebook.com/profile.php?id=61557730490821",
+      "KRS": "0001118711",
+      "NIP": "5543027170",
+      "NaglowekWesprzyj": "Support Us",
+      "Podziekowanie": "Thank you for every donation. You are amazing!",
+      "NumerKonta": "30 1020 1462 0000 7002 0446 4285",
+      "PrzyciskWesprzyj": "Choose Donation Amount",
+      "createdAt": "2024-11-24T12:57:49.430Z",
+      "updatedAt": "2024-11-24T12:57:49.430Z",
+      "publishedAt": "2024-11-24T12:57:49.443Z",
+      "locale": "en"
+    },
+    "Header": {
+      "id": 4,
+      "documentId": "y1shub9so3sdyu87zcwkc1t1",
+      "PrzyciskWesprzyj": "Support Us",
+      "LinkInstagram": "https://www.instagram.com/fundacja_godniej/",
+      "LinkFacebook": "https://www.facebook.com/profile.php?id=61557730490821",
+      "createdAt": "2024-11-24T12:43:16.172Z",
+      "updatedAt": "2024-11-24T12:43:16.172Z",
+      "publishedAt": "2024-11-24T12:43:16.205Z",
+      "locale": "en"
+    },
+    "HeroSection": {
+      "id": 7,
+      "documentId": "iznkkmes5q6boa0lw3orrgqv",
+      "Naglowek": "And for You? What Does \"GodNiej\" Mean?",
+      "Opis": "The GodNiej Foundation is the fruit of three different life paths, three different generations, three professional journeys, but the same sensitivity to notice, value, and collectively experience both the beautiful and challenging aspects of womanhood. We focus on activities that give meaning to every woman's experience at each stage of her life: from a girl's first steps toward womanhood, through motherhood, to mature womanhood. We also support those who accompany her on this journey.",
+      "NaglowekSponsorow": "Our Supporters",
+      "PrzyciskGlowny": "Support Us",
+      "PrzyciskDodatkowy": "See Our Initiatives",
+      "createdAt": "2024-11-24T12:52:20.736Z",
+      "updatedAt": "2024-11-24T12:52:20.736Z",
+      "publishedAt": "2024-11-24T12:52:20.752Z",
+      "locale": "en"
+    },
+    "InitiativeSignUp": {
+      "id": 5,
+      "documentId": "bvu20o3anfbqy4qukhckckpo",
+      "TytulEtap1": "Select Workshops",
+      "TytulEtap2": "Register",
+      "TytulEtap3": "Checkout",
+      "NaglowekEtap2": "Register for workshops",
+      "ImieEtykieta": "First Name",
+      "ImiePole": "Enter your first name",
+      "NazwiskoEtykieta": "Last Name",
+      "NazwiskoPole": "Enter your last name",
+      "EmailEtykieta": "Email",
+      "EmailPole": "Enter your email address",
+      "TelefonEtykieta": "Phone",
+      "TelefonPole": "Enter your phone number",
+      "WiadomoscEtykieta": "Message",
+      "WiadomoscPole": "Enter any additional comments here",
+      "PrzyciskWyslij": "Sign Up",
+      "PrzyciskPowrotDoPosta": "Return to post",
+      "PrzyciskPowrotDoFormularza": "Return to register form",
+      "createdAt": "2024-11-24T13:09:06.790Z",
+      "updatedAt": "2024-11-24T13:09:06.790Z",
+      "publishedAt": "2024-11-24T13:09:06.807Z",
+      "locale": "en"
+    },
+    "InitiativesSection": {
+      "id": 6,
+      "documentId": "w1356f6lw4xmu0758zwjbxtb",
+      "Tytul": "Our Initiatives",
+      "Przycisk": "View All Initiatives",
+      "createdAt": "2024-11-24T12:52:50.398Z",
+      "updatedAt": "2024-11-24T12:53:14.127Z",
+      "publishedAt": "2024-11-24T12:53:14.148Z",
+      "locale": "en"
+    },
+    "OutTeam": {
+      "id": 4,
+      "documentId": "sy44sbn1x3qwvuznfg9wernx",
+      "Naglowek": "Our Team",
+      "Karta1Tytul": "Dr. Urszula Domańska, PhD in Health Sciences",
+      "Karta1Opis": "Most of my childhood games involved playing hospital and providing tender care to my doll patients. During my studies, I completed an internship at a children's hospital. Later, I became absorbed in researching patient satisfaction with medical services and working on medical care quality in hospitals. I provided lactation consultations in the maternity ward. I conducted classes for nurses and midwives as part of postgraduate education. I am a medical sociologist and academic teacher. For over 25 years, I have been working at the Collegium Medicum of Nicolaus Copernicus University, teaching medical sociology, medical ethics, and medical communication to future doctors, conducting lectures and exercises related to femininity, childbirth, and obstetric care across various fields of study. I dedicated my doctoral dissertation to home and hospital births, listening to many extraordinary stories about women's strength, beauty, and the challenges of childbirth.",
+      "Karta2Tytul": "Daria Gralik",
+      "Karta2Opis": "I am a midwife and doula. Mother of 3 children: Łucja, Tadeusz, and Feliks. I am also the owner and initiator of Bydgoszcz's first Home Birth School \"Położna uRodziny,\" where I individually prepare couples for childbirth. I continue this project within the GodNiej foundation. I completed my bachelor's and master's degrees at the Collegium Medicum of Nicolaus Copernicus University in Bydgoszcz and specialized in family nursing at the Academy of Health in Warsaw. I found my place working as a family midwife. I always carry tissues for wiping away tears, healthy chocolate for postpartum women, and kind words for new fathers. My mission is to ensure that all women, their husbands, and of course children can experience beautiful birth and postpartum periods filled with love, tenderness, support, and gentleness. With respect for their will and rights. I believe every woman deserves a beautiful birth experience (regardless of its type), an empowering and satisfying, simply DIGNIFIED birth. As a hobby, I restore old furniture, love renovation topics, and could spend nights in hardware stores.",
+      "Karta3Tytul": "Ania Kalbarczyk",
+      "Karta3Opis": "I am a doula and postpartum wrap specialist, and founder of Birth Power - a non-medical support project for women during the perinatal period, which I continue within the GodNiej foundation.\nI am Adam's wife and mother to Zofia, Franciszek, Teresa, and Dominik.\nMy life motto: \"Be yourself and find your own path\" led me to experience dignified and empowered births. I gave birth to my children in hospital, in a birth center, and at home with a midwife. I experienced gentle obstetrics through midwife Irena Chołuj and births on my own terms. I wanted to share the experience of power with women and accompany them so they could experience each of their birth journeys wrapped in tenderness, wisdom, and professional support. That's why I became a doula. I completed the Perinatal Support Academy, Postpartum Wrapping course, Home Birth training, and Spinning Babies training.\nI prepare for empowered births and accompany hospital and home births, support after loss, conduct mother blessing ceremonies, wrapping ceremonies, women's circles, and aromatherapy workshops.\nI love long forest walks, foreign languages and travel, creative writing, Ignatian spirituality, and singing. GodNiej is the fulfillment of my biggest dreams for the world.",
+      "createdAt": "2024-11-24T12:47:19.410Z",
+      "updatedAt": "2024-11-24T12:47:19.410Z",
+      "publishedAt": "2024-11-24T12:47:19.440Z",
+      "locale": "en"
+    },
+    "Support": {
+      "id": 4,
+      "documentId": "y1726vvfwpkw2oi8kyltnlo2",
+      "Naglowek": "Support the Foundation",
+      "PrzyciskOdliczPodatekWlaczony": "Show How to Deduct Donation from Tax",
+      "PrzyciskOdliczPodatekWyloczony": "Return to Payment",
+      "TrescOdliczPodatek": "Lorem ipsum dolor sit amet consectetur. Mauris tristique mattis sed nulla aliquam. Sit donec imperdiet lectus id eros enim pulvinar. Augue euismod nisi lacus quis pellentesque in mattis consectetur natoque. Odio non penatibus gravida interdum.",
+      "Kwota1": 10,
+      "Kwota2": 20,
+      "Kwota3": 50,
+      "Kwota4": 100,
+      "PrzyciskInnaKwota": "Other Amount",
+      "PolePodajKwote": "Enter Amount",
+      "PrzyciskPlatonosci": "Proceed to Payment",
+      "Odzielenie": "or",
+      "PrzyciskPrzelewuWloczony": "Hide Bank Transfer Details",
+      "PrzyciskPrzelewuWyloczony": "Show Bank Transfer Details",
+      "NumerKonta": "30 1020 1462 0000 7002 0446 4285",
+      "createdAt": "2024-11-24T13:00:48.653Z",
+      "updatedAt": "2024-11-24T13:00:48.653Z",
+      "publishedAt": "2024-11-24T13:00:48.667Z",
+      "locale": "en"
+    }
+  },
+  "pl": {
+    "AboutFundation": {
+      "id": 3,
+      "documentId": "hiimujxasekweu6fg583r6vm",
+      "NaglowekPierwszy": "Poznaj naszą fundację",
+      "TekstPierwszy": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Fundacja GodNiej jest owocem spotkania trzech różnych dróg życiowych, trzech różnych pokoleń, trzech ścieżek zawodowych, ale tej samej wrażliwości, żeby to, co piękne i trudne w kobiecości zauważyć, dowartościować i wspólnie przeżyć. Skupiamy się na działaniach, które nadają sens każdemu  doświadczeniu kobiety, na każdym etapie jej życia: od pierwszych kroków dziewczynki ku kobiecości, przez macierzyństwo, aż po dojrzałą kobiecość. Wspieramy też osoby, które jej w tej drodze towarzyszą.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Istotnym celem aktywności naszej Fundacji jest prowadzenie wszelkich działań w przestrzeni okołoporodowej, które będą czyniły ją coraz bardziej bezpieczną, czułą i troskliwą. Aktywność ta promuje podnoszenie kompetencji w zakresie istoty godnego rodzenia i komunikacji w zespole interdyscyplinarnym osób profesjonalnie zajmujących się  kobietą w okresie dojrzewania, ciąży, porodu, połogu, okresie okołomenopauzalnym. ",
+              "type": "text"
+            }
+          ]
+        }
+      ],
+      "NaglowekDrugi": "Nasza misja",
+      "TekstDrugi": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Cele naszej fundacji chcemy realizować poprzez prowadzenie warsztatów i  grup wsparcia dla kobiet i profesjonalistów, grup terapeutycznych, kręgów kobiecych, indywidualnej szkoły rodzenia, spotkań dla rodziców, ceremonii otulania, na organizowaniu konferencji, sympozjów, szkoleń, wystaw itp. ",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "bold": true,
+              "text": "Największym naszym marzeniem i podstawowym celem Fundacji jest stworzenie Centrum Godnych Narodzin - miejsca, w którym otoczymy opieką, troską i uważnością kobietę-matkę, mężczyznę-ojca i ich dziecko. ",
+              "type": "text"
+            },
+            {
+              "text": "To także miejsce, w którym będziecie mogli spotkać się z sobą, z innymi, z nami oraz z profesjonalistami, których uwagi będziecie potrzebować. Dołożymy wszelkich starań byście poczuli się w GodNiej jak w Domu.",
+              "type": "text"
+            }
+          ]
+        }
+      ],
+      "PrzyciskWesprzyj": "Wesprzyj fundację",
+      "createdAt": "2024-11-03T22:42:31.260Z",
+      "updatedAt": "2024-11-19T20:17:19.952Z",
+      "publishedAt": "2024-11-19T20:17:20.035Z",
+      "locale": "pl"
+    },
+    "AboutUsHomePage": {
+      "id": 4,
+      "documentId": "bzv4lhsxerg046m1q7ih6hjo",
+      "Naglowek": "Poznaj GodNiej",
+      "Opis": "Fundacja GodNiej jest owocem spotkania trzech różnych dróg życiowych, trzech różnych pokoleń, trzech ścieżek zawodowych, ale tej samej wrażliwości, żeby to, co piękne i trudne w kobiecości zauważyć, dowartościować i wspólnie przeżyć. Skupiamy się na działaniach, które nadają sens każdemu  doświadczeniu kobiety, na każdym etapie jej życia: od pierwszych kroków dziewczynki ku kobiecości, przez macierzyństwo, aż po dojrzałą kobiecość. Wspieramy też osoby, które jej w tej drodze towarzyszą.",
+      "PrzyciskGlowny": "Dowiedz się więcej",
+      "NaglowekOpinie": "Opinie naszych klientów",
+      "createdAt": "2024-11-03T22:43:31.305Z",
+      "updatedAt": "2024-11-08T23:37:13.455Z",
+      "publishedAt": "2024-11-08T23:37:13.471Z",
+      "locale": "pl"
+    },
+    "AllInitiative": {
+      "id": 6,
+      "documentId": "yl7t254u8zrne5frhok41tvr",
+      "Naglowek": "Wszystkie inicjatywy",
+      "createdAt": "2024-11-03T22:48:49.539Z",
+      "updatedAt": "2024-11-21T21:09:16.621Z",
+      "publishedAt": "2024-11-21T21:09:16.643Z",
+      "locale": "pl"
+    },
+    "ContactForm": {
+      "id": 5,
+      "documentId": "qat8io55zmehap7pn9sd49gk",
+      "Naglowek": "Masz pytanie?",
+      "PodTytul": "Napisz do nas, chętnie odpowiemy!",
+      "EmailEtykieta": "Adres e-mail",
+      "EmailPole": "Podaj swój adres e-mail",
+      "ImieEtykieta": "Imię",
+      "ImiePole": "Podaj imię",
+      "NazwiskoEtykieta": "Nazwisko",
+      "NazwiskoPole": "Podaj nazwisko",
+      "WiadomoscEtykieta": "Wiadomość",
+      "WiadomoscPole": "Zapytaj nas o to, co cię interesuje.",
+      "WyslijFormularz": "Wyślij",
+      "createdAt": "2024-10-30T20:17:29.556Z",
+      "updatedAt": "2024-11-19T20:14:19.462Z",
+      "publishedAt": "2024-11-19T20:14:19.476Z",
+      "locale": "pl"
+    },
+    "Footer": {
+      "id": 3,
+      "documentId": "hl3to7jiu6iebleo1ugcj64c",
+      "NazwaFundacji": "Fundacja GodNiej",
+      "Email": "fundacja@godniej.org",
+      "Ulica": "ul. Alfreda Nobla 16",
+      "Miejscowosc": "86-032 Niemcz",
+      "NaglowekSocialMediow": "Zaobserwuj nas",
+      "LinkInstagram": "https://www.instagram.com/fundacja_godniej/",
+      "LinkFacebook": "https://www.facebook.com/profile.php?id=61557730490821",
+      "KRS": "0001118711",
+      "NIP": "5543027170",
+      "NaglowekWesprzyj": "Wesprzyj nas",
+      "Podziekowanie": "Dziękujemy za każde wsparcie. Jesteście wielcy!",
+      "NumerKonta": "30 1020 1462 0000 7002 0446 4285",
+      "PrzyciskWesprzyj": "Wybierz kwotę wspracia",
+      "createdAt": "2024-11-03T22:48:38.160Z",
+      "updatedAt": "2024-11-12T09:17:45.628Z",
+      "publishedAt": "2024-11-12T09:17:45.663Z",
+      "locale": "pl"
+    },
+    "Header": {
+      "id": 2,
+      "documentId": "y1shub9so3sdyu87zcwkc1t1",
+      "PrzyciskWesprzyj": "Wesprzyj fundację",
+      "LinkInstagram": "https://www.instagram.com/fundacja_godniej/",
+      "LinkFacebook": "https://www.facebook.com/profile.php?id=61557730490821",
+      "createdAt": "2024-10-30T20:20:02.747Z",
+      "updatedAt": "2024-10-30T20:20:02.747Z",
+      "publishedAt": "2024-10-30T20:20:02.765Z",
+      "locale": "pl"
+    },
+    "HeroSection": {
+      "id": 5,
+      "documentId": "iznkkmes5q6boa0lw3orrgqv",
+      "Naglowek": "A dla Ciebie? Co znaczy godniej?",
+      "Opis": "Fundacja GodNiej jest owocem spotkania trzech różnych dróg życiowych, trzech różnych pokoleń, trzech ścieżek zawodowych, ale tej samej wrażliwości, żeby to, co piękne i trudne w kobiecości zauważyć, dowartościować i wspólnie przeżyć. Skupiamy się na działaniach, które nadają sens każdemu  doświadczeniu kobiety, na każdym etapie jej życia: od pierwszych kroków dziewczynki ku kobiecości, przez macierzyństwo, aż po dojrzałą kobiecość. Wspieramy też osoby, które jej w tej drodze towarzyszą.",
+      "NaglowekSponsorow": "Nasze działania wsparli",
+      "PrzyciskGlowny": "Wesprzyj fundację",
+      "PrzyciskDodatkowy": "Zobacz inicjatywy",
+      "createdAt": "2024-11-03T22:45:32.493Z",
+      "updatedAt": "2024-11-19T12:04:31.039Z",
+      "publishedAt": "2024-11-19T12:04:31.057Z",
+      "locale": "pl"
+    },
+    "InitiativeSignUp": {
+      "id": 3,
+      "documentId": "bvu20o3anfbqy4qukhckckpo",
+      "TytulEtap1": "Wybierz zajęcia",
+      "TytulEtap2": "Wypełnij formularz",
+      "TytulEtap3": "Opłać zajęcia",
+      "NaglowekEtap2": "Zapisz się na zajęcia",
+      "ImieEtykieta": "Imię",
+      "ImiePole": "Podaj swoje imię",
+      "NazwiskoEtykieta": "Nazwisko",
+      "NazwiskoPole": "Podaj swoje nazwisko",
+      "EmailEtykieta": "Email",
+      "EmailPole": "Podaj swój adres e-mail",
+      "TelefonEtykieta": "Telefon",
+      "TelefonPole": "Podaj swój numer telefonu",
+      "WiadomoscEtykieta": "Wiadomość",
+      "WiadomoscPole": "Tutaj napisz ewenutalne uwagi",
+      "PrzyciskWyslij": "Zapisz się",
+      "PrzyciskPowrotDoPosta": "Powrót do posta",
+      "PrzyciskPowrotDoFormularza": "Powrót do formualrza",
+      "createdAt": "2024-11-03T22:54:00.023Z",
+      "updatedAt": "2024-11-19T20:27:47.398Z",
+      "publishedAt": "2024-11-19T20:27:47.414Z",
+      "locale": "pl"
+    },
+    "InitiativesSection": {
+      "id": 3,
+      "documentId": "w1356f6lw4xmu0758zwjbxtb",
+      "Tytul": "Nasze inicjatywy",
+      "Przycisk": "Zobacz wszystkie inicjatywy",
+      "createdAt": "2024-11-03T22:46:05.169Z",
+      "updatedAt": "2024-11-06T07:37:31.053Z",
+      "publishedAt": "2024-11-06T07:37:31.071Z",
+      "locale": "pl"
+    },
+    "OutTeam": {
+      "id": 2,
+      "documentId": "sy44sbn1x3qwvuznfg9wernx",
+      "Naglowek": "Nasz zespół",
+      "Karta1Tytul": "dr nauk o zdrowiu Urszula Domańska",
+      "Karta1Opis": "Większość moich dziecięcych zabaw związana była ze szpitalem i czułą opieką nad moimi lalkowymi pacjentami. Jeszcze w toku studiów  odbyłam praktykę w szpitalu dziecięcym. Później pochłonęła mnie praca nad badaniem satysfakcji pacjentów z usług medycznych, praca nad jakością opieki medycznej w szpitalu.  Udzielałam konsultacji laktacyjnych na oddziale położniczym. Prowadziłam zajęcia dla pielęgniarek i położnych w ramach kształcenia podyplomowego. Jestem socjologiem medycyny i nauczycielem akademickim. Od ponad 25 lat pracuję na Collegium Medicum UMK, między innymi ucząc socjologii medycyny, etyki lekarskiej  oraz komunikacji medycznej przyszłych lekarzy, prowadząc wykłady i ćwiczenia związane z kobiecością, narodzinami i opieką położniczą na różnych kierunkach studiów. Pracę doktorską poświęciłam porodowi w domu i w szpitalu, wysłuchując wielu niezwykłych opowieści o kobiecej sile, pięknie i trudach narodzin.\nPrywatnie jestem żoną i mamą trójki dorosłych Dzieci. Prawdziwie odpoczywam, podziwiając piękno natury. Kocham książki, spacery i jazdę na rowerze, rysunek i tworzenie ikon, grę na gitarze i śpiew. A co najbardziej lubię? Najbardziej-  rozmawiać  z ludźmi,  mieć umysł pełen pomysłów i ręce pełne pracy:)",
+      "Karta2Tytul": "Daria Gralik ",
+      "Karta2Opis": "Jestem położną i doulą. Mamą 3 dzieci: Łucji, Tadeusza i Feliksa. Jestem również właścicielką i inicjatorką pierwszej w Bydgoszczy Domowej Szkoły Rodzenia „Położna uRodziny”, gdzie indywidualnie przygotowuję pary na narodziny dziecka. Projekt ten kontynuuję w ramach fundacji GodNiej. Ukończyłam studia licencjackie i magisterskie na Collegium Medicum Uniwersytetu Mikołaja Kopernika w Bydgoszczy oraz specjalizację z pielęgniarstwa rodzinnego na Akademii Zdrowia w Warszawie. Swoje miejsce odnalazłam w pracy jako położna rodzinna. Zawsze mam ze sobą chusteczki higieniczne na ewentualne otarcie łez, zdrową czekoladę dla kobiet w połogu i dobre słowo dla świeżo upieczonych ojców. Moją misją jest, aby wszystkie kobiety, ich mężowie oraz oczywiście dzieci, mogli doświadczyć pięknego porodu i połogu, przepełnionego miłością, czułością, wsparciem i delikatnością. Z poszanowaniem ich woli i praw. Uważam, że każda kobieta zasługuje na piękne doświadczenie porodowe (bez względu na jego rodzaj), na wzmacniający i satysfakcjonujący, po prostu GODNY poród. Z pasji odnawiam stare meble, uwielbiam tematy renowacyjne, a w sklepach budowlanych mogłabym nocować.",
+      "Karta3Tytul": "Ania Kalbarczyk",
+      "Karta3Opis": "Jestem doulą i otulającą oraz założycielką Birth Power  - projektu niemedycznego  wsparcia dla kobiet w okresie okołoporodowym, który kontynuuję w ramach fundacji GodNiej.\nJestem żoną Adama, mamą Zofii, Franciszka, Teresy i Dominika. \nMoje życiowe motto: „Bądź sobą i szukaj własnej drogi” doprowadziło mnie do doświadczenia narodzin godnych i sprawczych. Rodziłam dzieci w szpitalu, z domem narodzin i z położną we własnym domu. Doświadczyłam czułego położnictwa w osobie położnej Ireny Chołuj i porodów na własnych zasadach.  Zapragnęłam dzielić się doświadczeniem mocy z kobietami i towarzyszyć im, by każdą ze swoich porodowych dróg mogły przeżyć otulone czułością, mądrością i profesjonalnym wsparciem. Dlatego zostałam doulą. Ukończyłam Akademię Wsparcia Okołoporodowego, kurs Otulania Poporodowego, szkolenie Poród Domowy oraz szkolenie Spinning Babies. \nPrzygotowuję do porodu pełnego mocy i towarzyszę w narodzinach szpitalnych i domowych, towarzyszę po stracie, prowadzę ceremonie błogosławieństwa mamy, ceremonie otulania, kręgi dla kobiet oraz warsztaty z aromaterapii. \nUwielbiam długie spacery po lesie, języki obce i podróże, kreatywne pisanie, duchowość ignacjańską oraz śpiew. GodNiej jest spełnieniem moich największych marzeń dla świata. \n",
+      "createdAt": "2024-11-03T22:38:27.093Z",
+      "updatedAt": "2024-11-03T22:38:27.093Z",
+      "publishedAt": "2024-11-03T22:38:27.119Z",
+      "locale": "pl"
+    },
+    "Support": {
+      "id": 5,
+      "documentId": "y1726vvfwpkw2oi8kyltnlo2",
+      "Naglowek": "Wesprzyj fundację",
+      "PrzyciskOdliczPodatekWlaczony": "Pokaż jak odliczyć darowiznę od podatku.",
+      "PrzyciskOdliczPodatekWyloczony": "Powrót do płatności",
+      "TrescOdliczPodatek": "DAROWIZNĘ MOŻNA ODLICZYĆ OD PODSTAWY OPODATKOWANIA !\nW przypadku osób fizycznych do 6%, w przypadku osób prawnych do 10% uzyskanego dochodu. Jeżeli zechcesz skorzystać z w/w ulg wymaganym przez Urząd Skarbowy dokumentem jest potwierdzenie dokonania przelewu.",
+      "Kwota1": 10,
+      "Kwota2": 20,
+      "Kwota3": 50,
+      "Kwota4": 100,
+      "PrzyciskInnaKwota": "inna kwota",
+      "PolePodajKwote": "Podaj kwotę",
+      "PrzyciskPlatonosci": "Przejdź do płatności",
+      "Odzielenie": "lub",
+      "PrzyciskPrzelewuWloczony": "Pokaż dane do tradycyjnego przelwu",
+      "PrzyciskPrzelewuWyloczony": "Ukryj dane do tradycyjnego przelwu",
+      "NumerKonta": "30 1020 1462 0000 7002 0446 4285",
+      "createdAt": "2024-11-03T22:51:36.291Z",
+      "updatedAt": "2024-11-24T16:14:08.474Z",
+      "publishedAt": "2024-11-24T16:14:08.488Z",
+      "locale": "pl"
+    }
+  }
+}

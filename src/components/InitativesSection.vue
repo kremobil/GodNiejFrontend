@@ -168,7 +168,7 @@ h2 {
     grid-column: 1/7;
   }
 }
-@media screen and (max-width: 1024px) and (min-width: 624px) {
+@media screen and (max-width: 1023px) and (min-width: 624px) {
   .cards_wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

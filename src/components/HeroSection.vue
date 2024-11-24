@@ -151,8 +151,6 @@ export default {
 .hero_wrapper{
   display: flex;
   min-height: 100vh;
-  width: 100%;
-  overflow-x: hidden;
 }
 .half {
   min-height: 100vh;
