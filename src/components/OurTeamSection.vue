@@ -73,7 +73,7 @@ export default {
     <h2>{{ title }}</h2>
     <div class="personal-card" data-aos="zoom-out" data-aos-duration="250">
       <div class="img_container" data-aos="fade-up-right" data-aos-delay="250">
-        <img class="flip" :src="`https://backend.godniej.org${card1Image.url}`" :alt="card1Image.alternativeText">
+        <img class="flip" :src="`https://backend.godniej.org${card1Image.formats.small.url}`" :alt="card1Image.alternativeText">
       </div>
       <div class="content">
         <h3 data-aos="fade-up-left" data-aos-delay="250">{{ card1Title }}</h3>
@@ -89,18 +89,18 @@ export default {
 
       </div>
       <div class="img_container" data-aos="fade-up-left" data-aos-delay="250">
-        <img :src="`https://backend.godniej.org${card2Image.url}`" :alt="card2Image.alternativeText"/>
+        <img :src="`https://backend.godniej.org${card2Image.formats.small.url}`" :alt="card2Image.alternativeText"/>
       </div>
 
     </div>
     <div class="personal-card" data-aos="zoom-out" data-aos-duration="250">
       <div class="img_container" data-aos="fade-up-right" data-aos-delay="250">
-        <img class="flip" :src="`https://backend.godniej.org${card3Image.url}`" :alt="card3Image.alternativeText">
+        <img class="flip" :src="`https://backend.godniej.org${card3Image.formats.small.url}`" :alt="card3Image.alternativeText">
       </div>
       <div class="content">
         <h3 data-aos="fade-up-left" data-aos-delay="250">{{ card3Title }}</h3>
         <p data-aos="fade-up-left" data-aos-delay="250">{{ card3Text }}</p>
-        <button @click="showDetails(card3Title, card3Text, `https://backend.godniej.org${card3Image.url}`, card3Image.alternativeText)" data-aos="fade-up-left" data-aos-delay="250">Czytaj więcej</button>
+        <button @click="showDetails(card3Title, card3Text, `https://backend.godniej.org${card3Image.formats.medium.url}`, card3Image.alternativeText)" data-aos="fade-up-left" data-aos-delay="250">Czytaj więcej</button>
       </div>
     </div>
   </section>

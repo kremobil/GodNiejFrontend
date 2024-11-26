@@ -50,12 +50,7 @@ export default {
   align-items: center;
   gap: 2rem;
 }
-@media screen and (max-width: 1024px) {
-  .documents-wrapper {
-    min-height: calc(100vh - 60px - 2rem);
-    margin-top: calc(60px + 2rem);
-  }
-}
+
 
 .documents-wrapper h1 {
   font-size: var(--font_xl);
@@ -79,11 +74,24 @@ export default {
 }
 .documents-list li .name {
   display: flex;
-  font-size: var(--font_l);
+  font-size: var(--font_m);
   align-items: center;
   gap: 1rem;
 }
 .documents-list li a {
   text-decoration: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .documents-wrapper {
+    min-height: calc(100vh - 60px - 2rem);
+    margin-top: calc(60px + 2rem);
+    padding: 2rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .documents-wrapper li {
+    padding: 1rem;
+  }
 }
 </style>
