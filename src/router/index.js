@@ -7,6 +7,7 @@ import WorkshopsRegisterView from "@/views/WorkshopsRegisterView.vue";
 import ReadRecommendationsView from "@/views/ReadRecommendationsView.vue";
 import OurPatronessView from "@/views/OurPatronessView.vue";
 import ThanksForRegisterView from "@/views/ThanksForRegisterView.vue";
+import DocumentsView from "@/views/DocumentsView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -74,6 +75,11 @@ const router = createRouter({
       path: '/inicjatywy/zapisy/dziekujemy',
       name: "thank you",
       component: ThanksForRegisterView
+    },
+    {
+      path: '/dokumenty',
+      name: 'documents',
+      component: DocumentsView
     }
   ]
 })

@@ -86,6 +86,9 @@ export default {
         <li>
           <router-link to="/kontakt" @click="toggleMenu">Kontakt</router-link>
         </li>
+        <li>
+          <router-link to="/dokumenty" @click="toggleMenu">Dokumenty</router-link>
+        </li>
       </ul>
 <!--      <div class="switch-lang">-->
 
@@ -97,7 +100,7 @@ export default {
     </div>
     <div class="left">
       <router-link to="/">
-        <img :src="`https://backend.godniej.org${logo.url}`" :alt="logo.alternativeText" id="logo">
+        <img :src="`https://backend.godniej.org${logo.formats.thumbnail.url}`" :alt="logo.alternativeText" id="logo">
       </router-link>
       <div class="nav-burger-menu" :class="{
         active

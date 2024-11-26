@@ -247,13 +247,14 @@ export default {
         margin-bottom: 2rem;
         flex-direction: row;
         gap:2rem;
+        align-items: center;
       }
       .order-details img {
         height: 200px;
         margin-bottom: 0;
       }
       .order-details .informations {
-        height: 200px;
+        min-height: 200px;
       }
 
       .order-details .main_link {

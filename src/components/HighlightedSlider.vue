@@ -71,7 +71,7 @@ export default {
         <router-link :to="`/inicjatywy/${slide.slug}`" class="card promoted_card">
           <div class="card_hover"></div>
           <div class="card_content" :style="{
-            backgroundImage: `url('https://backend.godniej.org${slide.Zdjecie.url}')`
+            backgroundImage: `url('https://backend.godniej.org${slide.Zdjecie.formats.large.url}')`
           }">
             <h4 class="card_header">{{slide.Tytul}}</h4>
           </div>
