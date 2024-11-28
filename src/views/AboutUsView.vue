@@ -45,6 +45,7 @@ export default {
     :content2="aboutUsData.TekstDrugi"
     :image2="aboutUsData.ZdjecieDrugie"
     v-if="aboutUsData"
+    @open-popup="$emit('OpenPopup')"
   ></AboutFundationSection>
   <OurTeamSection
     :title="teamData.Naglowek"

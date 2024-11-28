@@ -40,7 +40,7 @@ export default {
     <div class="half content-half">
       <h2 data-aos="fade-up-left">{{ title1 }}</h2>
       <StrapiBlocks :content="content1" ref="content1"/>
-      <main-button data-aos="fade-up-left">{{ buttonText }}</main-button>
+      <main-button data-aos="fade-up-left" @click="$emit('OpenPopup')">{{ buttonText }}</main-button>
     </div>
   </section>
   <section class="our-mission-wrapper">

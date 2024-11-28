@@ -68,7 +68,7 @@
                       <input type="number" id="custom_amm" v-model="customAmmount">
                       <p>zł</p>
                   </div>
-                  <button class="filled_button fill_blue blue_hover width_full" v-if="!removeTax">{{ data.PrzyciskPlatonosci }}</button>
+                  <button class="filled_button fill_blue blue_hover width_full" v-if="!removeTax" @click="processPayment">{{ data.PrzyciskPlatonosci }}</button>
                   <div class="remove-tax" v-if="removeTax">
                       {{ data.TrescOdliczPodatek }}
                   </div>
@@ -102,7 +102,10 @@
                   <p>{{ accountNumber ? data.PrzyciskPrzelewuWyloczony : data.PrzyciskPrzelewuWloczony }}</p>
               </button>
               <p class="account-number" v-if="accountNumber">
-                  Numer konta: {{ data.NumerKonta }}
+                <strong>Numer konta:</strong> {{ data.NumerKonta }}
+              </p>
+              <p class="account-number" v-if="accountNumber">
+                <strong>Tytuł przelewu:</strong> "Na cele statutowe fundacji"
               </p>
             </div>
         </div>
@@ -141,7 +144,10 @@ export default {
             } else {
                 this.showCustomAmmount = false;
             }
-        }
+        },
+      processPayment() {
+          alert("Przykro nam ale ta wciąż pracujemy nad tą funkcją. Zamiast tego zachęcamy do przelewów na konto fundacji")
+      }
     },
     mounted() {
         godniejBackend.get('/support').then(response => response.data.data ).then(data => this.data = data);

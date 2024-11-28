@@ -89,10 +89,10 @@ export default {
       <div class="half content">
         <section class="main-information">
           <h1 data-aos="fade-up">{{ title }}</h1>
-          <p data-aos="fade-up" data-aos-delay="500">{{ description }}</p>
+          <p data-aos="fade-up">{{ description }}</p>
           <div class="buttons-container">
-            <MainButton  @click="$emit('openPopup')" data-aos="zoom-in-up" data-aos-delay="1000">{{ mainButton }}</MainButton>
-            <MainLink :secondary="true" to="/inicjatywy" data-aos="zoom-in-up" data-aos-delay="1000">{{ secoundaryButton }}</MainLink>
+            <MainButton  @click="$emit('openPopup')" data-aos="zoom-in-up">{{ mainButton }}</MainButton>
+            <MainLink :secondary="true" to="/inicjatywy" data-aos="zoom-in-up">{{ secoundaryButton }}</MainLink>
           </div>
         </section>
         <section class="our_supporters" v-if="sponsors">
