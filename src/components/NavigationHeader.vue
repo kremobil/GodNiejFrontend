@@ -2,6 +2,7 @@
 import { gsap } from "gsap";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {ref, watch} from "vue";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -14,6 +15,47 @@ export default {
     return {
       active: false,
     }
+  },
+  setup() {
+    const mobileMenu = ref('')
+    const scrollArrow = ref(false)
+    const bottomOffset = ref(0)
+
+    watch(mobileMenu, (element) => {
+      if (element instanceof HTMLElement) {
+        if(element.scrollHeight > element.clientHeight) {
+          scrollArrow.value = true
+          bottomOffset.value = element.getBoundingClientRect().bottom
+
+          if(Math.round(element.scrollTop + element.clientHeight + 25) >= element.scrollHeight) {
+            scrollArrow.value = false
+          } else {
+            scrollArrow.value = true
+          }
+
+          window.addEventListener("resize", (e) => {
+            bottomOffset.value = element.getBoundingClientRect().bottom
+            console.log(bottomOffset.value)
+
+            if(element.scrollHeight > element.clientHeight) {
+              scrollArrow.value = true
+            } else {
+              scrollArrow.value = false
+            }
+          })
+
+          element.addEventListener("scroll", (e) => {
+            if(Math.round(e.target.scrollTop + e.target.clientHeight + 25) >= e.target.scrollHeight) {
+              scrollArrow.value = false
+            } else {
+              scrollArrow.value = true
+            }
+          })
+        }
+      }
+    })
+
+    return {mobileMenu, scrollArrow, bottomOffset}
   },
   props: {
     supportButton: {
@@ -67,7 +109,7 @@ export default {
     <div class="nav-popup" :class="{
       active
     }">
-      <ul>
+      <ul ref="mobileMenu">
         <li>
           <router-link to="/" @click="toggleMenu">Strona główna</router-link>
         </li>
@@ -90,6 +132,9 @@ export default {
           <router-link to="/dokumenty" @click="toggleMenu">Dokumenty</router-link>
         </li>
       </ul>
+      <div class="overflow-gradient" :style="{
+        top: `${bottomOffset}px`,
+      }" v-if="scrollArrow"></div>
 <!--      <div class="switch-lang">-->
 
 <!--      </div>-->
@@ -251,13 +296,19 @@ export default {
   transform: translateX(-100%);
   opacity: 0;
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-  padding: calc(80px + 6rem) 4rem;
+  padding: calc(80px + 4rem) 4rem 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 .nav-popup ul {
   display: flex;
   flex-direction: column;
   list-style-type: none;
   gap: 2rem;
+  height: 100%;
+  position: relative;
+  overflow-y: auto;
 }
 
 .nav-popup li a {
@@ -317,7 +368,7 @@ export default {
   }
    .nav-popup {
      width: 20rem;
-     padding: calc(60px + 4rem) 2rem;
+     padding: calc(60px + 3rem) 2rem 1rem;
    }
  }
  @media screen and (max-width: 768px) {
@@ -357,5 +408,23 @@ export default {
      justify-content: center;
      gap: 1rem;
    }
+ }
+
+ .overflow-gradient {
+   width: 100%;
+   height: 4rem;
+   background: linear-gradient(to top, #fff, transparent);
+   position: fixed;
+   left: 0;
+   transform: translateY(-100%);
+ }
+
+ .info {
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   display: flex;
+   gap: 0.5rem;
  }
 </style>

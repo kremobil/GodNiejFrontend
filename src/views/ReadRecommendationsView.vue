@@ -48,4 +48,10 @@ export default {
 .redirect-card h2 {
   font-size: var(--font_l);
 }
+
+@media screen and (max-width: 1024px) {
+  .read-recommendations-wrapper {
+    padding: 2rem;
+  }
+}
 </style>
