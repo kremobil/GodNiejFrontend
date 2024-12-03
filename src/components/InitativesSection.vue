@@ -33,7 +33,7 @@ export default {
     <router-link :to="`/inicjatywy/${highlightedPost.slug}`" class="promoted_card card" data-aos="zoom-in-right">
       <div class="card_hover"></div>
       <div class="card_content" :style="{
-        background: `url('https://backend.godniej.org${highlightedPost.Zdjecie.formats.large.url}') center/cover`,
+        background: `url('https://backend.godniej.org${highlightedPost.Zdjecie.formats ? highlightedPost.Zdjecie.formats.large.url : highlightedPost.Zdjecie.url}') center/cover`,
       }">
         <h4 class="card_header">{{ highlightedPost.Tytul }}</h4>
       </div>
@@ -41,7 +41,7 @@ export default {
     <router-link :to="`/inicjatywy/${post.slug}`" class="card" :id="`card${index+1}`" v-for="(post, index) in otherPosts" :key="post.id" data-aos="zoom-in-up">
       <div class="card_hover"></div>
       <div class="card_content" :style="{
-        background: `url('https://backend.godniej.org${post.Zdjecie.formats.medium.url}') center/cover`,
+        background: `url('https://backend.godniej.org${post.Zdjecie.formats ? post.Zdjecie.formats.medium.url : post.Zdjecie.url}') center/cover`,
       }">
         <h4 class="card_header">{{ post.Tytul }}</h4>
       </div>

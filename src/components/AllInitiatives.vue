@@ -12,7 +12,7 @@ export default {
     godniejBackend.get('/posts', {
       params: {
         "pagination[page]":1,
-        "pagination[pageSize]":20,
+        "pagination[pageSize]": 100,
         "populate[0]": "Zdjecie"
       }
     }).then( response => response.data.data ).then( data => this.initiatives = data );
@@ -27,7 +27,7 @@ export default {
     <router-link :to="`/inicjatywy/${initiative.slug}`" class="card" v-for="initiative in initiatives" :key="initiative.id" data-aos="zoom-in">
       <div class="card_hover"></div>
       <div class="card_content" :style="{
-        backgroundImage: `url('https://backend.godniej.org${initiative.Zdjecie.formats.small.url}')`,
+        backgroundImage: `url('https://backend.godniej.org${initiative.Zdjecie.formats ? initiative.Zdjecie.formats.small.url : initiative.Zdjecie.url}')`,
       }">
         <h4 class="card_header">{{ initiative.Tytul }}</h4>
       </div>

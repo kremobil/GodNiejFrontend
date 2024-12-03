@@ -25,16 +25,16 @@
         </div>
         <div class="content">
           <keep-alive>
-            <component :is="currentComponent" @form-submitted="handleFormSubmit" @payment-completed="handlePaymentCompleted" ></component>
+            <component :is="currentComponent" @form-submitted="handleFormSubmit" @payment-completed="handlePaymentCompleted" :paymentRequired="initiative.Cena > 0"></component>
           </keep-alive>
           <div class="order-details" v-if="initiative">
             <img :src="`https://backend.godniej.org${initiative.Zdjecie.url}`" :alt="initiative.Zdjecie.alternativeText">
             <div class="informations" >
-              <h2>{{ initiative.Tytul }}</h2>
-              <h3>Cena: {{ initiative.Cena.toFixed(2) }}zł</h3>
+              <h2 >{{ initiative.Tytul }}</h2>
+              <h3>Cena: {{ initiative.Cena > 0 ? initiative.Cena.toFixed(2) + "zł" : "Darmowe!" }}</h3>
               <h3>Data:
-                {{ initiative.TerminZajec.getDay() }}
-                {{ ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"][initiative.TerminZajec.getMonth()-1]}}
+                {{ initiative.TerminZajec.getDate() }}
+                {{ ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"][initiative.TerminZajec.getMonth()]}}
                 {{ initiative.TerminZajec.getFullYear()}},
                 {{ String(initiative.TerminZajec.getHours()).padStart(2, '0') }}:{{ String(initiative.TerminZajec.getMinutes()).padStart(2, '0') }}
               </h3>
@@ -132,7 +132,6 @@ export default {
       ).catch(error => {
         alert(error.response.data.message)
       })
-      // #TODO: Show sucess message
     }
   }
 }

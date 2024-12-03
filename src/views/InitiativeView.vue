@@ -51,7 +51,7 @@ export default {
         {{ initiative.TerminZajec.getDate() }}
         {{ ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"][initiative.TerminZajec.getMonth()]}}
         {{ initiative.TerminZajec.getFullYear()}},
-        {{ String(initiative.TerminZajec.getHours()).padStart(2, '0') }}:{{ String(initiative.TerminZajec.getMinutes()).padStart(2, '0') }} | {{initiative.Cena.toFixed(2)}}zł
+        {{ String(initiative.TerminZajec.getHours()).padStart(2, '0') }}:{{ String(initiative.TerminZajec.getMinutes()).padStart(2, '0') }} | {{ initiative.Cena > 0 ? initiative.Cena.toFixed(2) + "zł" : "Darmowe Zajęcia!"}}
       </h4>
     </div>
     <div class="sign-up-actions"  v-if="initiative.WlaczZapisy">

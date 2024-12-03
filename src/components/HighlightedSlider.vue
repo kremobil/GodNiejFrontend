@@ -35,6 +35,17 @@ export default {
       modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay],
     };
   },
+  methods: {
+    getSlideUrl(slide) {
+      console.log(slide)
+      if (!slide?.Zdjecie) return '';
+
+      const formats = slide.Zdjecie.formats;
+      const url = formats?.large?.url || slide.Zdjecie.url;
+      console.log(url)
+      return `url('https://backend.godniej.org${url}')`;
+    }
+  },
   mounted() {
     godniejBackend.get('/all-initiative', { 
       params: {
@@ -49,7 +60,7 @@ export default {
 </script>
 
 <template>
-  <div class="slider-wrapper" v-if="slides">
+  <div class="slider-wrapper" v-if="slides ">
     <swiper
         :modules="modules"
         :slides-per-view="1"
@@ -71,7 +82,7 @@ export default {
         <router-link :to="`/inicjatywy/${slide.slug}`" class="card promoted_card">
           <div class="card_hover"></div>
           <div class="card_content" :style="{
-            backgroundImage: `url('https://backend.godniej.org${slide.Zdjecie.formats.large.url}')`
+            backgroundImage: getSlideUrl(slide)
           }">
             <h4 class="card_header">{{slide.Tytul}}</h4>
           </div>
