@@ -72,6 +72,7 @@ export default {
     :facebook-link="footerData.LinkFacebook"
     :krs="footerData.KRS"
     :nip="footerData.NIP"
+    :regon="footerData.REGON"
     :social-header="footerData.NaglowekSocialMediow"
     :support-header="footerData.NaglowekWesprzyj"
     :thank-you-message="footerData.Podziekowanie"

@@ -45,6 +45,10 @@ export default {
       type: String,
       required: true
     },
+    regon: {
+      type: String,
+      required: true
+    },
     supportHeader: {
       type: String,
       required: true
@@ -105,6 +109,7 @@ export default {
       <div class="company_data">
         <p data-aos="fade-up"><b>KRS:</b> {{ krs }}</p>
         <p data-aos="fade-up"><b>NIP:</b> {{ nip }}</p>
+        <p data-aos="fade-up"><b>REGON:</b> {{ regon }}</p>
       </div>
     </div>
     <div class="col right">
