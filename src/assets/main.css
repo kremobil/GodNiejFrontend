@@ -27,3 +27,13 @@
         --font_m: clamp(14px, 6px + 0.8vw, 24px);
     }
 }
+
+.prevent-horizontal-overflow {
+    max-width: calc(100vw - 8rem);
+}
+
+@media screen and (max-width: 1024px) {
+    .prevent-horizontal-overflow {
+        max-width: calc(100vw - 4rem);
+    }
+}

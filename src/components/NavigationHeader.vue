@@ -427,4 +427,9 @@ export default {
    display: flex;
    gap: 0.5rem;
  }
+
+ .left, ul, button {
+   max-width: calc(100vw - 4rem);
+ }
+
 </style>

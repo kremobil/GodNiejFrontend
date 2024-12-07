@@ -107,7 +107,7 @@ export default {
   <teleport to="body">
     <div class="details_shadow" v-if="detailedView">
       <div class="details_card">
-        <div class="left-side">
+        <div class="left-side prevent-horizontal-overflow">
           <div class="portrait_wrapper">
             <img :src="detailedView.url" :alt="detailedView.alt">
             <div class="gradient"></div>
@@ -115,8 +115,8 @@ export default {
           <h3>{{ detailedView.name }}</h3>
 
         </div>
-        <div class="vertical-line"></div>
-        <div class="right-side">
+        <div class="vertical-line prevent-horizontal-overflow"></div>
+        <div class="right-side prevent-horizontal-overflow">
           <p>
             {{ detailedView.text }}
           </p>
@@ -260,6 +260,7 @@ img.flip {
   display: flex;
   gap: 2rem;
   height: calc(100vh - 8rem);
+  max-width: 100vw ;
 }
 
 .details_card .left-side {
@@ -319,6 +320,7 @@ img.flip {
     width: 100%;
     height: 100%;
     padding: 1rem;
+    border-radius: 0;
   }
 }
 
