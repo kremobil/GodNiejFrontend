@@ -39,6 +39,7 @@ export default {
   height: calc(100vh - 60px - 4rem);
   margin-top: calc(60px + 4rem);
   display: flex;
+  padding: 4rem;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -57,6 +58,7 @@ h2 {
   #page-not-found-wrapper {
     height: calc(100vh - 60px - 2rem);
     margin-top: calc(60px + 2rem);
+    padding: 2rem;
   }
 }
 
