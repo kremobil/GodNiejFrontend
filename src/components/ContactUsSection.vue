@@ -1,6 +1,7 @@
 <script>
 import MainButton from "@/components/MainButton.vue";
 import FormGroup from "@/components/FormGroup.vue";
+import godniejBackend from "@/axios/GodniejBackend.js";
 
 export default {
   name: "ContactUsSection",
@@ -50,6 +51,27 @@ export default {
       type: String,
       required: true
     }
+  },
+  data() {
+    return {
+      sent: false,
+    }
+  },
+  methods: {
+    sendMessage(e) {
+      godniejBackend.post("https://backend.godniej.org/api/send-message", {
+        "name": e.target.name.value,
+        "surname": e.target.surname.value,
+        "mail": e.target.email.value,
+        "message": e.target.message.value,
+        "locale": "pl"
+      }).then(
+          () => {
+            this.sent = true
+          }
+      )
+
+    }
   }
 }
 </script>
@@ -60,15 +82,19 @@ export default {
    <h2 data-aos="fade-left">{{ title }}</h2>
    <h4 data-aos="fade-right">{{ subtitle }}</h4>
  </header>
-  <form action="">
-    <FormGroup name="email" :label="emailLabel" :placeholder="emailPlaceholder"></FormGroup>
+  <form @submit.prevent="sendMessage" v-if="!sent">
+    <FormGroup name="email" :label="emailLabel" :placeholder="emailPlaceholder" type="email" required></FormGroup>
     <div class="row">
-      <FormGroup name="name" label="Imię" width="100%" :label="nameLabel" :placeholder="namePlaceholder"></FormGroup>
-      <FormGroup name="surname" label="Nazwisko" width="100%" :label="surnameLabel" :placeholder="surnamePlaceholder"></FormGroup>
+      <FormGroup name="name" label="Imię" width="100%" :label="nameLabel" :placeholder="namePlaceholder" required></FormGroup>
+      <FormGroup name="surname" label="Nazwisko" width="100%" :label="surnameLabel" :placeholder="surnamePlaceholder" required></FormGroup>
     </div>
-    <FormGroup name="message" label="Wiadomość" width="100%" text-area :label="messageLabel" :placeholder="messagePlaceholder"></FormGroup>
+    <FormGroup name="message" label="Wiadomość" width="100%" text-area :label="messageLabel" :placeholder="messagePlaceholder" required></FormGroup>
     <MainButton type="submit" data-aos="zoom-in-up">{{ button }}</MainButton>
   </form>
+  <div class="thanks_card" data-aos="fade-up" v-else>
+    <h3 data-aos="fade-left">Pomyślnie wysłano ✅</h3>
+    <p data-aos="fade-right">Cieszymy się bardzo, że do nas piszesz 💛🩷💙. Odpowiemy najszybciej jak to możliwe. Daria, Ania i Ula - Fundacja GodNiej</p>
+  </div>
   <div id="bg_bubbles">
     <div class="orange_bubble_left"></div>
     <div class="magenta_bubble_left"></div>
@@ -106,10 +132,12 @@ export default {
 
 #contact_us_wrapper h2 {
   font-size: var(--font_xl);
+  text-align: center;
 }
 #contact_us_wrapper h4 {
   font-size: var(--font_l);
   font-weight: 400;
+  text-align: center;
 }
 
 @media screen and (max-width: 1264px) {
@@ -236,5 +264,28 @@ form {
   .row {
     flex-direction: column;
   }
+}
+
+.thanks_card {
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: var(--blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 1024px;
+}
+
+.thanks_card h3 {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: var(--font_xl);
+}
+.thanks_card p {
+  text-align: center;
+  color: white;
+  font-size: var(--font_m);
 }
 </style>

@@ -21,7 +21,9 @@ export default {
         "populate": "*"
       }
     }).then(response => response.data.data).then(data => {
-
+      if (data.length === 0) {
+        router.push("/404");
+      }
       this.initiative = {
         ...data[0],
         KoniecZapisow: new Date(data[0].KoniecZapisow),
