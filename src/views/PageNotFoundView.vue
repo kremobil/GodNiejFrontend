@@ -49,9 +49,11 @@ export default {
 
 h1 {
   font-size: var(--font_xl);
+  text-align: center;
 }
 h2 {
   font-size: var(--font_l);
+  text-align: center;
 }
 
 @media screen and (max-width: 1024px) {
