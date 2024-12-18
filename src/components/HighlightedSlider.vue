@@ -23,26 +23,16 @@ export default {
     }
   },
   setup() {
-    const onSwiper = (swiper) => {
-      console.log(swiper);
-    };
-    const onSlideChange = () => {
-      console.log('slide change');
-    };
     return {
-      onSwiper,
-      onSlideChange,
       modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay],
     };
   },
   methods: {
     getSlideUrl(slide) {
-      console.log(slide)
       if (!slide?.Zdjecie) return '';
 
       const formats = slide.Zdjecie.formats;
       const url = formats?.large?.url || slide.Zdjecie.url;
-      console.log(url)
       return `url('https://backend.godniej.org${url}')`;
     }
   },
