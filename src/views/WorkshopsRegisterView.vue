@@ -33,11 +33,8 @@
               <h2 >{{ initiative.Tytul }}</h2>
               <h3>Cena: {{ initiative.Cena > 0 ? initiative.Cena.toFixed(2) + "zł" : "Darmowe!" }}</h3>
               <h3>Data:
-                {{ initiative.TerminZajec.getDate() }}
-                {{ ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"][initiative.TerminZajec.getMonth()]}}
-                {{ initiative.TerminZajec.getFullYear()}},
-                {{ String(initiative.TerminZajec.getHours()).padStart(2, '0') }}:{{ String(initiative.TerminZajec.getMinutes()).padStart(2, '0') }}
-              </h3>
+                {{ initiative.TerminZajec }}
+                </h3>
               <h3>Wolne miejsca: {{availableSpots}}</h3>
 
               <main-link :to="`/inicjatywy/${this.$route.params.slug}`" style="background-color: var(--magenta);" v-if="currentComponent === 'register-form'">{{ content.PrzyciskPowrotDoPosta }}</main-link>
@@ -84,10 +81,18 @@ export default {
         })
       }
 
+      const MONTHS = ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"]
+
+      const date = new Date(data[0].TerminZajec)
+      const dateString = data[0].DataDoUstalenia ?
+          "do ustalenia" :
+          `${date.getDate()} ${MONTHS[date.getMonth()]} ${date.getFullYear()}, ${String(date.getHours()).padStart(2, '0') }: ${String(date.getMinutes()).padStart(2, '0')}`
+
+
       this.initiative = {
         ...data[0],
         KoniecZapisow: new Date(data[0].KoniecZapisow),
-        TerminZajec: new Date(data[0].TerminZajec)
+        TerminZajec: dateString
       };
     })
 
