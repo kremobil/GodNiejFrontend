@@ -370,7 +370,7 @@ export default {
     }
 
     .support-ammount {
-      font-size: var(--font-l);
+      font-size: var(--font_l);
       font-weight: 700;
       color: var(--blue);
     }
