@@ -11,7 +11,7 @@ export default {
 <template>
   <div class="payment-wrapper">
     <h2 v-if="paymentRequired">Przepraszamy za niedogodności</h2> <h2 v-else>To już ostatni krok</h2>
-    <p v-if="paymentRequired">Wciąż pracujemy nad implementacją bramki płatności na naszą stronę. Obecnie możliwy jest zapis poprzez dokonanie przelewu na nasz numer konta 38 1020 1462 0000 7002 0446 4285 tytułem „Darowizna na cele statutowe + imię i nazwisko + nazwa warsztatu"</p>
+    <p v-if="paymentRequired">Wciąż pracujemy nad implementacją bramki płatności na naszą stronę. Obecnie możliwy jest zapis poprzez dokonanie przelewu na nasz numer konta 38 1020 1462 0000 7002 0446 4285 tytułem „Darowizna na cele statutowe + imię i nazwisko + nazwa warsztatu", pamiętaj też aby zapisać się na stronie klikając przycisk poniżej.</p>
     <p v-else>Zajęcia są darmowe więc nie musisz nic płacić. Zapraszamy!</p>
     <MainButton @click="$emit('paymentCompleted')" type="button">Zapisz się!</MainButton>
   </div>
