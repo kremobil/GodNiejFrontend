@@ -55,7 +55,7 @@
        <div class="remove-tax" v-if="removeTax && formProgress === 1">
          {{ data.TrescOdliczPodatek }}
        </div>
-       <h2 v-if="formProgress === 2">Kwota wspracia: {{this.realAmount/100}}zł</h2>
+       <h2 v-if="formProgress === 2" class="support-ammount">Kwota wspracia: {{this.realAmount/100}}zł</h2>
        <form @submit.prevent="processPayment" v-if="formProgress === 2">
          <form-group name="email" label="E-mail" type="email" required></form-group>
          <div class="checkbox-group">
@@ -367,5 +367,11 @@ export default {
 
     .checkbox-group input[type=checkbox]::-ms-check {
       background-color: var(--blue);
+    }
+
+    .support-ammount {
+      font-size: var(--font-l);
+      font-weight: 700;
+      color: var(--blue);
     }
 </style>
