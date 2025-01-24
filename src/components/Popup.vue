@@ -73,6 +73,7 @@ export default {
   gap: 1rem;
   align-items: center;
   overflow-y: auto;
+  width: 100%;
 }
 
 .popup header {

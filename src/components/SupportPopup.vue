@@ -247,9 +247,6 @@ export default {
         flex: 1 1 fit-content;
     }
 
-    .content {
-      width: 100%;
-    }
 
     .filled_button {
         display: flex;
