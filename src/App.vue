@@ -3,9 +3,11 @@ import NavigationHeader from "@/components/NavigationHeader.vue";
 import FooterSection from "@/components/FooterSection.vue";
 import godniejBackend from "@/axios/GodniejBackend.js";
 import SupportPopup from "./components/SupportPopup.vue";
+import ThanksPopup from "@/components/ThanksPopup.vue";
 
 export default {
   components: {
+    ThanksPopup,
     NavigationHeader,
     FooterSection,
     SupportPopup
@@ -14,7 +16,18 @@ export default {
     return {
       headerData: null,
       footerData: null,
-      popupActive: false
+      popupActive: false,
+      thanksPopup: false,
+      sessionId: null,
+    }
+  },
+  watch: {
+    '$route.query'(newValue) {
+      console.log(newValue);
+      if (newValue.showThanksPopup) {
+        this.thanksPopup = true;
+        this.sessionId = newValue.sessionId;
+      }
     }
   },
   mounted() {
@@ -84,6 +97,7 @@ export default {
 
   <teleport to='body'>
     <SupportPopup :active="popupActive" @close-popup="popupActive = false"/>
+    <ThanksPopup :active="thanksPopup" @close-popup="thanksPopup = false" :session-id="sessionId" v-if="sessionId"></ThanksPopup>
   </teleport>
 </template>
 

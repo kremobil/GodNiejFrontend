@@ -1,27 +1,9 @@
 <template lang="html">
-    <Transition name="fade">
-    <div class="popup-shadow" v-if="active">
-        <div id="support-popup" aria-label="popup">
-            <header class="width_full">
-                <h3>{{ data.Naglowek }}</h3>
-                <button @click="$emit('closePopup')">
-                    <!--Icon source - https://www.flaticon.com/free-icon/delete_32178?term=close&page=1&position=26&origin=search&related_id=32178-->
-                    <svg version="1.1" id="fi_32178" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48" height="48" viewBox="0 0 348.333 348.334" style="enable-background:new 0 0 348.333 348.334;" xml:space="preserve">
-                        <g>
-                            <path d="M336.559,68.611L231.016,174.165l105.543,105.549c15.699,15.705,15.699,41.145,0,56.85
-                                c-7.844,7.844-18.128,11.769-28.407,11.769c-10.296,0-20.581-3.919-28.419-11.769L174.167,231.003L68.609,336.563
-                                c-7.843,7.844-18.128,11.769-28.416,11.769c-10.285,0-20.563-3.919-28.413-11.769c-15.699-15.698-15.699-41.139,0-56.85
-                                l105.54-105.549L11.774,68.611c-15.699-15.699-15.699-41.145,0-56.844c15.696-15.687,41.127-15.687,56.829,0l105.563,105.554
-                                L279.721,11.767c15.705-15.687,41.139-15.687,56.832,0C352.258,27.466,352.258,52.912,336.559,68.611z"></path>
-                        </g></svg>
-                    </button>
-            </header>
-            <div class="content">
-              <div class="line"></div>
-              <section class="popup-main">
-                  <button class="filled_button fill_yellow width_full" @click="removeTax = !removeTax">
-                  <!--Icon source - https://www.flaticon.com/free-icon/question_471664?term=question&page=1&position=3&origin=search&related_id=471664-->
-                  <svg version="1.1" id="fi_471664" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" v-if="!removeTax">
+   <Popup :active="active" :header="data.Naglowek" v-if="data" @close-popup="$emit('closePopup')">
+     <section class="popup-main">
+       <button class="filled_button fill_yellow width_full" v-if="formProgress === 1" @click="removeTax = !removeTax">
+         <!--Icon source - https://www.flaticon.com/free-icon/question_471664?term=question&page=1&position=3&origin=search&related_id=471664-->
+         <svg version="1.1" id="fi_471664" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" v-if="!removeTax">
                       <g>
                           <g>
                               <path d="M256,0C114.509,0,0,114.496,0,256c0,141.489,114.496,256,256,256c141.491,0,256-114.496,256-256
@@ -29,13 +11,13 @@
                                   c121.463,0,220.279,98.816,220.279,220.279S377.463,476.279,256,476.279z"></path>
                           </g>
                       </g>
-                      <g>
+           <g>
                           <g>
                               <path d="M248.425,323.924c-14.153,0-25.61,11.794-25.61,25.946c0,13.817,11.12,25.948,25.61,25.948
                                   c14.49,0,25.946-12.131,25.946-25.948C274.371,335.718,262.577,323.924,248.425,323.924z"></path>
                           </g>
                       </g>
-                      <g>
+           <g>
                           <g>
                               <path d="M252.805,127.469c-45.492,0-66.384,26.959-66.384,45.155c0,13.142,11.12,19.208,20.218,19.208
                                   c18.197,0,10.784-25.948,45.155-25.948c16.848,0,30.328,7.414,30.328,22.915c0,18.196-18.871,28.642-29.991,38.077
@@ -44,8 +26,8 @@
                           </g>
                       </g>
                   </svg>
-                  <!--Icon source - https://www.flaticon.com/free-icon/previous_151846?term=back&page=1&position=27&origin=search&related_id=151846-->
-                  <svg version="1.1" id="fi_151846" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 55.753 55.753" style="enable-background:new 0 0 55.753 55.753;" xml:space="preserve" v-else>
+         <!--Icon source - https://www.flaticon.com/free-icon/previous_151846?term=back&page=1&position=27&origin=search&related_id=151846-->
+         <svg version="1.1" id="fi_151846" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 55.753 55.753" style="enable-background:new 0 0 55.753 55.753;" xml:space="preserve" v-else>
                       <g>
                           <path d="M12.745,23.915c0.283-0.282,0.59-0.52,0.913-0.727L35.266,1.581c2.108-2.107,5.528-2.108,7.637,0.001
                               c2.109,2.108,2.109,5.527,0,7.637L24.294,27.828l18.705,18.706c2.109,2.108,2.109,5.526,0,7.637
@@ -53,30 +35,49 @@
                               c-1.078-1.078-1.598-2.498-1.572-3.911C11.147,26.413,11.667,24.994,12.745,23.915z"></path>
                       </g>
                   </svg>
-                      <p>{{ removeTax ? data.PrzyciskOdliczPodatekWyloczony : data.PrzyciskOdliczPodatekWlaczony                    }}</p>
-                  </button>
-                  <div class="ammounts" v-if="!removeTax">
-                      <button class="filled_button ammount" :class="{
+         <p>{{ removeTax ? data.PrzyciskOdliczPodatekWyloczony : data.PrzyciskOdliczPodatekWlaczony                    }}</p>
+       </button>
+       <div class="ammounts" v-if="!removeTax && formProgress === 1">
+         <button class="filled_button ammount" :class="{
                           fill_blue: ammount.selected,
                           fill_magenta: !ammount.selected
                       }" v-for="ammount in ammounts" @click="selectAmmount(ammount)">
-                          <h4>{{ ammount.value === "custom" ? data.PrzyciskInnaKwota : ammount.value + "zł"}}</h4>
-                      </button>
-                  </div>
-                  <div class="custom_ammount_input width_full" v-if="showCustomAmmount && !removeTax">
-                      <label for="custom_amm">{{ data.PolePodajKwote }}</label>
-                      <input type="number" id="custom_amm" v-model="customAmmount">
-                      <p>zł</p>
-                  </div>
-                  <button class="filled_button fill_blue blue_hover width_full" v-if="!removeTax" @click="processPayment">{{ data.PrzyciskPlatonosci }}</button>
-                  <div class="remove-tax" v-if="removeTax">
-                      {{ data.TrescOdliczPodatek }}
-                  </div>
-              </section>
-              <p class="sperator" v-if="!removeTax">{{ data.Odzielenie }}</p>
-              <button class="filled_button fill_yellow width_full" @click="accountNumber = !accountNumber" v-if="!removeTax">
-                  <!--Icon source - https://www.flaticon.com/free-icon/question_471664?term=question&page=1&position=3&origin=search&related_id=471664-->
-                  <svg version="1.1" id="fi_471664" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+           <h4>{{ ammount.value === "custom" ? data.PrzyciskInnaKwota : ammount.value + "zł"}}</h4>
+         </button>
+       </div>
+       <div class="custom_ammount_input width_full" v-if="showCustomAmmount && !removeTax && formProgress === 1">
+         <label for="custom_amm">{{ data.PolePodajKwote }}</label>
+         <input type="number" id="custom_amm" v-model="customAmmount">
+         <p>zł</p>
+       </div>
+       <p v-if="errorMessage && formProgress === 1" class="error">{{errorMessage}}</p>
+       <button class="filled_button fill_blue blue_hover width_full" v-if="!removeTax && formProgress === 1" @click="getRequiredData">Przejdź dalej</button>
+       <div class="remove-tax" v-if="removeTax && formProgress === 1">
+         {{ data.TrescOdliczPodatek }}
+       </div>
+       <h2 v-if="formProgress === 2">Kwota wspracia: {{this.realAmount/100}}zł</h2>
+       <form @submit.prevent="processPayment" v-if="formProgress === 2">
+         <form-group name="email" label="E-mail" type="email" required></form-group>
+         <div class="checkbox-group">
+           <input type="checkbox" id="additional-data" name="additional" @change="changeAdditionalData">
+           <label for="additional-data">Chcę dokonać wpłaty imiennej</label>
+         </div>
+         <form-group name="name" label="Imię" width="100%" v-if="additionalData" required></form-group>
+         <form-group name="surname" label="Nazwisko" width="100%" v-if="additionalData" required></form-group>
+         <div class="checkbox-group">
+           <input type="checkbox" id="privacy" name="privacy" required>
+           <label for="privacy">Oświadczam, że zapoznałem się z <a href="https://www.przelewy24.pl/regulamin" target="_blank">regulaminem</a> i <a href="https://www.przelewy24.pl/obowiazek-informacyjny-rodo-platnicy" target="_blank">obowiązkiem informacyjnym</a> serwisu Przelewy24</label>
+         </div>
+         <p v-if="errorMessage && formProgress === 2" class="error">{{errorMessage}}</p>
+         <main-button type="submit" :disabled="blockForm">{{data.PrzyciskPlatonosci}}</main-button>
+         <main-button secondary type="button" @click="formProgress = 1">Anuluj</main-button>
+       </form>
+
+     </section>
+     <p class="sperator" v-if="!removeTax && formProgress === 1">{{ data.Odzielenie }}</p>
+     <button class="filled_button fill_yellow width_full" @click="accountNumber = !accountNumber" v-if="!removeTax && formProgress === 1">
+       <!--Icon source - https://www.flaticon.com/free-icon/question_471664?term=question&page=1&position=3&origin=search&related_id=471664-->
+       <svg version="1.1" id="fi_471664" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                       <g>
                           <g>
                               <path d="M256,0C114.509,0,0,114.496,0,256c0,141.489,114.496,256,256,256c141.491,0,256-114.496,256-256
@@ -84,13 +85,13 @@
                                   c121.463,0,220.279,98.816,220.279,220.279S377.463,476.279,256,476.279z"></path>
                           </g>
                       </g>
-                      <g>
+         <g>
                           <g>
                               <path d="M248.425,323.924c-14.153,0-25.61,11.794-25.61,25.946c0,13.817,11.12,25.948,25.61,25.948
                                   c14.49,0,25.946-12.131,25.946-25.948C274.371,335.718,262.577,323.924,248.425,323.924z"></path>
                           </g>
                       </g>
-                      <g>
+         <g>
                           <g>
                               <path d="M252.805,127.469c-45.492,0-66.384,26.959-66.384,45.155c0,13.142,11.12,19.208,20.218,19.208
                                   c18.197,0,10.784-25.948,45.155-25.948c16.848,0,30.328,7.414,30.328,22.915c0,18.196-18.871,28.642-29.991,38.077
@@ -99,23 +100,24 @@
                           </g>
                       </g>
                   </svg>
-                  <p>{{ accountNumber ? data.PrzyciskPrzelewuWyloczony : data.PrzyciskPrzelewuWloczony }}</p>
-              </button>
-              <p class="account-number" v-if="accountNumber">
-                <strong>Numer konta:</strong> {{ data.NumerKonta }}
-              </p>
-              <p class="account-number" v-if="accountNumber">
-                <strong>Tytuł przelewu:</strong> "Na cele statutowe fundacji"
-              </p>
-            </div>
-        </div>
-    </div>
-    </Transition>
+       <p>{{ accountNumber ? data.PrzyciskPrzelewuWyloczony : data.PrzyciskPrzelewuWloczony }}</p>
+     </button>
+     <p class="account-number" v-if="accountNumber && formProgress === 1">
+       <strong>Numer konta:</strong> {{ data.NumerKonta }}
+     </p>
+     <p class="account-number" v-if="accountNumber && formProgress === 1">
+       <strong>Tytuł przelewu:</strong> "Na cele statutowe fundacji"
+     </p>
+   </Popup>
 </template>
 <script>
 import godniejBackend from '@/axios/GodniejBackend';
+import Popup from "@/components/Popup.vue";
+import FormGroup from "@/components/FormGroup.vue";
+import MainButton from "@/components/MainButton.vue";
 
 export default {
+  components: {MainButton, FormGroup, Popup},
     props: {
         active: Boolean,
     },
@@ -129,24 +131,75 @@ export default {
                 { value: "custom", selected: false },
             ],
             showCustomAmmount: false,
-            customAmmount: 0,
+            customAmmount: 1,
             removeTax: false,
             accountNumber: false,
-            data: null
+            data: null,
+            realAmount: null,
+            formProgress: 1,
+            errorMessage: null,
+          additionalData: false,
+          blockForm: false
         }
     },
+  watch: {
+    customAmmount(newValue, oldValue) {
+      if (typeof newValue !== 'number' || (newValue * 100) % 1 !== 0 || newValue < 0) {
+        this.customAmmount = oldValue;
+      } else {
+        this.realAmount = newValue * 100;
+      }
+    }
+  },
     methods: {
         selectAmmount(ammount) {
             this.ammounts.forEach(item => item.selected = false);
             ammount.selected = true;
             if (ammount.value === "custom") {
                 this.showCustomAmmount = true;
+                this.realAmount = this.customAmmount * 100;
             } else {
                 this.showCustomAmmount = false;
-            }
-        },
-      processPayment() {
-          alert("Przykro nam ale ta wciąż pracujemy nad tą funkcją. Zamiast tego zachęcamy do przelewów na konto fundacji")
+                this.realAmount = ammount.value * 100;
+            }},
+      processPayment(e) {
+          const requestData = {
+            amount: this.realAmount,
+            currency: "PLN",
+            email: e.target.email.value,
+            name: e.target.name ? e.target.name.value : null,
+            surname: e.target.surname ? e.target.surname.value : null,
+            privacyAccept: e.target.privacy.checked,
+            path: this.$route.path
+          }
+
+          this.blockForm = true
+
+          godniejBackend.post("/donate", requestData).then(
+              res => res.data
+          ).then((data) => {
+            window.location.href = data.transactionUrl;
+            this.blockForm = false
+          }).catch(
+              err => {
+                console.log(err)
+                this.errorMessage = err.response.data.error.details.details[0];
+                this.blockForm = false
+              }
+          )
+      },
+      changeAdditionalData(e) {
+          this.additionalData = e.target.checked
+      },
+      getRequiredData() {
+          if (this.realAmount === null) {
+            this.errorMessage = "Aby Przejść dalej musisz wybrać kwotę wsparcia"
+          } else if (this.realAmount < 100) {
+            this.errorMessage = "Minimalna kwota wspracia to 1zł"
+          } else {
+            this.errorMessage = null
+            this.formProgress = 2
+          }
       }
     },
     mounted() {
@@ -155,71 +208,6 @@ export default {
 }
 </script>
 <style scoped>
-    .popup-shadow {
-        position: fixed;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 10000;
-        top: 0;
-        left: 0;
-        overflow-y: auto;
-    }
-
-    .popup-shadow * {
-        transition: all 0.5s ease-in-out;
-    }
-
-    #support-popup {
-        background-color: white;
-        border-radius: 1rem;
-        padding: 20px;
-        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        max-height: 90vh;
-    }
-
-    .content {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      align-items: center;
-      overflow-y: auto;
-    }
-
-    #support-popup header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1rem;
-    }
-    header h3 {
-        font-size: var(--font_xl);
-        color: var(--blue);
-        background: linear-gradient(to right, var(--yellow), var(--magenta), var(--blue));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    header button {
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        color: var(--blue);
-        fill: var(--blue);
-    }
-    .line{
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(to right, var(--yellow), var(--magenta), var(--blue));
-    }
-
     .fill_yellow {
         background-color: var(--yellow);
         color: var(--blue);
@@ -234,7 +222,7 @@ export default {
 
 
     }
-    
+
     .fill_blue {
         background-color: var(--blue);
         color: white;
@@ -258,10 +246,6 @@ export default {
         align-items: center;
         gap: 1rem;
         padding: 1rem 0;
-    }
-
-    .width_full {
-        width: 100%;
     }
 
     .ammount {
@@ -324,7 +308,7 @@ export default {
     .custom_ammount_input input:focus {
         outline: none;
     }
-    
+
     .custom_ammount_input p {
         color: var(--blue);
         font-size: var(--font-l);
@@ -332,13 +316,8 @@ export default {
         padding-right: 1rem;
     }
 
-    @media screen and (max-width: 768px) {
-        #support-popup {
-            width:90%;
-        }
-    }
     @media screen and (max-width: 512px) {
-        #support-popup {
+        .popup {
             width: 100%;
             height: 100vh;
             border-radius: 0;
@@ -352,7 +331,7 @@ export default {
         .custom_ammount_input input {
             padding: 0.5rem;
         }
-    
+
         .custom_ammount_input label {
             padding: 1rem;
         }
@@ -364,13 +343,33 @@ export default {
         font-size: var(--font-l);
         font-weight: 700;
     }
-    .fade-enter-active,
-    .fade-leave-active {
-    transition: opacity 0.5s ease;
+
+    .width_full {
+      width: 100%;
     }
 
-    .fade-enter-from,
-    .fade-leave-to {
-    opacity: 0;
+    .error {
+      color: red;
+    }
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .checkbox-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .checkbox-group label {
+      font-size: var(--font_l);
+      font-weight: 500;
+      color: var(--blue);
+    }
+
+    .checkbox-group input[type=checkbox]::-ms-check {
+      background-color: var(--blue);
     }
 </style>
