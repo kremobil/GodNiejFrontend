@@ -64,10 +64,6 @@
          </div>
          <form-group name="name" label="Imię" width="100%" v-if="additionalData" required></form-group>
          <form-group name="surname" label="Nazwisko" width="100%" v-if="additionalData" required></form-group>
-         <div class="checkbox-group">
-           <input type="checkbox" id="privacy" name="privacy" required>
-           <label for="privacy">Oświadczam, że zapoznałem się z <a href="https://www.przelewy24.pl/regulamin" target="_blank">regulaminem</a> i <a href="https://www.przelewy24.pl/obowiazek-informacyjny-rodo-platnicy" target="_blank">obowiązkiem informacyjnym</a> serwisu Przelewy24</label>
-         </div>
          <p v-if="errorMessage && formProgress === 2" class="error">{{errorMessage}}</p>
          <main-button type="submit" :disabled="blockForm">{{data.PrzyciskPlatonosci}}</main-button>
          <main-button secondary type="button" @click="formProgress = 1">Anuluj</main-button>
@@ -169,7 +165,6 @@ export default {
             email: e.target.email.value,
             name: e.target.name ? e.target.name.value : null,
             surname: e.target.surname ? e.target.surname.value : null,
-            privacyAccept: e.target.privacy.checked,
             path: this.$route.path
           }
 
