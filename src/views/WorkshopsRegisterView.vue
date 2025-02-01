@@ -35,6 +35,9 @@
               <h3>Data:
                 {{ initiative.TerminZajec }}
                 </h3>
+              <h3>Miejsce:
+                {{ initiative.MiejsceZajec }}
+                </h3>
               <h3>Wolne miejsca: {{availableSpots}}</h3>
 
               <main-link :to="`/inicjatywy/${this.$route.params.slug}`" style="background-color: var(--magenta);" v-if="currentComponent === 'register-form'">{{ content.PrzyciskPowrotDoPosta }}</main-link>
