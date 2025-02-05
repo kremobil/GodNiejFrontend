@@ -1,9 +1,11 @@
 <script>
 import godniejBackend from '@/axios/GodniejBackend';
 import router from "@/router/index.js";
+import HighlightedSlider from "@/components/HighlightedSlider.vue";
 
 export default {
   name: "AllInitiatives",
+  components: {HighlightedSlider},
   data() {
     return {
       initiatives: null,
@@ -49,11 +51,11 @@ export default {
 <template>
 <div class="all-initiatives-wrapper">
   <h2 data-aos="fade-right">Wszystkie Posty</h2>
-  <div class="initiatives-grid">
+  <div class="initiatives-grid" v-if="initiatives">
     <router-link :to="`/inicjatywy/${initiative.slug}`" class="card" v-for="initiative in initiatives" :key="initiative.id" data-aos="zoom-in">
       <div class="card_hover"></div>
       <div class="card_content" :style="{
-        backgroundImage: `url('https://backend.godniej.org${initiative.Zdjecie.formats ? initiative.Zdjecie.formats.small.url : initiative.Zdjecie.url}')`,
+        backgroundImage: `url('https://backend.godniej.org${initiative?.Zdjecie?.formats?.small ? initiative.Zdjecie.formats.small.url : initiative.Zdjecie.url}')`,
       }">
         <h4 class="card_header">{{ initiative.Tytul }}</h4>
       </div>

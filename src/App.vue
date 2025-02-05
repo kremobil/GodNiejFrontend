@@ -64,7 +64,7 @@ export default {
 
 <template>
   <NavigationHeader
-    :logo="footerData.Logo"
+    :logo="headerData.Logo"
     :support-button="headerData.PrzyciskWesprzyj"
     :facebook-link="headerData.LinkFacebook"
     :instagram-link="headerData.LinkInstagram"
