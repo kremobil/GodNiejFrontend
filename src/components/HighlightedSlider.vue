@@ -35,6 +35,10 @@ export default {
       }
     }).then((response) => response.data.data).then((initiatives) => {
       this.slides = initiatives.WyroznionePosty;
+      console.log(initiatives);
+      
+      console.log(this.slides);
+      
     });
   },
 };

@@ -24,11 +24,11 @@ export default {
   <form @submit.prevent="$emit('formSubmitted', formData)">
     <h2>Zapisz się na zajęcia</h2>
     <div class="form-row">
-      <form-group name="Imię" placeholder="Podaj imie" width="100%" v-model="formData.name" required aos-once/>
-      <form-group name="Nazwisko" placeholder="Podaj nazwisko" width="100%" v-model="formData.surname" required aos-once/>
+      <form-group name="Imię" placeholder="Podaj imie" width="100%" v-model="formData.name" required aos-once autocomplete="name"/>
+      <form-group name="Nazwisko" placeholder="Podaj nazwisko" width="100%" v-model="formData.surname" required aos-once autocomplete="surname"/>
     </div>
-    <form-group name="Adres e-mail" placeholder="podaj swój mail" width="100%" v-model="formData.email" required aos-once/>
-    <form-group name="Numer Telefonu" type="tel" placeholder="Podaj swój numer telefonu" width="100%" v-model="formData.phone" required aos-once/>
+    <form-group name="Adres e-mail" placeholder="podaj swój mail" width="100%" v-model="formData.email" required aos-once autocomplete="email"/>
+    <form-group name="Numer Telefonu" type="tel" placeholder="Podaj swój numer telefonu" width="100%" v-model="formData.phone" required aos-once autocomplete="phone"/>
     <form-group name="Dodatkowa wiadomość" placeholder="Masz dodatkowe uwagi które chcesz nam przekazać? Śmiało!" text-area width="100%" v-model="formData.additionalMessage" aos-once/>
     <main-button type="submit">Przejdź dalej</main-button>
   </form>

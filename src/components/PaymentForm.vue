@@ -10,10 +10,11 @@ export default {
 
 <template>
   <div class="payment-wrapper">
-    <h2 v-if="paymentRequired">Przepraszamy za niedogodności</h2> <h2 v-else>To już ostatni krok</h2>
-    <p v-if="paymentRequired">Wciąż pracujemy nad implementacją bramki płatności na naszą stronę. Obecnie możliwy jest zapis poprzez dokonanie przelewu na nasz numer konta 38 1020 1462 0000 7002 0446 4285 tytułem „Darowizna na cele statutowe + imię i nazwisko + nazwa warsztatu", pamiętaj też aby zapisać się na stronie klikając przycisk poniżej.</p>
+    <h2 v-if="paymentRequired">To już ostatni krok</h2> <h2 v-else>To już ostatni krok</h2>
+    <p v-if="paymentRequired">Super Skoro mamy już zebrane wszystkie dane, teraz wystarczy tylko że opłacisz zajęcia i wszystko będzie gotowe. Poniżej znajduje się przycisk do uiszczenia płatności przez Przelewy 24 po kliknięciu ukażą się dostępne metody płatności.</p>
     <p v-else>Zajęcia są darmowe więc nie musisz nic płacić. Zapraszamy!</p>
-    <MainButton @click="$emit('paymentCompleted')" type="button">Zapisz się!</MainButton>
+    <MainButton @click="$emit('paymentCompleted')" type="button" v-if="paymentRequired"><div class="button-text">Zapłać przez <img src="@/assets/Przelewy24_logo.png" alt="Przelewy 24"></div></MainButton>
+    <MainButton @click="$emit('paymentCompleted')" type="button" v-else>Zapisz się już teraz</MainButton>
   </div>
 </template>
 
@@ -25,12 +26,22 @@ export default {
    align-items: center;
    flex-direction: column;
    text-align: center;
-   gap: 1rem;
+   gap: 2rem;
    font-size: var(--font_l);
   }
  @media screen and (max-width: 1024px) {
    .payment-wrapper {
      width: 100%;
    }
+ }
+
+ .button-text {
+   display: flex;
+   align-items: center;
+   gap: 1rem;
+ }
+
+ .button-text img {
+   height: 2rem;
  }
 </style>

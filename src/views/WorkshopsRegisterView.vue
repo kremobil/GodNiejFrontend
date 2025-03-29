@@ -134,8 +134,10 @@ export default {
           }
         }
       }).then(
-          (data) => {
-            router.push('/inicjatywy/zapisy/dziekujemy')
+          (response) => {
+            if (response?.data?.transactionUrl) {
+              window.location.href = response.data.transactionUrl;
+            }
           }
       ).catch(error => {
         alert(error.response.data.message)
