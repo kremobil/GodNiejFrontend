@@ -131,6 +131,7 @@ footer {
   width: 100%;
   box-shadow: 2px 0 8px 4px rgba(0, 0, 0, 0.2);
   overflow-x: hidden;
+  z-index: 100;
 }
 .top {
   display: grid;
