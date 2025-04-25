@@ -1,38 +1,54 @@
 <script>
 import MainLink from "@/components/MainLink.vue";
-import MemoryAccordion from '../components/MemoryAccordion.vue'
+import MemoryAccordion from '../components/MemoryAccordion.vue';
+import godniejBackend from "@/axios/GodniejBackend";
+import { StrapiBlocks } from 'vue-strapi-blocks-renderer';
 
 export default {
   name: "OurPatronessView",
-  components: { MainLink, MemoryAccordion },
+  components: { MainLink, MemoryAccordion, StrapiBlocks },
   data() {
     return {
-      memories: [
-        {
-          title: "Służba",
-          content: "Stanisława Leszczyńska była całkowicie oddana tym maleńkim istotom i ich matkom. Zawsze pogodna, uśmiechnięta, jeśli nie mogła ratować dzieci, ratowała matki, przynosząc im całe swoje doświadczenie i umiejętności położnej, a jednocześnie podnosząc je na duchu, by wytrzymały i przetrwały.",
-          author: "Zofia Raczyńska",
-          source: "Zeznania przed komisją badania zbrodni hitlerowskich"
-        },
-        {
-          title: "Modlitwa i praca",
-          content: "Widziałam, że się Pani przed każdym odbiorem dziecka modliła- klęczała i chowała twarz w dłoniach, że miała Pani nieraz ciężkie skomplikowane sytuacje, kobiety krzyczały, strasznie krwawiły. (...) Pani organizowała szmaty na krwotoki, pieluszki, kaftaniczki, a środkami, jakimi dysponował ambulans, była krepina i trochę podkładek higienicznych.",
-          author: "Janina Strąk",
-          source: "Wspomnienia więźniarki obozu Auschwitz-Birkenau"
-        },
-        {
-          title: "Serce i profesjonalizm",
-          content: "Zapytała: 'No i co moje dziecko?' Mówiła cicho, a jej głos był bardzo kojący. Przyznałam się wtedy, że strasznie się boję, że bardzo mnie boli i że chyba zaraz będę rodzić. Pogłaskała mnie po twarzy i uśmiechnęła się (...) Wciąż do mnie coś mówiła. Pewnie chciała odwrócić moją uwagę od bólu. Radziła też, jak mam oddychać, jak się ułożyć, jak pomóc dziecku przyjść na świat. Chwaliła mnie bardzo za to, że nie krzyczę. Przestałam się bać. Ręce miała malutkie, delikatne, ruchy łagodne, spokojne a przy tym sprawne i szybkie.",
-          author: "Jadwiga Machaj",
-          source: "Relacja z pobytu w obozie Auschwitz-Birkenau"
-        },
-        {
-          title: "Wierność powołaniu i odwaga",
-          content: "Dzieci żydowskie nie miały prawa żyć- odgórny nakaz władzy łagrowej.(...) Stanisława Leszczyńska zlekceważyła te odgórne nakazy zbrodniarzy. Nie ulękła się, swój obowiązek położnej wypełniała sumiennie. Odcinała pępowinę, wiązała, dziecko zawijała w ligninę i układała matce na pryczy. Dziecko po kilku godzinach umierało, bo Żydówkom nie wolno było dzieci karmić. Umierały na pryczy, w obecności matki, w promieniu jej ciepła i tragicznej miłości.",
-          author: "Maria Ślisz-Oyrzyńska",
-          source: "Zeznania świadków zbrodni nazistowskich"
+      loading: true,
+      patronessData: {
+        NaglowekSekcjaGlowna: '',
+        PodpisZdjeciaCZ1: '',
+        PodpisZdjeciaCZ2: '',
+        Cytat: '',
+        Podpis: '',
+        PrzyciskDowiedzSieWiecej: '',
+        NaglowekDlaczegoJestPatronka: '',
+        PodNaglowekDlaczegoJestPatronka: '',
+        TrescDlaczegoJestPatronka: null,
+        SekcjeHistorii: [],
+        WspomnieniaNaglowek: '',
+        Wspomnienia: []
+      },
+      memories: []
+    }
+  },
+  async created() {
+    try {
+      const response = await godniejBackend.get('/patroness?populate[SekcjeHistorii][populate][0]=ikonka&populate[SekcjeHistorii][populate][1]=tlo&populate[Wspomnienia][populate]=*');
+      
+      if (response.data && response.data.data) {
+        this.patronessData = response.data.data;
+        
+        if (this.patronessData.Wspomnienia && Array.isArray(this.patronessData.Wspomnienia)) {
+          this.memories = this.patronessData.Wspomnienia.map(memory => ({
+            title: memory.Tytul || '',
+            content: memory.Tresc || '',
+            author: memory.Autor || '',
+            source: memory.Zrodlo || ''
+          }));
         }
-      ]
+      } else {
+        console.error("Nieprawidłowa struktura danych z API:", response.data);
+      }
+    } catch (error) {
+      console.error("Błąd podczas pobierania danych:", error);
+    } finally {
+      this.loading = false;
     }
   },
   methods: {
@@ -42,129 +58,94 @@ export default {
         bioSection.scrollIntoView({ behavior: "smooth" });
       }
     },
+    getImageUrl(image) {
+      if (!image || !image.url) return '';
+      return image.url;
+    },
+    getLargeImageUrl(image) {
+      if (!image || !image.formats || !image.formats.large) {
+        return this.getImageUrl(image);
+      }
+      return image.formats.large.url;
+    }
   },
 }
 </script>
 
 <template>
-  <div class="bg_container">
-    <div class="shadow"></div>
-    <img src="@/assets/patroness_bg.png" alt="" class="bg" />
-  </div>
-  <section class="our-patroness-hero-wrapper" id="hero_section">
-    <h1>Nasza Patronka</h1>
-    <div class="content">
-      <div class="image">
-        <div class="overflow_gradient"></div>
-        <div class="main-info">
-          <h3>Stanisława Leszczyńska</h3>
-          <h4>(ur. 8 maja 1896 r., zm.11 marca 1974 r.)</h4>
-        </div>
-        <img src="@/assets/Stanislawa_Leszczynska.png" alt="Stanisława Leszczyńska" data-aos="fade-up-right" />
-      </div>
-      <div class="half">
-        <div class="main">
-          <div class="quote_container">
-            <img src="@/assets/quote_open.png" alt="" class="quote_open">
-            <p>Jeżeli w mej Ojczyźnie - mimo smutnego z czasów wojny doświadczenia - miałyby dojrzewać tendencje przeciw
-              życiu, to wierzę w głos polskich położnych, wszystkich uczciwych matek i ojców, wszystkich uczciwych
-              obywateli, w obronie życia i praw dziecka.
-              W obozie koncentracyjnym wszystkie dzieci - wbrew wszelkim przewidywaniom - rodziły się żywe, śliczne i
-              tłuściutkie. Natura, przeciwstawiając się nienawiści, walczyła o swoje prawa uparcie, nieznanymi rezerwami
-              żywotności. Natura jest nauczycielką położnej. Razem z nią walczy o życie i razem z nią propaguje
-              najpiękniejszą rzecz na świecie - uśmiech dziecka.
-            </p>
-            <img src="@/assets/quote_close.png" alt="" class="quote_close">
+  <main class="loading" v-if="loading">
+    <svg xmlns="http://www.w3.org/2000/svg" class="loading-icon" height="48px" viewBox="0 -960 960 960" width="48px" fill="var(--blue)"><path d="M167-160v-60h130l-15-12q-64-51-93-111t-29-134q0-106 62.5-190.5T387-784v62q-75 29-121 96.5T220-477q0 63 23.5 109.5T307-287l30 21v-124h60v230H167Zm407-15v-63q76-29 121-96.5T740-483q0-48-23.5-97.5T655-668l-29-26v124h-60v-230h230v60H665l15 14q60 56 90 120t30 123q0 106-62 191T574-175Z"/></svg>
+    <h2>Trwa ładowanie...</h2>
+  </main>
+
+  <main v-else>
+    <div class="bg_container">
+      <div class="shadow"></div>
+      <img src="@/assets/patroness_bg.png" alt="" class="bg" />
+    </div>
+    <section class="our-patroness-hero-wrapper" id="hero_section">
+      <h1>{{ patronessData.NaglowekSekcjaGlowna }}</h1>
+      <div class="content">
+        <div class="image">
+          <div class="overflow_gradient"></div>
+          <div class="main-info">
+            <h3>Stanisława Leszczyńska</h3>
+            <h4>({{ patronessData.PodpisZdjeciaCZ1 }}, {{ patronessData.PodpisZdjeciaCZ2 }})</h4>
           </div>
-          <h2>~ Stanisława Leszczyńska</h2>\
+          <img src="@/assets/Stanislawa_Leszczynska.png" alt="Stanisława Leszczyńska" data-aos="fade-up-right" />
         </div>
-        <div class="see_more" @click="scrollToBioSection">
-          <h3>Dowiedz się więcej</h3>
-          <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
-            fill="var(--blue)">
-            <path
-              d="m480-328 150.67-150.67L584-525.33l-70.67 70.66V-632h-66.66v177.33L376-525.33l-46.67 46.66L480-328Zm0 248q-82.33 0-155.33-31.5-73-31.5-127.34-85.83Q143-251.67 111.5-324.67T80-480q0-83 31.5-156t85.83-127q54.34-54 127.34-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82.33-31.5 155.33-31.5 73-85.5 127.34Q709-143 636-111.5T480-80Zm0-66.67q139.33 0 236.33-97.33t97-236q0-139.33-97-236.33t-236.33-97q-138.67 0-236 97-97.33 97-97.33 236.33 0 138.67 97.33 236 97.33 97.33 236 97.33ZM480-480Z" />
-          </svg>
+        <div class="half">
+          <div class="main">
+            <div class="quote_container">
+              <img src="@/assets/quote_open.png" alt="" class="quote_open">
+              <p>{{ patronessData.Cytat }}</p>
+              <img src="@/assets/quote_close.png" alt="" class="quote_close">
+            </div>
+            <h2>{{ patronessData.Podpis }}</h2>
+          </div>
+          <div class="see_more" @click="scrollToBioSection">
+            <h3>{{ patronessData.PrzyciskDowiedzSieWiecej }}</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
+              fill="var(--blue)">
+              <path
+                d="m480-328 150.67-150.67L584-525.33l-70.67 70.66V-632h-66.66v177.33L376-525.33l-46.67 46.66L480-328Zm0 248q-82.33 0-155.33-31.5-73-31.5-127.34-85.83Q143-251.67 111.5-324.67T80-480q0-83 31.5-156t85.83-127q54.34-54 127.34-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82.33-31.5 155.33-31.5 73-85.5 127.34Q709-143 636-111.5T480-80Zm0-66.67q139.33 0 236.33-97.33t97-236q0-139.33-97-236.33t-236.33-97q-138.67 0-236 97-97.33 97-97.33 236.33 0 138.67 97.33 236 97.33 97.33 236 97.33ZM480-480Z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="our_patroness" class="section" ref="bioSection">
+      <header>
+        <h2>{{ patronessData.NaglowekDlaczegoJestPatronka }}</h2>
+        <h3>{{ patronessData.PodNaglowekDlaczegoJestPatronka }}</h3>
+      </header>
+      <StrapiBlocks v-if="patronessData.TrescDlaczegoJestPatronka" :content="patronessData.TrescDlaczegoJestPatronka" />
+    </div>
+    
+    <!-- Sekcje historii - dynamicznie generowane na podstawie danych z API -->
+    <div v-for="(sekcja, index) in patronessData.SekcjeHistorii" :key="index" 
+         id="home_and_family" 
+         class="history_section" 
+         :class="{ 'reverse': index % 2 !== 0 }">
+      <h2>{{ sekcja.Naglowek }}</h2>
+      <div class="content">
+        <div class="text_wrapper">
+          <StrapiBlocks v-if="sekcja.Tresc" :content="sekcja.Tresc" />
+          <p v-if="sekcja.zrodlo"><i><b>źródło:</b> {{ sekcja.zrodlo }}</i></p>
+        </div>
+        <div class="icon_wrapper" :data-aos="index % 2 === 0 ? 'fade-up-left' : 'fade-up-right'">
+          <img class="icon" :src="getImageUrl(sekcja.ikonka)" data-aos="zoom-in" />
+          <div class="overflow_gradient"></div>
+          <img :src="getLargeImageUrl(sekcja.tlo)" alt="" class="background" />
         </div>
       </div>
     </div>
-  </section>
-  <div id="our_patroness" class="section" ref="bioSection">
-    <header>
-      <h2>Dlaczego jest patronką fundacji?</h2>
-      <h3>oraz Centrum Godnych Narodzin</h3>
-    </header>
-    <p>Przemawia do nas sposób, w jaki Stanisława Leszczyńska witała na świecie rodzące się dzieci i sposób, w jaki
-      otaczała troską ich matki. Cała jej praca i wysiłek poświęcone były temu, <strong class="highlight">aby rodzić i
-        przychodzić na świat GodNiej.</strong></p>
-  </div>
-  <div id="home_and_family" class="history_section">
-    <h2>Dom i rodzina</h2>
-    <div class="content">
-      <div class="text_wrapper">
-        <p>Była żoną Bronisława i mamą czworga dzieci: Sylwiny Zenobii, Bronisława, Stanisława i Henryka.</p>
-        <p>Dom przy Żurawiej od końca pierwszej wojny był przepełniony dziećmi, pełen śmiechu, zabaw, płaczu, odgłosu
-          tłuczonych szyb, dźwięków cytry i pianina, trzaskania drzwiami, zapachu kapuśniaku i czulentu, a zimą
-          chanukowych świec, woni choinki na piętrze, makowca, pączków i placków ziemniaczanych smażonych na słoninie.
-          Był domem miłości i tolerancji - cnót, w których dzieci Stasi wyrosły, a które potem poniosły w świat. </p>
-        <p><i><b>źródło:</b> (M. Stachurska, Położna, Wydawnictwo Burda Media Polska, Warszawa 2020, s. 93)</i></p>
-      </div>
-      <div class="icon_wrapper" data-aos="fade-up-left">
-        <img class="icon" src="@/assets/family_icon.png" data-aos="zoom-in" />
-        <div class="overflow_gradient"></div>
-        <img src="@/assets/family.png" alt="" class="background" />
-      </div>
+
+    <div class="quotes" v-if="memories.length > 0">
+      <h2>{{ patronessData.WspomnieniaNaglowek }}</h2>
+      <MemoryAccordion :memories="memories" />
     </div>
-  </div>
-  <div id="home_and_family" class="history_section reverse">
-    <h2>Nauka i praca</h2>
-    <div class="content">
-      <div class="text_wrapper">
-        <p>Uczyła się w Warszawskiej Miejskiej Szkole Położnych w latach 1920-1922. Otrzymała dyplom z wyróżnieniem.</p>
-        <p>Wypowiedziała też po trosze przed Maryją, a po trosze przed sobą obietnicę.
-          Maryjo, Najświętsza Panienko, obiecuję, że jeśli podczas przyjmowania porodu stracę choćby jedno dziecko,
-          zaprzestanę wykonywania tego zawodu.
-          Położną była przez trzydzieści osiem lat. Podczas porodów, które przyjmowała, nie umarło żadne dziecko.
-        </p>
-        <p><i><b>źródło:</b> (M. Stachurska, Położna, Wydawnictwo Burda Media Polska, Warszawa 2020, s. 99)</i></p>
-      </div>
-      <div class="icon_wrapper" data-aos="fade-up-right">
-        <img class="icon" src="@/assets/mortarboard.png" data-aos="zoom-in" />
-        <div class="overflow_gradient"></div>
-        <img src="@/assets/books.jpg" alt="" class="background" />
-      </div>
-    </div>
-  </div>
-  <div id="home_and_family" class="history_section">
-    <h2>Wojna i obóz koncentracyjny
-    </h2>
-    <div class="content">
-      <div class="text_wrapper">
-        <p>W 1943 roku została aresztowana razem z córką przez gestapo. Znalazła się w obozie koncentracyjnym
-          Auschwitz-Birkenau. Zgłosiła się do pracy w izbie porodowej i przyjęła około 3000 porodów, podczas których nie
-          umarło ani jedno dziecko. Więźniarki nazywały ją Mamą.
-        </p>
-        <p>Sztuba była miejscem, w którym <strong>GODNIE i Z RADOŚCIĄ WITAŁA NA ŚWIECIE NOWEGO CZŁOWIEKA.
-            KAŻDEGO.</strong>
-        </p>
-        <p>Ratowała matki i ich dzieci z narażeniem własnego życia.
-        </p>
-        <p><i>Wśród tych koszmarnych wspomnień snuje się w mej świadomości jedna myśl, jeden motyw przewodni. Wszystkie
-            dzieci urodziły się żywe. Ich celem było żyć! Przeżyło obóz zaledwie trzydzieścioro.
-          </i></p>
-        <p><i><b>źródło:</b> (M. Stachurska, Położna, Wydawnictwo Burda Media Polska, Warszawa 2020, s. 191/253)</i></p>
-      </div>
-      <div class="icon_wrapper" data-aos="fade-up-left">
-        <img class="icon" src="@/assets/destroyed.png" data-aos="zoom-in" />
-        <div class="overflow_gradient"></div>
-        <img src="@/assets/auschwitz.jpg" alt="" class="background" />
-      </div>
-    </div>
-  </div>
-  <div class="quotes">
-    <h2>wspomnienia kobiet</h2>
-    <MemoryAccordion :memories="memories" />
-  </div>
+  </main>
 </template>
 
 <style scoped>
