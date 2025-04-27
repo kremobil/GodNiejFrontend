@@ -60,13 +60,13 @@ export default {
     },
     getImageUrl(image) {
       if (!image || !image.url) return '';
-      return image.url;
+      return `https://backend.godniej.org${image.url}`;
     },
     getLargeImageUrl(image) {
       if (!image || !image.formats || !image.formats.large) {
         return this.getImageUrl(image);
       }
-      return image.formats.large.url;
+      return `https://backend.godniej.org${image.formats.large.url}`;
     }
   },
 }
@@ -89,8 +89,8 @@ export default {
         <div class="image">
           <div class="overflow_gradient"></div>
           <div class="main-info">
-            <h3>Stanisława Leszczyńska</h3>
-            <h4>({{ patronessData.PodpisZdjeciaCZ1 }}, {{ patronessData.PodpisZdjeciaCZ2 }})</h4>
+            <h3>{{ patronessData.PodpisZdjeciaCZ1}}</h3>
+            <h4>{{ patronessData.PodpisZdjeciaCZ2 }}</h4>
           </div>
           <img src="@/assets/Stanislawa_Leszczynska.png" alt="Stanisława Leszczyńska" data-aos="fade-up-right" />
         </div>
@@ -446,7 +446,7 @@ h1 {
   text-align: center;
 }
 
-#our_patroness p {
+#our_patroness:deep(p) {
   font-size: var(--font_l);
   color: var(--blue);
   font-weight: 500;
@@ -455,7 +455,7 @@ h1 {
   max-width: 1024px;
 }
 
-#our_patroness .highlight {
+#our_patroness:deep(strong)  {
   background: linear-gradient(to right, var(--magenta), var(--yellow));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
