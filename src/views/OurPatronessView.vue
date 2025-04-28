@@ -32,7 +32,8 @@ export default {
           author: "Maria Ślisz-Oyrzyńska",
           source: "Zeznania świadków zbrodni nazistowskich"
         }
-      ]
+      ],
+      heroHeight: document.querySelector(".our-patroness-hero-wrapper")?.getBoundingClientRect()?.height || window.innerHeight
     }
   },
   methods: {
@@ -43,15 +44,24 @@ export default {
       }
     },
   },
+  mounted() {
+    this.heroHeight = document.querySelector(".our-patroness-hero-wrapper").getBoundingClientRect().height
+
+    window.addEventListener("resize", () => {
+      this.heroHeight = document.querySelector(".our-patroness-hero-wrapper").getBoundingClientRect().height
+    })
+  }
 }
 </script>
 
 <template>
-  <div class="bg_container">
+<div class="bg_container" :style="{
+  height: this.heroHeight + 80 + 32 + 'px'
+}">
     <div class="shadow"></div>
     <img src="@/assets/patroness_bg.png" alt="" class="bg" />
   </div>
-  <section class="our-patroness-hero-wrapper" id="hero_section">
+  <section class="our-patroness-hero-wrapper" id="hero_section" ref="heroSection">
     <h1>Nasza Patronka</h1>
     <div class="content">
       <div class="image">
@@ -76,7 +86,7 @@ export default {
             </p>
             <img src="@/assets/quote_close.png" alt="" class="quote_close">
           </div>
-          <h2>~ Stanisława Leszczyńska</h2>\
+          <h2>~ Stanisława Leszczyńska</h2>
         </div>
         <div class="see_more" @click="scrollToBioSection">
           <h3>Dowiedz się więcej</h3>
@@ -181,7 +191,7 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 100%;
   z-index: -1;
   max-width: 100%;
 }
@@ -214,11 +224,12 @@ h1 {
 .content {
   display: flex;
   gap: 2rem;
-  height: calc((100vh - 80px - 2rem) * 0.8);
+  min-height: calc((100vh - 80px - 2rem) * 0.8);
+  align-items: flex-end;
 }
 
 .content .image {
-  max-height: 100%;
+  max-height: calc((100vh - 80px - 2rem) * 0.8);
   object-fit: contain;
   object-position: bottom left;
   height: auto;
@@ -258,7 +269,7 @@ h1 {
 
 .image img {
   width: 100%;
-  height: 100%;
+  max-height: calc((100vh - 80px - 2rem) * 0.8);
   object-fit: contain;
   object-position: bottom left;
 }
@@ -270,6 +281,7 @@ h1 {
   align-items: center;
   justify-content: space-around;
   height: 100%;
+  gap: 2rem;
   padding-right: 4rem;
 }
 
@@ -515,7 +527,7 @@ h1 {
 .history_section .content {
   display: flex;
   gap: 2rem;
-  height: calc((100vh - 80px - 2rem) * 0.8);
+  min-height: calc((100vh - 80px - 2rem) * 0.8);
   padding: 0;
 }
 
@@ -551,8 +563,8 @@ h1 {
 }
 
 .history_section .icon_wrapper .icon {
-  width: 512px;
-  height: 512px;
+  width: min(512px, 30vw);
+  height: min(512px, 30vw);
   z-index: 2;
 }
 
