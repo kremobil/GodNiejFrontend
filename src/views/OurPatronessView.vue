@@ -24,7 +24,8 @@ export default {
         WspomnieniaNaglowek: '',
         Wspomnienia: []
       },
-      memories: []
+      memories: [],
+      heroHeight:  window.innerHeight
     }
   },
   async created() {
@@ -69,30 +70,54 @@ export default {
       return `https://backend.godniej.org${image.formats.large.url}`;
     }
   },
+  mounted() {
+    this.heroHeight = document.querySelector(".our-patroness-hero-wrapper").getBoundingClientRect().height
+
+    window.addEventListener("resize", () => {
+      this.heroHeight = document.querySelector(".our-patroness-hero-wrapper").getBoundingClientRect().height
+    })
+  }
 }
 </script>
 
 <template>
-  <main class="loading" v-if="loading">
-    <svg xmlns="http://www.w3.org/2000/svg" class="loading-icon" height="48px" viewBox="0 -960 960 960" width="48px" fill="var(--blue)"><path d="M167-160v-60h130l-15-12q-64-51-93-111t-29-134q0-106 62.5-190.5T387-784v62q-75 29-121 96.5T220-477q0 63 23.5 109.5T307-287l30 21v-124h60v230H167Zm407-15v-63q76-29 121-96.5T740-483q0-48-23.5-97.5T655-668l-29-26v124h-60v-230h230v60H665l15 14q60 56 90 120t30 123q0 106-62 191T574-175Z"/></svg>
-    <h2>Trwa ładowanie...</h2>
-  </main>
-
-  <main v-else>
-    <div class="bg_container">
-      <div class="shadow"></div>
-      <img src="@/assets/patroness_bg.png" alt="" class="bg" />
-    </div>
-    <section class="our-patroness-hero-wrapper" id="hero_section">
-      <h1>{{ patronessData.NaglowekSekcjaGlowna }}</h1>
-      <div class="content">
-        <div class="image">
-          <div class="overflow_gradient"></div>
-          <div class="main-info">
-            <h3>{{ patronessData.PodpisZdjeciaCZ1}}</h3>
-            <h4>{{ patronessData.PodpisZdjeciaCZ2 }}</h4>
+<main class="loading" v-if="loading">
+  <svg xmlns="http://www.w3.org/2000/svg" class="loading-icon" height="48px" viewBox="0 -960 960 960" width="48px" fill="var(--blue)"><path d="M167-160v-60h130l-15-12q-64-51-93-111t-29-134q0-106 62.5-190.5T387-784v62q-75 29-121 96.5T220-477q0 63 23.5 109.5T307-287l30 21v-124h60v230H167Zm407-15v-63q76-29 121-96.5T740-483q0-48-23.5-97.5T655-668l-29-26v124h-60v-230h230v60H665l15 14q60 56 90 120t30 123q0 106-62 191T574-175Z"/></svg>
+  <h2>Trwa ładowanie...</h2>
+</main>
+<main v-else>
+  <div class="bg_container" :style="{
+    height: this.heroHeight + 80 + 32 + 'px'
+  }">
+    <div class="shadow"></div>
+    <img src="@/assets/patroness_bg.png" alt="" class="bg" />
+  </div>
+  <section class="our-patroness-hero-wrapper" id="hero_section" ref="heroSection">
+    <h1>{{ patronessData.NaglowekSekcjaGlowna }}</h1>
+    <div class="content">
+      <div class="image">
+        <div class="overflow_gradient"></div>
+        <div class="main-info">
+          <h3>{{ patronessData.PodpisZdjeciaCZ1}}</h3>
+          <h4>{{ patronessData.PodpisZdjeciaCZ2 }}</h4>
+        </div>
+        <img src="@/assets/Stanislawa_Leszczynska.png" alt="Stanisława Leszczyńska" data-aos="fade-up-right" />
+      </div>
+      <div class="half">
+        <div class="main">
+          <div class="quote_container">
+            <img src="@/assets/quote_open.png" alt="" class="quote_open">
+            <p>Jeżeli w mej Ojczyźnie - mimo smutnego z czasów wojny doświadczenia - miałyby dojrzewać tendencje przeciw
+              życiu, to wierzę w głos polskich położnych, wszystkich uczciwych matek i ojców, wszystkich uczciwych
+              obywateli, w obronie życia i praw dziecka.
+              W obozie koncentracyjnym wszystkie dzieci - wbrew wszelkim przewidywaniom - rodziły się żywe, śliczne i
+              tłuściutkie. Natura, przeciwstawiając się nienawiści, walczyła o swoje prawa uparcie, nieznanymi rezerwami
+              żywotności. Natura jest nauczycielką położnej. Razem z nią walczy o życie i razem z nią propaguje
+              najpiękniejszą rzecz na świecie - uśmiech dziecka.
+            </p>
+            <img src="@/assets/quote_close.png" alt="" class="quote_close">
           </div>
-          <img src="@/assets/Stanislawa_Leszczynska.png" alt="Stanisława Leszczyńska" data-aos="fade-up-right" />
+          <h2>~ Stanisława Leszczyńska</h2>
         </div>
         <div class="half">
           <div class="main">
@@ -162,7 +187,7 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 100%;
   z-index: -1;
   max-width: 100%;
 }
@@ -195,11 +220,12 @@ h1 {
 .content {
   display: flex;
   gap: 2rem;
-  height: calc((100vh - 80px - 2rem) * 0.8);
+  min-height: calc((100vh - 80px - 2rem) * 0.8);
+  align-items: flex-end;
 }
 
 .content .image {
-  max-height: 100%;
+  max-height: calc((100vh - 80px - 2rem) * 0.8);
   object-fit: contain;
   object-position: bottom left;
   height: auto;
@@ -239,7 +265,7 @@ h1 {
 
 .image img {
   width: 100%;
-  height: 100%;
+  max-height: calc((100vh - 80px - 2rem) * 0.8);
   object-fit: contain;
   object-position: bottom left;
 }
@@ -251,6 +277,7 @@ h1 {
   align-items: center;
   justify-content: space-around;
   height: 100%;
+  gap: 2rem;
   padding-right: 4rem;
 }
 
@@ -496,7 +523,7 @@ h1 {
 .history_section .content {
   display: flex;
   gap: 2rem;
-  height: calc((100vh - 80px - 2rem) * 0.8);
+  min-height: calc((100vh - 80px - 2rem) * 0.8);
   padding: 0;
 }
 
@@ -532,8 +559,8 @@ h1 {
 }
 
 .history_section .icon_wrapper .icon {
-  width: 512px;
-  height: 512px;
+  width: min(512px, 30vw);
+  height: min(512px, 30vw);
   z-index: 2;
 }
 
