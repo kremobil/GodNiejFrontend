@@ -25,27 +25,37 @@ export default {
         Wspomnienia: []
       },
       memories: [],
-      heroHeight:  window.innerHeight
+      heroHeight: window.innerHeight
     }
   },
-  async created() {
+  mounted() {
+    // responsive bg of hero
+    window.addEventListener("load", () => {
+      this.heroHeight = document.querySelector(".our-patroness-hero-wrapper").getBoundingClientRect().height
+    })
+    window.addEventListener("resize", () => {
+      this.heroHeight = document.querySelector(".our-patroness-hero-wrapper").getBoundingClientRect().height
+    })
+
     try {
-      const response = await godniejBackend.get('/patroness?populate[SekcjeHistorii][populate][0]=ikonka&populate[SekcjeHistorii][populate][1]=tlo&populate[Wspomnienia][populate]=*');
-      
-      if (response.data && response.data.data) {
-        this.patronessData = response.data.data;
-        
-        if (this.patronessData.Wspomnienia && Array.isArray(this.patronessData.Wspomnienia)) {
-          this.memories = this.patronessData.Wspomnienia.map(memory => ({
-            title: memory.Tytul || '',
-            content: memory.Tresc || '',
-            author: memory.Autor || '',
-            source: memory.Zrodlo || ''
-          }));
+      godniejBackend.get('/patroness?populate[SekcjeHistorii][populate][0]=ikonka&populate[SekcjeHistorii][populate][1]=tlo&populate[Wspomnienia][populate]=*').then(
+        (response) => {
+          if (response.data && response.data.data) {
+            this.patronessData = response.data.data;
+
+            if (this.patronessData.Wspomnienia && Array.isArray(this.patronessData.Wspomnienia)) {
+              this.memories = this.patronessData.Wspomnienia.map(memory => ({
+                title: memory.Tytul || '',
+                content: memory.Tresc || '',
+                author: memory.Autor || '',
+                source: memory.Zrodlo || ''
+              }));
+            }
+          } else {
+            console.error("Nieprawidłowa struktura danych z API:", response.data);
+          }
         }
-      } else {
-        console.error("Nieprawidłowa struktura danych z API:", response.data);
-      }
+      );
     } catch (error) {
       console.error("Błąd podczas pobierania danych:", error);
     } finally {
@@ -70,73 +80,54 @@ export default {
       return `https://backend.godniej.org${image.formats.large.url}`;
     }
   },
-  mounted() {
-    this.heroHeight = document.querySelector(".our-patroness-hero-wrapper").getBoundingClientRect().height
-
-    window.addEventListener("resize", () => {
-      this.heroHeight = document.querySelector(".our-patroness-hero-wrapper").getBoundingClientRect().height
-    })
-  }
 }
 </script>
 
 <template>
-<main class="loading" v-if="loading">
-  <svg xmlns="http://www.w3.org/2000/svg" class="loading-icon" height="48px" viewBox="0 -960 960 960" width="48px" fill="var(--blue)"><path d="M167-160v-60h130l-15-12q-64-51-93-111t-29-134q0-106 62.5-190.5T387-784v62q-75 29-121 96.5T220-477q0 63 23.5 109.5T307-287l30 21v-124h60v230H167Zm407-15v-63q76-29 121-96.5T740-483q0-48-23.5-97.5T655-668l-29-26v124h-60v-230h230v60H665l15 14q60 56 90 120t30 123q0 106-62 191T574-175Z"/></svg>
-  <h2>Trwa ładowanie...</h2>
-</main>
-<main v-else>
-  <div class="bg_container" :style="{
-    height: this.heroHeight + 80 + 32 + 'px'
-  }">
-    <div class="shadow"></div>
-    <img src="@/assets/patroness_bg.png" alt="" class="bg" />
-  </div>
-  <section class="our-patroness-hero-wrapper" id="hero_section" ref="heroSection">
-    <h1>{{ patronessData.NaglowekSekcjaGlowna }}</h1>
-    <div class="content">
-      <div class="image">
-        <div class="overflow_gradient"></div>
-        <div class="main-info">
-          <h3>{{ patronessData.PodpisZdjeciaCZ1}}</h3>
-          <h4>{{ patronessData.PodpisZdjeciaCZ2 }}</h4>
-        </div>
-        <img src="@/assets/Stanislawa_Leszczynska.png" alt="Stanisława Leszczyńska" data-aos="fade-up-right" />
-      </div>
-      <div class="half">
-        <div class="main">
-          <div class="quote_container">
-            <img src="@/assets/quote_open.png" alt="" class="quote_open">
-            <p>Jeżeli w mej Ojczyźnie - mimo smutnego z czasów wojny doświadczenia - miałyby dojrzewać tendencje przeciw
-              życiu, to wierzę w głos polskich położnych, wszystkich uczciwych matek i ojców, wszystkich uczciwych
-              obywateli, w obronie życia i praw dziecka.
-              W obozie koncentracyjnym wszystkie dzieci - wbrew wszelkim przewidywaniom - rodziły się żywe, śliczne i
-              tłuściutkie. Natura, przeciwstawiając się nienawiści, walczyła o swoje prawa uparcie, nieznanymi rezerwami
-              żywotności. Natura jest nauczycielką położnej. Razem z nią walczy o życie i razem z nią propaguje
-              najpiękniejszą rzecz na świecie - uśmiech dziecka.
-            </p>
-            <img src="@/assets/quote_close.png" alt="" class="quote_close">
+  <main class="loading" v-if="loading">
+    <svg xmlns="http://www.w3.org/2000/svg" class="loading-icon" height="48px" viewBox="0 -960 960 960" width="48px"
+      fill="var(--blue)">
+      <path
+        d="M167-160v-60h130l-15-12q-64-51-93-111t-29-134q0-106 62.5-190.5T387-784v62q-75 29-121 96.5T220-477q0 63 23.5 109.5T307-287l30 21v-124h60v230H167Zm407-15v-63q76-29 121-96.5T740-483q0-48-23.5-97.5T655-668l-29-26v124h-60v-230h230v60H665l15 14q60 56 90 120t30 123q0 106-62 191T574-175Z" />
+    </svg>
+    <h2>Trwa ładowanie...</h2>
+  </main>
+  <main v-else>
+    <div class="bg_container" :style="{
+      height: this.heroHeight + 80 + 32 + 'px'
+    }">
+      <div class="shadow"></div>
+      <img src="@/assets/patroness_bg.png" alt="" class="bg" />
+    </div>
+    <section class="our-patroness-hero-wrapper" id="hero_section" ref="heroSection">
+      <h1>{{ patronessData.NaglowekSekcjaGlowna }}</h1>
+      <div class="content">
+        <div class="image">
+          <div class="overflow_gradient"></div>
+          <div class="main-info">
+            <h3>{{ patronessData.PodpisZdjeciaCZ1 }}</h3>
+            <h4>{{ patronessData.PodpisZdjeciaCZ2 }}</h4>
           </div>
-          <h2>~ Stanisława Leszczyńska</h2>
+          <img src="@/assets/Stanislawa_Leszczynska.png" alt="Stanisława Leszczyńska" data-aos="fade-up-right" />
         </div>
         <div class="half">
-          <div class="main">
-            <div class="quote_container">
-              <img src="@/assets/quote_open.png" alt="" class="quote_open">
-              <p>{{ patronessData.Cytat }}</p>
-              <img src="@/assets/quote_close.png" alt="" class="quote_close">
+            <div class="main">
+              <div class="quote_container">
+                <img src="@/assets/quote_open.png" alt="" class="quote_open">
+                <p>{{ patronessData.Cytat }}</p>
+                <img src="@/assets/quote_close.png" alt="" class="quote_close">
+              </div>
+              <h2>{{ patronessData.Podpis }}</h2>
             </div>
-            <h2>{{ patronessData.Podpis }}</h2>
+            <div class="see_more" @click="scrollToBioSection">
+              <h3>{{ patronessData.PrzyciskDowiedzSieWiecej }}</h3>
+              <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
+                fill="var(--blue)">
+                <path
+                  d="m480-328 150.67-150.67L584-525.33l-70.67 70.66V-632h-66.66v177.33L376-525.33l-46.67 46.66L480-328Zm0 248q-82.33 0-155.33-31.5-73-31.5-127.34-85.83Q143-251.67 111.5-324.67T80-480q0-83 31.5-156t85.83-127q54.34-54 127.34-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82.33-31.5 155.33-31.5 73-85.5 127.34Q709-143 636-111.5T480-80Zm0-66.67q139.33 0 236.33-97.33t97-236q0-139.33-97-236.33t-236.33-97q-138.67 0-236 97-97.33 97-97.33 236.33 0 138.67 97.33 236 97.33 97.33 236 97.33ZM480-480Z" />
+              </svg>
+            </div>
           </div>
-          <div class="see_more" @click="scrollToBioSection">
-            <h3>{{ patronessData.PrzyciskDowiedzSieWiecej }}</h3>
-            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
-              fill="var(--blue)">
-              <path
-                d="m480-328 150.67-150.67L584-525.33l-70.67 70.66V-632h-66.66v177.33L376-525.33l-46.67 46.66L480-328Zm0 248q-82.33 0-155.33-31.5-73-31.5-127.34-85.83Q143-251.67 111.5-324.67T80-480q0-83 31.5-156t85.83-127q54.34-54 127.34-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82.33-31.5 155.33-31.5 73-85.5 127.34Q709-143 636-111.5T480-80Zm0-66.67q139.33 0 236.33-97.33t97-236q0-139.33-97-236.33t-236.33-97q-138.67 0-236 97-97.33 97-97.33 236.33 0 138.67 97.33 236 97.33 97.33 236 97.33ZM480-480Z" />
-            </svg>
-          </div>
-        </div>
       </div>
     </section>
     <div id="our_patroness" class="section" ref="bioSection">
@@ -146,12 +137,10 @@ export default {
       </header>
       <StrapiBlocks v-if="patronessData.TrescDlaczegoJestPatronka" :content="patronessData.TrescDlaczegoJestPatronka" />
     </div>
-    
+
     <!-- Sekcje historii - dynamicznie generowane na podstawie danych z API -->
-    <div v-for="(sekcja, index) in patronessData.SekcjeHistorii" :key="index" 
-         id="home_and_family" 
-         class="history_section" 
-         :class="{ 'reverse': index % 2 !== 0 }">
+    <div v-for="(sekcja, index) in patronessData.SekcjeHistorii" :key="index" id="home_and_family"
+      class="history_section" :class="{ 'reverse': index % 2 !== 0 }">
       <h2>{{ sekcja.Naglowek }}</h2>
       <div class="content">
         <div class="text_wrapper">
@@ -266,6 +255,7 @@ h1 {
 .image img {
   width: 100%;
   max-height: calc((100vh - 80px - 2rem) * 0.8);
+  height: 100%;
   object-fit: contain;
   object-position: bottom left;
 }
@@ -482,7 +472,7 @@ h1 {
   max-width: 1024px;
 }
 
-#our_patroness:deep(strong)  {
+#our_patroness:deep(strong) {
   background: linear-gradient(to right, var(--magenta), var(--yellow));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -599,6 +589,7 @@ h1 {
 .history_section.reverse .overflow_gradient {
   background: linear-gradient(to left, white, transparent 50%), linear-gradient(to bottom, white, transparent 50%), linear-gradient(to top, white, transparent 10%), linear-gradient(225deg, white, transparent 75%), rgba(255, 255, 255, 0.5);
 }
+
 .quotes {
   width: 100%;
   display: flex;
@@ -625,6 +616,7 @@ h1 {
   .history_section h2 {
     height: auto;
   }
+
   .history_section .content {
     height: auto;
     flex-direction: column;
@@ -634,6 +626,7 @@ h1 {
   .history_section.reverse .content {
     flex-direction: column;
   }
+
   .history_section .text_wrapper {
     padding: 0 2rem;
     width: 100%;
@@ -670,9 +663,13 @@ h1 {
     width: min(80vw, 256px);
     height: min(80vw, 256px);
   }
-  
+
   .our-patroness-hero-wrapper .content .image .overflow_gradient {
     width: 100%;
+  }
+
+  .quotes {
+    padding: 2rem;
   }
 }
 </style>
