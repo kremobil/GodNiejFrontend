@@ -18,7 +18,7 @@ export default {
   mounted() {
     godniejBackend.get('/hero-section', {
       params: {
-        populate: "Sponsorzy"
+        "populate[Sponsorzy][populate][0]": "Logo"
       }
     }).then(
         (response) => {
