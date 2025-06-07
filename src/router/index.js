@@ -9,6 +9,7 @@ import OurPatronessView from "@/views/OurPatronessView.vue";
 import ThanksForRegisterView from "@/views/ThanksForRegisterView.vue";
 import DocumentsView from "@/views/DocumentsView.vue";
 import PageNotFoundView from "@/views/PageNotFoundView.vue";
+import ReadRecomendationsWorkInProgress from '@/views/ReadRecomendationsWorkInProgress.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -65,7 +66,7 @@ const router = createRouter({
     {
       path: '/warte_przeczytania',
       name: 'read recommendations',
-      component: ReadRecommendationsView
+      component: ReadRecomendationsWorkInProgress
     },
     {
       path: '/patronka',

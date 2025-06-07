@@ -120,7 +120,7 @@ export default {
                 delay: 2000,
               }" @swiper="onSwiper" @slideChange="onSlideChange">
           <swiper-slide v-for="sponsor, index in sponsors" :key="sponsor.id">
-            <a :href="sponsor.link" target="_blank">
+            <a :href="sponsor.link" target="_blank" >
               <img :src="'https://backend.godniej.org' + sponsor.Logo.url" :alt="sponsor.alternativeText">
               <p v-if="sponsor.Nazwa">{{ sponsor.Nazwa }}</p>
             </a>
