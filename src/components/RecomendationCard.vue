@@ -1,5 +1,8 @@
 <template>
-    <div class="recomendation-card">
+    <div class="recomendation-card" :style="{
+        background: `linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 50%),
+        url('${image}') no-repeat center center`
+    }">
         <div class="recomendation-card-header">
             <h3>{{ title }}</h3>
             <h4>{{ author }}</h4>
@@ -29,6 +32,10 @@ export default {
         type: {
             type: String,
             default: "book"
+        },
+        image: {
+            type: String,
+            default: "@/assets/RecomendationPlaceholder.png"
         }
     }
 }
@@ -42,9 +49,8 @@ export default {
     justify-content: flex-end;
     gap: 0.5rem;
     padding: 1rem 2rem;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 50%),
-        url("@/assets/RecomendationPlaceholder.png") no-repeat center center;
     border-radius: 1rem;
+    background-size: cover;
 }
 
 .recomendation-card-header {
