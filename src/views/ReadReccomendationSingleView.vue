@@ -19,7 +19,7 @@
                 <main-link :to="recomendation.Odnosnik" anchor>
                     {{ recomendation.Typ === 'Książka' ? 'Kup książkę' : 'Przeczytaj artykuł' }}
                 </main-link>
-                <main-link to="/warte_przeczytania" secondary>
+                <main-link to="/1a9c4ffa-f1c5-47b6-8a19-6d9743eca37e" secondary>
                     <img src="@/assets/BackArrow.png" alt="Powrót">Powrót
                 </main-link>
             </div>
