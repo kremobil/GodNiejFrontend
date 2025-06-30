@@ -146,15 +146,16 @@ export default {
           category.Nazwa }}</button>
       </aside>
       <div class="main_content">
-        <section v-for="category in reccomendationsData" :key="category.id" @click="testRef(category.id)"
+        <section v-for="category in reccomendationsData" :key="category.id"
           ref="categoriesSections">
-          <div class="emptyInfo" v-if="category.PolecaneTresci.length === 0">
-            <h2>Przykro nam ale w tej kategorii nie ma jeszcze żadnych treści.</h2>
+          <h2 v-if="category.PolecaneTresci.length === 0">Przykro nam ale w tej kategorii nie ma jeszcze żadnych treści.
+          </h2>
+          <div class="cards-grid" v-else>
+            <RecomendationCard v-for="recomendation in category.PolecaneTresci" :key="recomendation.id"
+              :title="recomendation.Tytul" :author="recomendation.Autor" :source="recomendation.Zrodlo"
+              :type="recomendation.Typ" :slug="recomendation.slug"
+              :image="'https://backend.godniej.org' + (recomendation.Zdjecie.formats?.small?.url || recomendation.Zdjecie.url)" />
           </div>
-          <RecomendationCard v-for="recomendation in category.PolecaneTresci" :key="recomendation.id"
-            :title="recomendation.Tytul" :author="recomendation.Autor" :source="recomendation.Zrodlo"
-            :type="recomendation.Typ"
-            :image="'https://backend.godniej.org' + (recomendation.Zdjecie.formats?.small?.url || recomendation.Zdjecie.url)" />
         </section>
       </div>
     </main>
@@ -223,9 +224,18 @@ aside button.selected {
   display: flex;
   padding: 2rem;
   min-height: calc(100vh - 60px - 2rem);
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.main_content .cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, clamp(200px, calc(150px + 8vw), 400px));
+  justify-content: center;
   gap: 2rem;
   width: 100%;
+
 }
 
 
@@ -289,6 +299,7 @@ h2 {
 
   .read-recommendations-wrapper {
     padding: 2rem;
+    align-items: center;
   }
 
   aside {

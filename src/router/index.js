@@ -10,6 +10,7 @@ import ThanksForRegisterView from "@/views/ThanksForRegisterView.vue";
 import DocumentsView from "@/views/DocumentsView.vue";
 import PageNotFoundView from "@/views/PageNotFoundView.vue";
 import ReadRecomendationsWorkInProgress from '@/views/ReadRecomendationsWorkInProgress.vue';
+import ReadReccomendationSingleView from '@/views/ReadReccomendationSingleView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -67,6 +68,21 @@ const router = createRouter({
       path: '/warte_przeczytania',
       name: 'read recommendations',
       component: ReadRecomendationsWorkInProgress
+    },
+    {
+      path: '/warte_przeczytania/:slug',
+      name: 'read recommendation',
+      component: ReadRecomendationsWorkInProgress
+    },
+    {
+      path: '/1a9c4ffa-f1c5-47b6-8a19-6d9743eca37e',
+      name: 'read recommendations demo',
+      component: ReadRecommendationsView
+    },
+    {
+      path: '/1a9c4ffa-f1c5-47b6-8a19-6d9743eca37e/:slug',
+      name: 'read recommendation demo',
+      component: ReadReccomendationSingleView
     },
     {
       path: '/patronka',

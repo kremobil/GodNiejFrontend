@@ -1,5 +1,5 @@
 <template>
-    <div class="recomendation-card" :style="{
+    <router-link :to="`/1a9c4ffa-f1c5-47b6-8a19-6d9743eca37e/${slug}`" class="recomendation-card" :style="{
         background: `linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 50%),
         url('${image}') no-repeat center center`
     }">
@@ -11,7 +11,7 @@
             <p><b>{{ type === "book" ? "Wydawnictwo:" : "Źródło:" }}</b> {{ source }}</p>
         </div>
 
-    </div>
+    </router-link>
 </template>
 <script>
 export default {
@@ -36,14 +36,18 @@ export default {
         image: {
             type: String,
             default: "@/assets/RecomendationPlaceholder.png"
+        },
+        slug: {
+            type: String,
+            default: ""
         }
     }
 }
 </script>
 <style scoped>
 .recomendation-card {
-    width: 300px;
-    height: 450px;
+    width: clamp(200px, calc(150px + 8vw), 400px);
+    height: clamp(300px, calc(225px + 12vw), 600px);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -51,6 +55,7 @@ export default {
     padding: 1rem 2rem;
     border-radius: 1rem;
     background-size: cover;
+    text-decoration: none;
 }
 
 .recomendation-card-header {

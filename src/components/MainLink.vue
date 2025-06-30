@@ -9,15 +9,22 @@ export default {
     secondary: {
       type: Boolean,
       default: false
-    }
+    },
+    anchor: {
+      type: Boolean,
+      default: false
+    },
   }
 }
 </script>
 
 <template>
-  <router-link :type="type" @click="$emit('click')" :class="secondary ? 'secondary' : 'primary'" :to="to" class="main_link">
+  <router-link :type="type" @click="$emit('click')" :class="secondary ? 'secondary' : 'primary'" :to="to" class="main_link" v-if="!anchor">
     <slot></slot>
   </router-link>
+  <a v-else :href="to" :class="secondary ? 'secondary' : 'primary'" class="main_link" @click="$emit('click')" target="_blank">
+    <slot></slot>
+  </a>
 </template>
 
 <style scoped>
