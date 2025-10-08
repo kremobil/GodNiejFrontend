@@ -22,7 +22,8 @@ export default {
           params: {
             "pagination[page]":page,
             "pagination[pageSize]": 20,
-            "populate[0]": "Zdjecie"
+            "populate[0]": "Zdjecie",
+            "sort[1]": "TerminZajec:desc"
           }
         }).then( async response => {
           if (response.data.meta.pagination.pageCount < page) {
