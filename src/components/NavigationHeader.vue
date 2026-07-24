@@ -111,7 +111,7 @@ export default {
     }">
       <ul ref="mobileMenu">
         <li>
-          <router-link to="/" @click="toggleMenu">Strona główna</router-link>
+          <router-link to="/" @click="toggleMenu">Strona Główna</router-link>
         </li>
         <li>
           <router-link to="/inicjatywy" @click="toggleMenu">Nasze Inicjatywy</router-link>
@@ -120,10 +120,10 @@ export default {
           <router-link to="/patronka" @click="toggleMenu">Nasza Patronka</router-link>
         </li>
         <li>
-          <router-link to="/onas" @click="toggleMenu">Poznaj fundacje</router-link>
+          <router-link to="/onas" @click="toggleMenu">Poznaj Fundację</router-link>
         </li>
         <li>
-          <router-link to="/warte_przeczytania" @click="toggleMenu">Warte przeczytania</router-link>
+          <router-link to="/warte_przeczytania" @click="toggleMenu">Warte Przeczytania</router-link>
         </li>
         <li>
           <router-link to="/kontakt" @click="toggleMenu">Kontakt</router-link>

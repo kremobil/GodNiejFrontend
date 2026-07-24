@@ -121,7 +121,7 @@ export default {
               }" @swiper="onSwiper" @slideChange="onSlideChange">
           <swiper-slide v-for="sponsor, index in sponsors" :key="sponsor.id">
             <a :href="sponsor.link" target="_blank" >
-              <img :src="'https://backend.godniej.org' + sponsor.Logo.url" :alt="sponsor.alternativeText">
+              <img :src="'https://backend.godniej.org' + sponsor.Logo.url" :alt="sponsor.Nazwa" v-if="sponsor.Logo && sponsor.Nazwa">
               <p v-if="sponsor.Nazwa">{{ sponsor.Nazwa }}</p>
             </a>
 
