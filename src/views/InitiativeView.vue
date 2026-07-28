@@ -62,9 +62,9 @@ export default {
         </div>
         <div class="detail">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#efbe1d"><path d="M560-440q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35ZM280-320q-33 0-56.5-23.5T200-400v-320q0-33 23.5-56.5T280-800h560q33 0 56.5 23.5T920-720v320q0 33-23.5 56.5T840-320H280Zm80-80h400q0-33 23.5-56.5T840-480v-160q-33 0-56.5-23.5T760-720H360q0 33-23.5 56.5T280-640v160q33 0 56.5 23.5T360-400Zm440 240H120q-33 0-56.5-23.5T40-240v-440h80v440h680v80ZM280-400v-320 320Z"/></svg>
-          <h4>{{ initiative.Cena > 0 ? initiative.Cena.toFixed(2) + "zł" : "Darmowe Zajęcia!"}}</h4>
+          <h4>{{ initiative.NiestandardowaCena ? initiative.NiestandardowaCena : initiative.Cena > 0 ? initiative.Cena.toFixed(2) + "zł" : "Darmowe Zajęcia!"}}</h4>
         </div>
-        <div class="detail">
+        <div class="detail" v-if="initiative.MiejsceZajec">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#efbe1d"><path d="M480-301q99-80 149.5-154T680-594q0-90-56-148t-144-58q-88 0-144 58t-56 148q0 65 50.5 139T480-301Zm0 101Q339-304 269.5-402T200-594q0-125 78-205.5T480-880q124 0 202 80.5T760-594q0 94-69.5 192T480-200Zm0-320q33 0 56.5-23.5T560-600q0-33-23.5-56.5T480-680q-33 0-56.5 23.5T400-600q0 33 23.5 56.5T480-520ZM200-80v-80h560v80H200Zm280-520Z"/></svg>
           <h4>{{ initiative.MiejsceZajec}}</h4>
         </div>

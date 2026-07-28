@@ -42,6 +42,19 @@ export default {
       immediate: true
     }
   },
+  methods: {
+    isActive(initiative) {
+      let currDate = Date.now();
+      let eventDate = new Date(initiative.KoniecZapisow);
+
+      if (eventDate > currDate && initiative.WlaczZapisy && initiative.IloscMiejsc > 0) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+  },
   mounted() {
     let page = this.$route.query.strona ?? 1
 
@@ -58,7 +71,10 @@ export default {
       <div class="card_content" :style="{
         backgroundImage: `url('https://backend.godniej.org${initiative?.Zdjecie?.formats?.small ? initiative.Zdjecie.formats.small.url : initiative.Zdjecie.url}')`,
       }">
-        <h4 class="card_header">{{ initiative.Tytul }}</h4>
+        <div class="image_space">
+          <h5 class="singing_in_open" v-if="isActive(initiative)">Trwają zapisy</h5>
+        </div>
+        <h4 class="card_header">{{ initiative.Tytul}}</h4>
       </div>
     </router-link>
   </div>
@@ -136,6 +152,22 @@ h2 {
   text-align: center;
   font-size: var(--font_s);
   border-radius: 0 0 1rem 1rem;
+}
+
+.card_content .image_space {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.image_space .singing_in_open {
+  padding: 0.5rem 1rem;
+  background-color: var(--blue);
+  color: white;
+  border-radius: 1rem;
 }
 .card_hover {
   background: conic-gradient(var(--yellow) 0%, var(--magenta) 10%, var(--yellow) 35%, var(--magenta)70%, var(--yellow) 80%);

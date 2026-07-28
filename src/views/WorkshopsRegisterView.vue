@@ -31,11 +31,11 @@
             <img :src="`https://backend.godniej.org${initiative.Zdjecie.url}`" :alt="initiative.Zdjecie.alternativeText">
             <div class="informations" >
               <h2 >{{ initiative.Tytul }}</h2>
-              <h3>Cena: {{ initiative.Cena > 0 ? initiative.Cena.toFixed(2) + "zł" : "Darmowe!" }}</h3>
+              <h3>Cena: {{ initiative.NiestandardowaCena ? initiative.NiestandardowaCena : initiative.Cena > 0 ? initiative.Cena.toFixed(2) + "zł" : "Darmowe!" }}</h3>
               <h3>Data:
                 {{ initiative.TerminZajec }}
                 </h3>
-              <h3>Miejsce:
+              <h3 v-if="initiative.MiejsceZajec">Miejsce:
                 {{ initiative.MiejsceZajec }}
                 </h3>
               <h3>Wolne miejsca: {{availableSpots}}</h3>
